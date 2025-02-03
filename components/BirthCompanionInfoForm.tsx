@@ -1,3 +1,4 @@
+import { steps } from "@/data";
 import {
   BirthCompanionArrowButton,
   BirthCompanionBackButton,
@@ -6,8 +7,6 @@ import {
 } from "./Buttons";
 
 const BirthCompanionInfoForm = () => {
-  const steps = [1, 2, 3, 4, 5];
-
   return (
     <div className="flex h-screen items-center dark:bg-neutral-800">
       <main className="relative md:rounded-3xl md:shadow-2xl bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[850px] border md:border-gray-400/2 w-[400px] md:w-[370px] mx-auto md:p-6 md:overflow-scroll">
