@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const Login = () => {
   return (
     <div className="flex h-screen items-center dark:bg-neutral-800">
@@ -70,14 +71,13 @@ const Login = () => {
               </div>
               <p className="mt-5 text-sm text-turquoise-900">
                 Don't have an account yet?
-                <a
+                <Link
                   className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                   href="/register"
                 >
                   Sign Up here
-                </a>
+                </Link>
               </p>
-
             </div>
           </div>
         </div>

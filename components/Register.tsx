@@ -1,11 +1,13 @@
 import Image from "next/image";
+import { RegisterButton } from "./Buttons";
+import Link from "next/link";
 const Register = () => {
   return (
-    <div className="flex h-screen items-center dark:bg-neutral-800">
+    <div className="flex h-[95vh] md:h-screen items-center dark:bg-neutral-800">
       <main className="relative md:rounded-3xl md:shadow-2xl bg- bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto md:p-6 md:overflow-hidden">
         <div className="absolute left-0 bottom-0 flex flex-col w-full">
-          <div className="bg-transparent px-7 flex justify-center">
-            <div className="flex flex-col items-center justify-center">
+          <div className="bg-transparent flex w-100 justify-center">
+            <div className="flex flex-col w-100 items-center justify-center">
               <Image
                 className="mb-4"
                 src="/blissfulLogo.svg"
@@ -13,7 +15,7 @@ const Register = () => {
                 width={296}
                 alt="BlissfulLogo"
               />
-              <h3 className="font-mono font-semibold leading-none mb-6 md:text-3xl text-4xl text-turquoise-900">
+              <h3 className="font-mono font-semibold leading-none mb-6 md:text-3xl text-4xl text-turquoise-900 w-100">
                 Blissful Birth
               </h3>
             </div>
@@ -61,7 +63,8 @@ const Register = () => {
                       type="password"
                     />
                   </div>
-                </div>                <div className="flex flex-col my-3">
+                </div>{" "}
+                <div className="flex flex-col my-3">
                   <label className="font-mono text-turquoise-900" htmlFor="">
                     Confirm Password
                   </label>
@@ -82,20 +85,17 @@ const Register = () => {
                 </div>
               </div>
               <div>
-                <button className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]">
-                  Sign Up
-                </button>
+                <RegisterButton />
               </div>
               <p className="mt-5 text-sm text-turquoise-900">
-              Already have an account?
-                <a
+                Already have an account?
+                <Link
                   className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
                   href="/login"
                 >
                   Sign In here
-                </a>
+                </Link>
               </p>
-
             </div>
           </div>
         </div>
