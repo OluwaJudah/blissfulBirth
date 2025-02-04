@@ -7,7 +7,6 @@ export default async function Page({
   params,
 }: {
   params: Promise<{ id: string }>;
-  children: React.ReactNode;
 }) {
   const { id } = await params;
 
