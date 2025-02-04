@@ -15,11 +15,11 @@ const ScheduleDetails = ({ id }: { id: string }) => {
             opacity: 1,
           },
         }}
-        transition={{ duration: 1, type: "tween" }}
+        transition={{ duration: 1, type: "spring" }}
         initial="top"
         animate="bottom"
         exit="top"
-        className="h-[70vh] w-full hover:transition hover:delay-150 hover:duration-300 hover:ease-in-out hover:shadow-2xl shadow-xl rounded-xl border border-gray-300 p-3 mt-3"
+        className="h-[70vh] w-full hover:transition hover:delay-150 hover:duration-300 hover:ease-in-out hover:shadow-2xl shadow-xl rounded-xl border border-pinklet-500/20 p-3 mt-3"
       >
         <div className="border-b border-gray-300 py-2">
           <h3 className="text-2xl font-semibold">Week {id}</h3>
