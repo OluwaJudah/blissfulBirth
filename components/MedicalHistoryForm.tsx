@@ -1,9 +1,9 @@
 import { conditions, familyHistory, tbSymptomsScreen } from "@/data/conditions";
 import {
-  BabyInfoSkipButton,
-  BirthCompanionButton,
   MedicalHistoryArrowButton,
   MedicalHistoryBackButton,
+  MedicalHistoryButton,
+  MedicalHistorySkipButton,
 } from "./Buttons";
 import Conditions from "./Conditions";
 import { steps } from "@/data";
@@ -21,7 +21,7 @@ const MedicalHistoryForm = () => {
               </span>
             </div>
             <div>
-              <BabyInfoSkipButton />
+              <MedicalHistorySkipButton />
             </div>
           </div>
           <div className="rounded-t-[50px] h-[93vh] bg-white py-8 md:py-4 px-7 flex flex-col md:overflow-scroll">
@@ -109,7 +109,7 @@ const MedicalHistoryForm = () => {
               </div>
               <div className="flex gap-3">
                 <MedicalHistoryBackButton />
-                <BirthCompanionButton />
+                <MedicalHistoryButton />
               </div>
             </div>
           </div>

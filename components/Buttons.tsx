@@ -31,10 +31,34 @@ export const BirthCompanionButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/register?type=medical-history")}
+      onClick={() => router.push("/register?type=baby-info")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Next
+    </button>
+  );
+};
+
+export const MedicalHistoryButton = () => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.push("/schedules/1")}
+      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+    >
+      Submit
+    </button>
+  );
+};
+
+export const MedicalHistorySkipButton = () => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.push("/schedules/1")}
+      className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
+    >
+      Skip
     </button>
   );
 };
