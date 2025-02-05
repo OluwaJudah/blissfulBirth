@@ -157,6 +157,18 @@ export const BirthCompanionArrowButton = () => {
   );
 };
 
+export const BackArrowButton = () => {
+  const router = useRouter();
+  return (
+    <ArrowLeft
+      className="text-pinklet-500"
+      size={23}
+      strokeWidth={3}
+      onClick={() => router.back()}
+    />
+  );
+};
+
 export const BabyBackArrowButton = () => {
   const router = useRouter();
   return (

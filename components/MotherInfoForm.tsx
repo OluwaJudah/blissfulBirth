@@ -1,14 +1,17 @@
 import { steps } from "@/data";
-import { MotherInfoButton } from "./Buttons";
+import { BackArrowButton, MotherInfoButton } from "./Buttons";
 const MotherInfoForm = () => {
   return (
     <div className="flex h-screen items-center dark:bg-neutral-800">
       <main className="relative md:rounded-3xl md:shadow-2xl bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[850px] border md:border-gray-400/2 w-[400px] md:w-[370px] mx-auto md:overflow-scroll">
         <div className="absolute left-0 -bottom-300 flex flex-col w-full">
           <div className="flex justify-between px-5 bg-gradient-to-r from-turquoise-100 to-turquoise-50 py-2 sticky top-0">
-            <h3 className="font-mono leading-none text-xl text-turquoise-900 font-semibold">
-              Mother's Details
-            </h3>
+            <div className="flex gap-2 items-center">
+              <BackArrowButton />
+              <span className="font-mono leading-none text-xl text-turquoise-900 font-semibold">
+                Mother's Details
+              </span>
+            </div>
           </div>
           <div className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] py-8 md:py-4 px-7 md:overflow-scroll">
             <div className="flex flex-row gap-4">
