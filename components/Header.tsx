@@ -22,7 +22,7 @@ const Header = () => {
             <div className="md:hidden">
               <button
                 type="button"
-                className="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold rounded-lg border border-gray-900 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                className="hs-collapse-toggle relative size-9 flex justify-center items-center text-sm font-semibold rounded-lg ring-4 ring-pinklet-500/10 text-turquoise-900 text-gray-800 hover:bg-transparent focus:outline-none focus:bg-transparent disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                 id="hs-header-classic-collapse"
                 aria-expanded="false"
                 aria-controls="hs-header-classic"
@@ -30,7 +30,7 @@ const Header = () => {
                 data-hs-collapse="#hs-header-classic"
               >
                 <svg
-                  className="hs-collapse-open:hidden size-4"
+                  className="hs-collapse-open:hidden text-pinklet-300 size-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -46,7 +46,7 @@ const Header = () => {
                   <line x1="3" x2="21" y1="18" y2="18" />
                 </svg>
                 <svg
-                  className="hs-collapse-open:block shrink-0 hidden size-4"
+                  className="hs-collapse-open:block shrink-0 hidden size-4 text-pinklet-300"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
