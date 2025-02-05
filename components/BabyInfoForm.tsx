@@ -1,9 +1,9 @@
 import { steps } from "@/data";
 import {
-  BabyBackArrowButton,
   BabyBackButton,
   BabyButton,
   BabyInfoSkipButton,
+  BackArrowButton,
 } from "./Buttons";
 
 const BabyInfoForm = () => {
@@ -13,7 +13,7 @@ const BabyInfoForm = () => {
         <div className="absolute left-0 bottom-0 flex flex-col w-full">
           <div className="flex justify-between px-5 bg-gradient-to-r from-turquoise-100 to-turquoise-50 py-2 sticky md:-top-10 top-0">
             <div className="flex gap-2 items-center">
-              <BabyBackArrowButton />
+              <BackArrowButton />
               <span className="font-mono leading-none text-xl text-turquoise-900 font-semibold">
                 Baby's Info
               </span>

@@ -1,6 +1,6 @@
 import { conditions, familyHistory, tbSymptomsScreen } from "@/data/conditions";
 import {
-  MedicalHistoryArrowButton,
+  BackArrowButton,
   MedicalHistoryBackButton,
   MedicalHistoryButton,
   MedicalHistorySkipButton,
@@ -15,7 +15,7 @@ const MedicalHistoryForm = () => {
         <div className="absolute left-0 -bottom-300 flex flex-col w-full">
           <div className="flex justify-between px-5 bg-gradient-to-r from-turquoise-100 to-turquoise-50 py-2 sticky top-0">
             <div className="flex gap-2 items-center">
-              <MedicalHistoryArrowButton />
+              <BackArrowButton />
               <span className="font-mono leading-none text-xl text-turquoise-900 font-semibold">
                 Medical History
               </span>
