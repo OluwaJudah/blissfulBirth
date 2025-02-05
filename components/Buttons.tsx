@@ -16,6 +16,18 @@ export const RegisterButton = () => {
   );
 };
 
+export const LoginButton = () => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.push("/schedules/1")}
+      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+    >
+      Sign In
+    </button>
+  );
+};
+
 export const MotherInfoButton = () => {
   const router = useRouter();
   return (

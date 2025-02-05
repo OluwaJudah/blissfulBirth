@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LoginButton } from "./Buttons";
 const Login = () => {
   return (
     <div className="flex h-[98vh] md:h-screen items-center dark:bg-neutral-800">
@@ -65,9 +66,7 @@ const Login = () => {
                 </div>
               </div>
               <div>
-                <button className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]">
-                  Sign In
-                </button>
+                <LoginButton />
               </div>
               <p className="mt-5 text-sm text-turquoise-900">
                 Don't have an account yet?
