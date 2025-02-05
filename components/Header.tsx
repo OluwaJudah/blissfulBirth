@@ -9,13 +9,10 @@ const Header = () => {
         <nav className="relative max-w-[85rem] w-full md:flex md:items-center md:justify-between md:gap-3 mx-auto px-4 sm:px-6 lg:px-8 py-2">
           {/* <!-- Logo w/ Collapse Button --> */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center justify-center">
-              <Image
-                src="/blissfulLogo.svg"
-                height={20}
-                width={100}
-                alt="BlissfulLogo"
-              />
+            <div className="bg-turquoise-100 p-2">
+              <div className="font-mono font-semibold mb-2 text-xl text-black focus:outline-none focus:opacity-80 dark:text-white mb-2">
+                Appointments
+              </div>
             </div>
 
             {/* <!-- Collapse Button --> */}

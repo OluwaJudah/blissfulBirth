@@ -14,11 +14,6 @@ export default async function Page({
     <>
       <div className="sticky top-0">
         <Header />
-        <div className="bg-turquoise-100 p-2">
-          <div className="font-mono font-semibold mb-2 text-xl text-black focus:outline-none focus:opacity-80 dark:text-white mb-2">
-            Appointments
-          </div>
-        </div>
       </div>
       <main className="bg-turquoise-100">
         <div className="h-full items-center py-16 px-2 rounded-t-[50px] bg-white md:p-6">
