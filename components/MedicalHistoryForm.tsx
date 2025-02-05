@@ -1,7 +1,7 @@
 import { conditions, familyHistory, tbSymptomsScreen } from "@/data/conditions";
 import {
   BackArrowButton,
-  MedicalHistoryBackButton,
+  BackButton,
   MedicalHistoryButton,
   MedicalHistorySkipButton,
 } from "./Buttons";
@@ -105,7 +105,7 @@ const MedicalHistoryForm = () => {
               <Conditions conditions={tbSymptomsScreen} />
             </div>
             <div className="flex gap-3">
-              <MedicalHistoryBackButton />
+              <BackButton />
               <MedicalHistoryButton />
             </div>
           </div>

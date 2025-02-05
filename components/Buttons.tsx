@@ -110,30 +110,7 @@ export const BabyInfoSkipButton = () => {
   );
 };
 
-export const BirthCompanionBackButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.back()}
-      className="border border-pinklet-500 hover:bg-pinklet-300 text-turquoise-900 rounded-full w-[110px] h-[33px]"
-    >
-      Back
-    </button>
-  );
-};
-
-export const BabyBackButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.back()}
-      className="border border-pinklet-500 hover:bg-pinklet-300 text-turquoise-900 rounded-full w-[110px] h-[33px]"
-    >
-      Back
-    </button>
-  );
-};
-export const MedicalHistoryBackButton = () => {
+export const BackButton = () => {
   const router = useRouter();
   return (
     <button

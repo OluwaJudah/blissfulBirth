@@ -1,6 +1,6 @@
 import { steps } from "@/data";
 import {
-  BabyBackButton,
+  BackButton,
   BabyButton,
   BabyInfoSkipButton,
   BackArrowButton,
@@ -63,7 +63,7 @@ const BabyInfoForm = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                <BabyBackButton />
+                <BackButton />
                 <BabyButton />
               </div>
             </div>
