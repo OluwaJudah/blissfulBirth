@@ -15,7 +15,7 @@ export default async function Page({
       <Header />
       <div className="h-full items-center p-2 md:p-6">
         <main>
-          <div className="font-semibold mb-2 text-xl text-black focus:outline-none focus:opacity-80 dark:text-white mb-2">
+          <div className="font-mono font-semibold mb-2 text-xl text-black focus:outline-none focus:opacity-80 dark:text-white mb-2">
             Appointments
           </div>
 
