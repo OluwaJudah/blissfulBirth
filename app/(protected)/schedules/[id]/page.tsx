@@ -12,16 +12,19 @@ export default async function Page({
 
   return (
     <>
-      <Header />
-      <div className="h-full items-center p-2 md:p-6">
-        <main>
+      <div className="sticky top-0">
+        <Header />
+        <div className="bg-turquoise-100 p-2">
           <div className="font-mono font-semibold mb-2 text-xl text-black focus:outline-none focus:opacity-80 dark:text-white mb-2">
             Appointments
           </div>
-
-          <h3 className="text-base font-medium">Weeks</h3>
+        </div>
+      </div>
+      <main className="bg-turquoise-100">
+        <div className="h-full items-center py-16 px-2 rounded-t-[50px] bg-white md:p-6">
+          <h3 className="text-lg font-medium">Weeks</h3>
           <div className="overflow-x-auto py-4">
-            <div className="flex items-center px-3 gap-4 w-[650px]">
+            <div className="flex items-center px-1 gap-4 w-[650px]">
               {schedulesNos.map((num) => (
                 <Link
                   scroll={false}
@@ -39,8 +42,8 @@ export default async function Page({
             </div>
           </div>
           <ScheduleDetails id={id} />
-        </main>
-      </div>
+        </div>
+      </main>
     </>
   );
 }

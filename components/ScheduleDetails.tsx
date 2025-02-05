@@ -29,27 +29,27 @@ const ScheduleDetails = ({ id }: { id: string }) => {
         </div>
         <div className="">
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">Urine: </span>
+            <span className="font-mono mr-3 text-md font-medium">Urine: </span>
             <span>45 ml</span>
           </div>
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">Mommy's Weight: </span>
+            <span className="font-mono mr-3 text-md font-medium">Mommy's Weight: </span>
             <span>45 kg</span>
           </div>
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">Blood Pressure: </span>
+            <span className="font-mono mr-3 text-md font-medium">Blood Pressure: </span>
             <span>45'C</span>
           </div>
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">Palpation: </span>
+            <span className="font-mono mr-3 text-md font-medium">Palpation: </span>
             <span>45 CM</span>
           </div>
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">FH: </span>
+            <span className="font-mono mr-3 text-md font-medium">FH: </span>
             <span>116</span>
           </div>
           <div className="flex py-3 border-b border-gray-300">
-            <span className="font-mono mr-3 text-md font-semibold">
+            <span className="font-mono mr-3 text-md font-medium">
               Baby's Position:{" "}
             </span>
             <span>Vertex</span>
