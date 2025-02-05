@@ -21,9 +21,10 @@ export default async function Page({
 
           <h3 className="text-base font-medium">Weeks</h3>
           <div className="overflow-x-auto py-4">
-            <div className="flex items-center gap-4  w-[650px]">
+            <div className="flex items-center px-3 gap-4 w-[650px]">
               {schedulesNos.map((num) => (
                 <Link
+                  scroll={false}
                   href={`/schedules/${num}`}
                   key={num}
                   className={`ring-4 flex shadow-md hover:shadow-xl transition delay-150 duration-300 ease-in-out justify-center items-center size-12 ${
