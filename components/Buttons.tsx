@@ -38,6 +38,17 @@ export const BirthCompanionButton = () => {
     </button>
   );
 };
+export const BabyButton = () => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.push("/register?type=medical-history")}
+      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+    >
+      Next
+    </button>
+  );
+};
 
 export const MedicalHistoryButton = () => {
   const router = useRouter();

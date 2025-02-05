@@ -2,8 +2,8 @@ import { steps } from "@/data";
 import {
   BabyBackArrowButton,
   BabyBackButton,
+  BabyButton,
   BabyInfoSkipButton,
-  BirthCompanionButton,
 } from "./Buttons";
 
 const BabyInfoForm = () => {
@@ -64,7 +64,7 @@ const BabyInfoForm = () => {
               </div>
               <div className="flex gap-3">
                 <BabyBackButton />
-                <BirthCompanionButton />
+                <BabyButton />
               </div>
             </div>
           </div>
