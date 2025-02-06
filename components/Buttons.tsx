@@ -28,33 +28,11 @@ export const LoginButton = () => {
   );
 };
 
-export const MotherInfoButton = () => {
+export const NextButton = ({ url }: { url: string }) => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/register?type=birth-companion-info")}
-      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
-    >
-      Next
-    </button>
-  );
-};
-export const BirthCompanionButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.push("/register?type=baby-info")}
-      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
-    >
-      Next
-    </button>
-  );
-};
-export const BabyButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.push("/register?type=medical-history")}
+      onClick={() => router.push(url)}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Next
@@ -74,35 +52,11 @@ export const MedicalHistoryButton = () => {
   );
 };
 
-export const MedicalHistorySkipButton = () => {
+export const SkipButton = ({ url }: { url: string }) => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/8")}
-      className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
-    >
-      Skip
-    </button>
-  );
-};
-
-export const BirthCompanionSkipButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.push("/register?type=baby-info")}
-      className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
-    >
-      Skip
-    </button>
-  );
-};
-
-export const BabyInfoSkipButton = () => {
-  const router = useRouter();
-  return (
-    <button
-      onClick={() => router.push("/register?type=medical-history")}
+      onClick={() => router.push(url)}
       className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
     >
       Skip

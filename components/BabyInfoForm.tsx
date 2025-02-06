@@ -1,10 +1,5 @@
 import { steps } from "@/data";
-import {
-  BackButton,
-  BabyButton,
-  BabyInfoSkipButton,
-  BackArrowButton,
-} from "./Buttons";
+import { BackButton, NextButton, SkipButton, BackArrowButton } from "./Buttons";
 
 const BabyInfoForm = () => {
   return (
@@ -19,7 +14,7 @@ const BabyInfoForm = () => {
               </span>
             </div>
             <div>
-              <BabyInfoSkipButton />
+              <SkipButton url={"/register?type=medical-history"} />
             </div>
           </div>
           <div className="rounded-t-[50px] h-[93vh] bg-white py-8 md:py-4 px-7 flex flex-col md:overflow-scroll">
@@ -64,7 +59,7 @@ const BabyInfoForm = () => {
               </div>
               <div className="flex gap-3">
                 <BackButton />
-                <BabyButton />
+                <NextButton url={"/register?type=medical-history"} />
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { steps } from "@/data";
-import { BackArrowButton, MotherInfoButton } from "./Buttons";
+import { BackArrowButton, NextButton } from "./Buttons";
 const MotherInfoForm = () => {
   return (
     <div className="flex h-screen items-center dark:bg-neutral-800">
@@ -135,7 +135,7 @@ const MotherInfoForm = () => {
               </div>
             </div>
             <div>
-              <MotherInfoButton />
+              <NextButton url={"/register?type=birth-companion-info"} />
             </div>
           </div>
         </div>
