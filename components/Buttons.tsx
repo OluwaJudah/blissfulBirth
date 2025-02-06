@@ -20,7 +20,7 @@ export const LoginButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/1")}
+      onClick={() => router.push("/schedules/8")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign In
@@ -66,7 +66,7 @@ export const MedicalHistoryButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/1")}
+      onClick={() => router.push("/schedules/8")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Submit
@@ -78,7 +78,7 @@ export const MedicalHistorySkipButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/1")}
+      onClick={() => router.push("/schedules/8")}
       className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
     >
       Skip

@@ -19,7 +19,7 @@ export default async function Page({
         <div className="h-full items-center py-16 px-2 rounded-t-[50px] bg-white md:p-6">
           <h3 className="text-lg font-medium">Weeks</h3>
           <div className="overflow-x-auto py-4">
-            <div className="flex items-center px-1 gap-4 w-[650px]">
+            <div className="flex items-center px-1 gap-4 w-[1000px]">
               {schedulesNos.map((num) => (
                 <Link
                   scroll={false}

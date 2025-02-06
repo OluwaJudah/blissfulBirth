@@ -74,7 +74,7 @@ const Header = () => {
               <div className="py-2 md:py-0 flex flex-col md:flex-row md:items-center md:justify-end gap-0.5 md:gap-1">
                 <Link
                   className="p-2 flex items-center text-sm text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 dark:text-neutral-200 dark:hover:text-neutral-500 dark:focus:text-neutral-500"
-                  href="/schedules/1"
+                  href="/schedules/8"
                 >
                   <svg
                     className="shrink-0 size-4 me-3 md:me-2 block md:hidden"
