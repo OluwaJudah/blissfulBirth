@@ -1,8 +1,8 @@
-import BabyInfoForm from "@/components/BabyInfoForm";
-import BirthCompanionInfoForm from "@/components/BirthCompanionInfoForm";
-import MedicalHistoryForm from "@/components/MedicalHistoryForm";
-import MotherInfoForm from "@/components/MotherInfoForm";
-import Register from "@/components/Register";
+import BabyInfoForm from "@/components/(auth)/register/BabyInfoForm";
+import BirthCompanionInfoForm from "@/components/(auth)/register/BirthCompanionInfoForm";
+import MedicalHistoryForm from "@/components/(auth)/register/MedicalHistoryForm";
+import MotherInfoForm from "@/components/(auth)/register/MotherInfoForm";
+import Register from "@/components/(auth)/register/Register";
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export default async function Page({

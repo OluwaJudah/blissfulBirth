@@ -1,6 +1,6 @@
+import ScheduleDetails from "@/components/(protected)/schedules/[id]/ScheduleDetails";
+import ScrollWeeks from "@/components/(protected)/schedules/[id]/ScrollWeeks";
 import Header from "@/components/Header";
-import ScheduleDetails from "@/components/ScheduleDetails";
-import ScrollWeeks from "@/components/ScrollWeeks";
 
 export default async function Page({
   params,
