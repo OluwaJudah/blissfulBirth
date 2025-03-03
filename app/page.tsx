@@ -1,9 +1,15 @@
-import Header from "@/components/Header";
+import Body from "@/components/(public)/home-page/Body";
+import Header from "@/components/(public)/home-page/Header";
 
-export default function Home() {
+const LandingPage = () => {
   return (
-    <>
-      <Header />
-    </>
+    <div className="flex h-screen items-center dark:bg-neutral-800">
+      <main className="px-[20px] pb-[40px] md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-scroll">
+        <Header />
+        <Body />
+      </main>
+    </div>
   );
-}
+};
+
+export default LandingPage;
