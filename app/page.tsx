@@ -1,5 +1,5 @@
-import Body from "@/components/(public)/home-page/Body";
-import Header from "@/components/(public)/home-page/Header";
+import Body from "@/components/(public)/landing-page/Body";
+import Header from "@/components/(public)/landing-page/Header";
 
 const LandingPage = () => {
   return (
