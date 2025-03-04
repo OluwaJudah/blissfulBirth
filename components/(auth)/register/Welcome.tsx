@@ -26,7 +26,7 @@ const Welcome = () => {
         </div>
         <Link
           style={{ zIndex: 999 }}
-          className="z-2 absolute bottom-14 left-28 md:top-[55%] flex items-center justify-center gap-1 bg-turquoise-800 hover:bg-turquoise-700 text-white rounded-2xl w-[158px] h-[43px]"
+          className="z-2 absolute bottom-14 left-28 flex items-center justify-center gap-1 bg-turquoise-800 hover:bg-turquoise-700 text-white rounded-2xl w-[158px] h-[43px]"
           href="/register?type=mother-info"
         >
           <p className="text-center">Next</p>
