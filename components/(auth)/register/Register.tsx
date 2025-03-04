@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Register = () => {
   return (
-    <div className="flex h-[98vh] md:h-screen items-center dark:bg-neutral-800">
+    <div className="flex h-[98vh] md:h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg- bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto md:p-6 md:overflow-hidden">
         <div className="absolute left-0 bottom-0 flex flex-col w-full">
           <div className="bg-transparent flex w-100 justify-center">

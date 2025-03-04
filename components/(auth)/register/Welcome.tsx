@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 
 const Welcome = () => {
   return (
-    <div className="flex h-screen items-center dark:bg-neutral-800">
+    <div className="flex h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[850px] border md:border-gray-400/2 w-[400px] md:w-[370px] mx-auto md:p-6 md:overflow-scroll">
         <div className="flex py-[45px] flex-col items-center justify-center">
           {" "}
