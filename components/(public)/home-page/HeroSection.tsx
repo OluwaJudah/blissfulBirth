@@ -26,7 +26,7 @@ const HeroSection = () => {
           src="/pregnant_woman_2.png"
           height={230}
           width={145}
-          alt="BlissfulLogo"
+          alt="Pregnant Woman 2"
         />
       </div>
     </div>
