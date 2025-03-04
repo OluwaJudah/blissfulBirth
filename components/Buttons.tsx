@@ -8,7 +8,7 @@ export const RegisterButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/register?type=mother-info")}
+      onClick={() => router.push("/register?type=welcome")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Sign Up
