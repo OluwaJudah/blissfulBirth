@@ -21,7 +21,7 @@ const MedicalHistoryForm = () => {
               </span>
             </div>
             <div>
-              <SkipButton url={"/schedule/8"} />
+              <SkipButton url={"/home"} />
             </div>
           </div>
           <div className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] py-8 md:py-4 px-7 md:overflow-scroll">

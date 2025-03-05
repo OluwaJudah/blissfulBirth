@@ -44,7 +44,7 @@ export const MedicalHistoryButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/schedules/8")}
+      onClick={() => router.push("/home")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Submit
