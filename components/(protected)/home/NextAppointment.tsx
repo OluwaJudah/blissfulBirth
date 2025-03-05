@@ -28,9 +28,9 @@ const NextAppointment = () => {
               </p>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full pt-1">
             <Link
-              className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-xl w-[140px] h-[30px]"
+              className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
               href="/schedules/8"
             >
               <p className="text-center w-full text-sm">More Details</p>
