@@ -2,6 +2,7 @@ import React from "react";
 import NextAppointment from "./NextAppointment";
 import MyBaby from "./MyBaby";
 import MyBody from "./MyBody";
+import DueDate from "./DueDate";
 
 const Body = () => {
   return (
@@ -9,6 +10,7 @@ const Body = () => {
       <NextAppointment />
       <MyBaby />
       <MyBody />
+      <DueDate />
     </div>
   );
 };
