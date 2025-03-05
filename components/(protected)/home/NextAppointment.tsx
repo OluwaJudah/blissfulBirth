@@ -24,16 +24,18 @@ const NextAppointment = () => {
             <div className="flex gap-3 items-center">
               <Image src="/pin.svg" height={23} width={23} alt="pin" />
               <p className="font-sans font-medium text-black text-sm">
-                200 Sanders Creek....
+                200 Sanders Creek Rd, Joha...
               </p>
             </div>
           </div>
-          <Link
-            className="flex items-center bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-xl w-[140px] h-[30px]"
-            href="/schedules/8"
-          >
-            <p className="text-center w-full text-sm">More Details</p>
-          </Link>
+          <div className="w-full">
+            <Link
+              className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-xl w-[140px] h-[30px]"
+              href="/schedules/8"
+            >
+              <p className="text-center w-full text-sm">More Details</p>
+            </Link>
+          </div>
         </div>
         <div className="absolute -bottom-7 -right-6">
           <Image
