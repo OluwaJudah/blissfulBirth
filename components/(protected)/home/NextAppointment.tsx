@@ -7,7 +7,7 @@ const NextAppointment = () => {
     <div className="flex flex-col gap-y-4">
       <p className="font-mono font-bold text-turquoise-900">Next Appointment</p>
       <div className="shadow-xl relative w-full h-[180px] bg-pinklet-100 rounded-2xl px-4 py-5 overflow-hidden">
-        <div className="flex flex-col h-full w-4/5 gap-3">
+        <div className="flex flex-col h-full w-4/5 gap-4">
           <h2 className="pb-2 font-sans font-bold text-turquoise-900 tracking-wide border-b border-turquoise-700">
             Week 16 - 2nd Trimester
           </h2>
@@ -28,7 +28,7 @@ const NextAppointment = () => {
               </p>
             </div>
           </div>
-          <div className="w-full pt-1">
+          <div className="w-full -mt-1">
             <Link
               className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
               href="/schedules/8"
