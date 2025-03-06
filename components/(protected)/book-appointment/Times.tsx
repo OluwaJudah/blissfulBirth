@@ -17,7 +17,7 @@ const Times = ({ times }: { times: string[] }) => {
             <button
               key={t}
               onClick={() => setSelected(t)}
-              className={`${style} rounded-full px-3 h-[33px] md:w-[90px]`}
+              className={`${style} rounded-full px-3 h-[33px]`}
             >
               <span className="md:text-sm">{t}</span>
             </button>
