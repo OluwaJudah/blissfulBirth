@@ -45,7 +45,7 @@ export const BookButton = ({ url }: { url: string }) => {
   return (
     <button
       onClick={() => router.push(url)}
-      className="bg-pinklet-500 w-full hover:bg-turquoise-700 text-white rounded-full h-[35px]"
+      className="bg-pinklet-500 w-full hover:bg-pinklet-700 text-white rounded-full h-[35px]"
     >
       Book
     </button>
