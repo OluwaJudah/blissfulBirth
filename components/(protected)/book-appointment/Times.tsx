@@ -7,7 +7,7 @@ const Times = ({ times }: { times: string[] }) => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-2 my-3">
+      <div className="grid grid-cols-3 gap-2 my-3">
         {times.map((t: string) => {
           const style =
             selected === t
@@ -17,9 +17,9 @@ const Times = ({ times }: { times: string[] }) => {
             <button
               key={t}
               onClick={() => setSelected(t)}
-              className={`${style} rounded-full px-4 h-[33px]`}
+              className={`${style} rounded-full px-3 h-[33px] md:w-[90px]`}
             >
-              {t}
+              <span className="md:text-sm">{t}</span>
             </button>
           );
         })}
