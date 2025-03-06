@@ -5,7 +5,7 @@ import Link from "next/link";
 const MyBaby = () => {
   return (
     <div className="flex flex-col gap-y-4">
-      <p className="font-mono font-bold text-turquoise-900">My Baby</p>
+      <p className="font-mono font-bold text-turquoise-900 tracking-tight">My Baby</p>
       <div className="relative shadow-xl w-full h-[190px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-hidden">
         <div className="relative">
           <div className="flex flex-col h-full w-4/6 gap-3 float-right">

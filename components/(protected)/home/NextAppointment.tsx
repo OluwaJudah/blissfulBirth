@@ -5,7 +5,7 @@ import Link from "next/link";
 const NextAppointment = () => {
   return (
     <div className="flex flex-col gap-y-4">
-      <p className="font-mono font-bold text-turquoise-900">Next Appointment</p>
+      <p className="font-mono font-bold text-turquoise-900 tracking-tight">Next Appointment</p>
       <div className="shadow-xl relative w-full h-[180px] bg-pinklet-100 rounded-2xl px-4 py-5 overflow-hidden">
         <div className="flex flex-col h-full w-4/5 gap-4">
           <h2 className="pb-2 font-sans font-bold text-turquoise-900 tracking-wide border-b border-turquoise-700">
