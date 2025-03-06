@@ -58,7 +58,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="w-full flex flex-col overflow-hidden border border-t-turquoise-200 border-b-turquoise-200 mb-[35px]">
+    <div className="w-full flex flex-col overflow-hidden">
       {/* <!-- Calendar --> */}
       <div className="p-3 space-y-0.5">
         {/* <!-- Months --> */}
@@ -131,7 +131,7 @@ const Calendar = () => {
           {days.map((day, index) => (
             <span
               key={index}
-              className="m-px w-10 block text-center text-sm text-gray-500 dark:text-neutral-500"
+              className="m-px w-10 block text-center text-sm text-turquoise-800"
             >
               {day}
             </span>

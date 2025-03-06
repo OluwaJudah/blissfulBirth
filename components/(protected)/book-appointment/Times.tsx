@@ -11,7 +11,7 @@ const Times = ({ times }: { times: string[] }) => {
           const style =
             selected === t
               ? "bg-pinklet-500 hover:bg-pinklet-600 text-white"
-              : "border border-pinklet-500 hover:bg-pinklet-500 hover:text-white text-turquoise-900";
+              : "border border-pinklet-200 hover:bg-pinklet-500 hover:text-white text-turquoise-900";
           return (
             <button
               key={t}
