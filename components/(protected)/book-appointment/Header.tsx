@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Header = ({ type }: { type: string }) => {
   return (
-    <div className="px-4 flex content-center justify-between py-3">
+    <div className="px-4 flex content-center justify-between py-4">
       {type === "book" ? (
         <div className="flex items-center gap-3">
           <div className="flex justify-center items-center bg-turquoise-200 w-[35px] h-[35px] rounded-full">
