@@ -1,8 +1,9 @@
 import { Pen } from "lucide-react";
 import TimeSlot from "./TimeSlot";
 import Location from "./Location";
+import { BookButton } from "@/components/Buttons";
 
-const Body = () => {
+const Body = ()  => {
   return (
     <div className="flex flex-col gap-[10px] rounded-t-[50px] h-screen bg-turquoise-50 py-6 flex flex-col">
       <TimeSlot />
@@ -24,9 +25,7 @@ const Body = () => {
       </div>
       <div className="border border-t-turquoise-100 my-3"></div>
       <div className="w-full px-7">
-        <button className="bg-pinklet-500 w-full hover:bg-turquoise-700 text-white rounded-full h-[35px]">
-          Book
-        </button>
+        <BookButton url="/home" />
       </div>
     </div>
   );

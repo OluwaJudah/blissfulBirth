@@ -40,11 +40,23 @@ export const NextButton = ({ url }: { url: string }) => {
   );
 };
 
+export const BookButton = ({ url }: { url: string }) => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.push(url)}
+      className="bg-pinklet-500 w-full hover:bg-turquoise-700 text-white rounded-full h-[35px]"
+    >
+      Book
+    </button>
+  );
+};
+
 export const MedicalHistoryButton = () => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.push("/home")}
+      onClick={() => router.push("/book-appointment?type=book")}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
       Submit

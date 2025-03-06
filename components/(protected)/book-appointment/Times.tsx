@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-type ConditionType = { name: string; isAdded: boolean };
 
 const Times = ({ times }: { times: string[] }) => {
   const [selected, setSelected] = useState("");
