@@ -39,6 +39,9 @@ export default {
         "pinklet-900": "#811b25",
         "pinklet-950": "#46090f",
       },
+      scale: {
+        "100": "1",
+      },
     },
   },
   plugins: [
