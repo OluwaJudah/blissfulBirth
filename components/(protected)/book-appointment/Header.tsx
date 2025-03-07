@@ -1,7 +1,7 @@
-import { BackArrowButton } from "@/components/Buttons";
+import { BackArrowUrlButton } from "@/components/Buttons";
 import Image from "next/image";
 
-const Header = ({ type }: { type: string }) => {
+const Header = ({ type, from }: { type: string; from: string }) => {
   return (
     <div className="px-4 flex content-center justify-between py-4">
       {type === "book" ? (
@@ -16,7 +16,9 @@ const Header = ({ type }: { type: string }) => {
       ) : (
         <div className="flex items-center gap-3">
           <div className="flex justify-center items-center bg-turquoise-100 w-[35px] h-[35px] rounded-full">
-            <BackArrowButton />
+            <BackArrowUrlButton
+              url={from === "home" ? "/home" : "/appointments"}
+            />
           </div>
           <span className="font-mono font-semibold text-turquoise-900 text-xl">
             Confirm Booking

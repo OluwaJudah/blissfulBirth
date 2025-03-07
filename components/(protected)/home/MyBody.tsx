@@ -34,7 +34,7 @@ const MyBody = () => {
           <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-turquoise-700 hover:bg-turquoise-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href="/appointments/12/my-body"
+              href="/appointments/12/my-body?from=home"
             >
               <p className="text-center w-full text-sm">View Report</p>
             </Link>

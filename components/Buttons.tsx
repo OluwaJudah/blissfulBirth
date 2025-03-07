@@ -100,6 +100,18 @@ export const BackArrowButton = () => {
   );
 };
 
+export const BackArrowUrlButton = ({ url }: { url: string }) => {
+  const router = useRouter();
+  return (
+    <ArrowLeft
+      className="text-pinklet-500"
+      size={23}
+      strokeWidth={3}
+      onClick={() => router.push(url)}
+    />
+  );
+};
+
 export const ConditionButton = ({
   name,
   addToCancelList,
