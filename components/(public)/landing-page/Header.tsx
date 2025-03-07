@@ -1,18 +1,64 @@
-import React from "react";
+"use client";
+import { MenuToggle } from "@/components/MenuToggle";
+import { Navigation } from "@/components/Navigation";
+import { motion } from "motion/react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { height } = useDimensions(containerRef);
+  const navList = ["Home", "Sign Up", "Sign In"];
+
+  const sidebarVariants = {
+    open: (height = 1000) => ({
+      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+      backgroundColor: "#f1f9fa",
+      transition: {
+        type: "spring",
+        stiffness: 20,
+        restDelta: 2,
+      },
+    }),
+    closed: {
+      clipPath: "circle(14px at 85% 40px)",
+      transition: {
+        delay: 0.2,
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+      },
+    },
+  };
+
   return (
-    <div className="flex content-center justify-between pt-4 pb-[40px]">
+    <div className="relative flex content-center justify-between pt-6 pb-[40px]">
       <div className="flex items-center">
         <span className="font-mono font-semibold text-turquoise-900 text-xl">
           Blissful Birth
         </span>
       </div>{" "}
-      <div className="w-[40px] h-[40px] p-3 border shadow-lg shadow-turquoise-500 border-turquoise-200 rounded-2xl flex justify-center content-center">
-        <div className="flex flex-col justify-between">
-          <div className="w-[20px] border border-turquoise-900"></div>
-          <div className="w-[20px] border border-turquoise-900"></div>
-          <div className="w-[20px] border border-turquoise-900"></div>
+      <div style={{ zIndex: 999 }} className="absolute -top-1 -right-6">
+        <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
+          <motion.nav
+            initial={false}
+            animate={isOpen ? "open" : "closed"}
+            custom={height}
+            ref={containerRef}
+            className="w-[300px]"
+          >
+            <div className="absolute top-4 right-6 w-[44px] h-[46px] rounded-2xl bg-white border shadow-lg shadow-turquoise-500 border-turquoise-200 rounded-2xl "></div>
+            <motion.div
+              className="w-[300] absolute top-0 bottom-0 right-0 bg-white"
+              variants={sidebarVariants}
+            >
+              <div className="absolute top-3 right-4 w-[60px] h-[60px] flex place-items-center">
+                <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+              </div>
+            </motion.div>
+            <Navigation navList={navList} />
+          </motion.nav>
         </div>
       </div>
     </div>
@@ -20,3 +66,16 @@ const Header = () => {
 };
 
 export default Header;
+
+const useDimensions = (ref: React.RefObject<HTMLDivElement | null>) => {
+  const dimensions = useRef({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (ref.current) {
+      dimensions.current.width = ref.current.offsetWidth;
+      dimensions.current.height = ref.current.offsetHeight;
+    }
+  }, [ref]);
+
+  return dimensions.current;
+};
