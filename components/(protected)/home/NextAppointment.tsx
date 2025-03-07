@@ -5,10 +5,12 @@ import Link from "next/link";
 const NextAppointment = () => {
   return (
     <div className="flex flex-col gap-y-4">
-      <p className="font-mono font-bold text-turquoise-900 tracking-tight">Next Appointment</p>
-      <div className="shadow-xl relative w-full h-[180px] bg-pinklet-100 rounded-2xl px-4 py-5 overflow-hidden">
-        <div className="flex flex-col h-full w-4/5 gap-4">
-          <h2 className="pb-2 font-sans font-bold text-turquoise-900 tracking-wide border-b border-turquoise-700">
+      <p className="font-mono font-bold text-turquoise-900 tracking-tight">
+        Next Appointment
+      </p>
+      <div className="shadow-xl relative w-full h-[168px] bg-pinklet-100 rounded-2xl px-4 py-5 overflow-hidden">
+        <div className="flex flex-col h-full w-4/5 gap-3">
+          <h2 className=" font-sans font-bold text-turquoise-900 tracking-wide">
             Week 16 - 2nd Trimester
           </h2>
           <div className="flex flex-col gap-1">
@@ -28,7 +30,7 @@ const NextAppointment = () => {
               </p>
             </div>
           </div>
-          <div className="w-full -mt-1">
+          <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
               href="/book-appointment?from=home"
@@ -37,7 +39,7 @@ const NextAppointment = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute -bottom-7 -right-6">
+        <div className="absolute -bottom-10 -right-3">
           <Image
             className="mb-4"
             src="/pregnant_woman_1.png"
