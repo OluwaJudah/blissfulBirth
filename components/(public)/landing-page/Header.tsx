@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [zIndex, setZIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
   const navList = [
@@ -41,6 +42,20 @@ const Header = () => {
     },
   };
 
+  const toggleMenu = () => {
+    if (isOpen) {
+      setIsOpen(false);
+
+      var time = setTimeout(() => {
+        setZIndex(0);
+        clearTimeout(time);
+      }, 500);
+    } else {
+      setZIndex(1);
+      setIsOpen(true);
+    }
+  };
+
   return (
     <div className="relative flex content-center justify-between pt-6 pb-[40px]">
       <div className="flex items-center">
@@ -48,10 +63,7 @@ const Header = () => {
           Blissful Birth
         </span>
       </div>{" "}
-      <div
-        style={{ zIndex: isOpen ? 1 : 0 }}
-        className="absolute -top-1 -right-6"
-      >
+      <div style={{ zIndex }} className="absolute -top-1 -right-6">
         <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
           <motion.nav
             initial={false}
@@ -66,7 +78,7 @@ const Header = () => {
               variants={sidebarVariants}
             >
               <div className="absolute top-3 right-4 w-[60px] h-[60px] flex place-items-center">
-                <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+                <MenuToggle toggle={() => toggleMenu()} />
               </div>
             </motion.div>
             <Navigation navList={navList} />
