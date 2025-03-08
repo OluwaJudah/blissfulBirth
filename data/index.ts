@@ -25,3 +25,30 @@ export const timeSlots = [
   "3:00 PM",
   "4:00 PM",
 ];
+
+export const profileInfos = [
+  {
+    name: "Mother's Info",
+    url: "#",
+    image: "/pregnant_4.png",
+    bgColor: "turquoise",
+  },
+  {
+    name: "Birth Companion",
+    url: "#",
+    image: "/birth_companion.png",
+    bgColor: "pinklet",
+  },
+  {
+    name: "Baby's Info",
+    url: "#",
+    image: "/baby_2.png",
+    bgColor: "turquoise",
+  },
+  {
+    name: "Medical History",
+    url: "#",
+    image: "/medical_history.png",
+    bgColor: "pinklet",
+  },
+];
