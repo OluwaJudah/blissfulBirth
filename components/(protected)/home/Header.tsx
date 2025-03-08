@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Home, LogIn, SquareArrowUp } from "lucide-react";
-import { div } from "motion/react-m";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,17 +15,17 @@ const Header = () => {
     { name: "Home", url: "/home", Icon: Home, bgColor: "pinklet" },
     {
       name: "Appointments",
-      url: "/register",
+      url: "#",
       Icon: SquareArrowUp,
       bgColor: "turquoise",
     },
     {
       name: "Profile",
-      url: "/register",
+      url: "/profile",
       Icon: SquareArrowUp,
       bgColor: "pinklet",
     },
-    { name: "Sign Ouut", url: "/login", Icon: LogIn, bgColor: "pinklet" },
+    { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
   ];
 
   const sidebarVariants = {
