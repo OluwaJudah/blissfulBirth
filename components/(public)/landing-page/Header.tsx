@@ -62,7 +62,7 @@ const Header = () => {
           >
             <div className="absolute top-4 right-6 w-[44px] h-[46px] rounded-2xl bg-white border shadow-lg shadow-turquoise-500 border-turquoise-200 rounded-2xl "></div>
             <motion.div
-              className="w-[300] absolute top-0 bottom-0 right-0 bg-white"
+              className="w-[300px] absolute top-0 bottom-0 right-0 bg-white"
               variants={sidebarVariants}
             >
               <div className="absolute top-3 right-4 w-[60px] h-[60px] flex place-items-center">
