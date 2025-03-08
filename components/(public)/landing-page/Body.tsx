@@ -6,7 +6,7 @@ import HeroSection from "./HeroSection";
 
 const Body = () => {
   return (
-    <div className="flex flex-col gap-[35px]">
+    <div className="px-[20px] flex flex-col gap-[35px]">
       <HeroSection />
       <Services />
       <Features />

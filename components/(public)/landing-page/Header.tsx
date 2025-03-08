@@ -57,32 +57,34 @@ const Header = () => {
   };
 
   return (
-    <div className="relative flex content-center justify-between pt-6 pb-[40px]">
-      <div className="flex items-center">
-        <span className="font-mono font-semibold text-turquoise-900 text-xl">
-          Blissful Birth
-        </span>
-      </div>{" "}
-      <div style={{ zIndex }} className="absolute -top-1 -right-6">
-        <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
-          <motion.nav
-            initial={false}
-            animate={isOpen ? "open" : "closed"}
-            custom={height}
-            ref={containerRef}
-            className="w-[300px]"
-          >
-            <div className="absolute top-4 right-6 w-[44px] h-[46px] rounded-2xl bg-white border shadow-lg shadow-turquoise-500 border-turquoise-200 rounded-2xl "></div>
-            <motion.div
-              className="w-[300px] absolute top-0 bottom-0 right-0 bg-white"
-              variants={sidebarVariants}
+    <div style={{ zIndex: 999 }} className="pb-[40px] sticky top-0">
+      <div className="relative flex content-center justify-between bg-turquoise-50 py-5 px-[20px]">
+        <div className="flex items-center">
+          <span className="font-mono font-semibold text-turquoise-900 text-xl">
+            Blissful Birth
+          </span>
+        </div>{" "}
+        <div style={{ zIndex }} className="absolute -top-1 -right-1">
+          <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
+            <motion.nav
+              initial={false}
+              animate={isOpen ? "open" : "closed"}
+              custom={height}
+              ref={containerRef}
+              className="w-[300px]"
             >
-              <div className="absolute top-3 right-4 w-[60px] h-[60px] flex place-items-center">
-                <MenuToggle toggle={() => toggleMenu()} />
-              </div>
-            </motion.div>
-            <Navigation navList={navList} />
-          </motion.nav>
+              <div className="absolute top-4 right-6 w-[44px] h-[46px] rounded-2xl bg-white border shadow-lg shadow-turquoise-500 border-turquoise-200 rounded-2xl "></div>
+              <motion.div
+                className="w-[300px] absolute top-0 bottom-0 right-0 bg-white"
+                variants={sidebarVariants}
+              >
+                <div className="absolute top-3 right-4 w-[60px] h-[60px] flex place-items-center">
+                  <MenuToggle toggle={() => toggleMenu()} />
+                </div>
+              </motion.div>
+              <Navigation navList={navList} />
+            </motion.nav>
+          </div>
         </div>
       </div>
     </div>

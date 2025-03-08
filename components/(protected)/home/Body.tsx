@@ -6,7 +6,7 @@ import DueDate from "./DueDate";
 
 const Body = () => {
   return (
-    <div className="flex flex-col gap-[35px]">
+    <div className="px-[20px] flex flex-col gap-[35px]">
       <NextAppointment />
       <MyBaby />
       <MyBody />
