@@ -1,15 +1,24 @@
 "use client";
 import { MenuToggle } from "@/components/MenuToggle";
 import { Navigation } from "@/components/Navigation";
+import { Home, LogIn, SquareArrowUp } from "lucide-react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
-  const navList = ["Home", "Sign Up", "Sign In"];
+  const navList = [
+    { name: "Home", url: "/", Icon: Home, bgColor: "pinklet" },
+    {
+      name: "Sign Up",
+      url: "/register",
+      Icon: SquareArrowUp,
+      bgColor: "turquoise",
+    },
+    { name: "Sign In", url: "/login", Icon: LogIn, bgColor: "pinklet" },
+  ];
 
   const sidebarVariants = {
     open: (height = 1000) => ({
@@ -39,7 +48,10 @@ const Header = () => {
           Blissful Birth
         </span>
       </div>{" "}
-      <div style={{ zIndex: 999 }} className="absolute -top-1 -right-6">
+      <div
+        style={{ zIndex: isOpen ? 1 : 0 }}
+        className="absolute -top-1 -right-6"
+      >
         <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
           <motion.nav
             initial={false}

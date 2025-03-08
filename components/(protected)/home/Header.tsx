@@ -4,12 +4,28 @@ import { Navigation } from "@/components/Navigation";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { Home, LogIn, SquareArrowUp } from "lucide-react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
-  const navList = ["Home", "Appointments", "Profile", "Log Out"];
+  const navList = [
+    { name: "Home", url: "/home", Icon: Home, bgColor: "pinklet" },
+    {
+      name: "Appointments",
+      url: "/register",
+      Icon: SquareArrowUp,
+      bgColor: "turquoise",
+    },
+    {
+      name: "Profile",
+      url: "/register",
+      Icon: SquareArrowUp,
+      bgColor: "pinklet",
+    },
+    { name: "Sign Ouut", url: "/login", Icon: LogIn, bgColor: "pinklet" },
+  ];
 
   const sidebarVariants = {
     open: (height = 1000) => ({
@@ -48,7 +64,10 @@ const Header = () => {
           Hi Yanela
         </span>
       </div>{" "}
-      <div style={{ zIndex: 999 }} className="absolute -top-1 -right-6">
+      <div
+        style={{ zIndex: isOpen ? 1 : 0 }}
+        className="absolute -top-1 -right-6"
+      >
         <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
           <motion.nav
             initial={false}

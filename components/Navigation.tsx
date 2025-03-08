@@ -1,4 +1,6 @@
+import { Home } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 const navVariants = {
   open: {
@@ -7,26 +9,6 @@ const navVariants = {
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
-};
-
-const listItem: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-start",
-  padding: 0,
-  margin: 0,
-  listStyle: "none",
-  marginBottom: 20,
-  cursor: "pointer",
-};
-
-const list: React.CSSProperties = {
-  listStyle: "none",
-  padding: 25,
-  margin: 0,
-  position: "absolute",
-  top: 80,
-  width: 230,
 };
 
 const itemVariants = {
@@ -46,23 +28,34 @@ const itemVariants = {
   },
 };
 
-const MenuItem = ({ name }: { name: string }) => {
+type Item = { name: string; url: string; Icon: any; bgColor: string };
+
+const MenuItem = ({ item }: { item: Item }) => {
   return (
     <motion.li
-      style={listItem}
+      className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
       variants={itemVariants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <p>{name}</p>
+      <Link href={item.url}>
+        <div className="flex items-center gap-3">
+          <div
+            className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
+          >
+            <item.Icon size={23} />
+          </div>
+          <p>{item.name}</p>
+        </div>
+      </Link>
     </motion.li>
   );
 };
 
-export const Navigation = ({ navList }: { navList: string[] }) => (
-  <motion.ul style={list} variants={navVariants}>
-    {navList.map((name) => (
-      <MenuItem name={name} key={name} />
+export const Navigation = ({ navList }: { navList: Item[] }) => (
+  <motion.ul className="list-none p-[25px] m-0 absolute top-[80px] w-[300px]"  variants={navVariants}>
+    {navList.map((item) => (
+      <MenuItem item={item} key={item.name} />
     ))}
   </motion.ul>
 );
