@@ -8,8 +8,8 @@ const NextAppointment = () => {
       <p className="font-mono font-bold text-turquoise-900 tracking-tight">
         Next Appointment
       </p>
-      <div className="shadow-xl relative w-full h-[168px] bg-pinklet-100 rounded-2xl px-4 py-5 overflow-hidden">
-        <div className="flex flex-col h-full w-4/5 gap-3">
+      <div className="shadow-xl relative w-full h-[168px] md:h-[172px] bg-pinklet-100 rounded-2xl px-4 py-5 md:py-4 overflow-hidden">
+        <div className="flex flex-col h-full w-4/5 md:gap-2 gap-3">
           <h2 className=" font-sans font-bold text-turquoise-900 tracking-wide">
             Week 16 - 2nd Trimester
           </h2>
@@ -39,7 +39,7 @@ const NextAppointment = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute -bottom-10 -right-3">
+        <div className="absolute -bottom-10 md:-bottom-8 -right-3">
           <Image
             className="mb-4"
             src="/pregnant_woman_1.png"
