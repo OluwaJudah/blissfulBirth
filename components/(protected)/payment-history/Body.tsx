@@ -1,14 +1,12 @@
 import PaymentEntry from "./PaymentEntry";
-import { profileInfos } from "@/data";
+import { paymentHistory } from "@/data";
 
 const Body = () => {
   return (
-    <div className="flex flex-col gap-10">
-      <div className="px-[20px] flex flex-col gap-3">
-        {profileInfos.map((p) => (
-          <PaymentEntry {...p} key={p.name} />
-        ))}
-      </div>
+    <div className="px-[20px] flex flex-col gap-3">
+      {paymentHistory.map((p, index) => (
+        <PaymentEntry {...p} key={index} />
+      ))}
     </div>
   );
 };

@@ -52,3 +52,36 @@ export const profileInfos = [
     bgColor: "pinklet",
   },
 ];
+
+export const paymentHistory = [
+  {
+    name: "Consultation Fee",
+    date: "20 Jan 2025",
+    amount: "280",
+  },
+  {
+    name: "Birthing Unit Fee",
+    date: "20 Jan 2025",
+    amount: "7,280",
+  },
+  {
+    name: "Birthing Unit Fee",
+    date: "20 Jan 2025",
+    amount: "1,280",
+  },
+  {
+    name: "Birthing Unit Fee",
+    date: "20 Jan 2025",
+    amount: "2,280",
+  },
+  {
+    name: "Birthing Unit Fee",
+    date: "20 Jan 2025",
+    amount: "1,200",
+  },
+  {
+    name: "Birthing Unit Fee",
+    date: "20 Jan 2025",
+    amount: "2,780",
+  },
+];
