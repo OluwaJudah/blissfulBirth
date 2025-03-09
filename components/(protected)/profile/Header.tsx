@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [zIndex, setZIndex] = useState(0);
+  const [navHeight, setNavHeight] = useState(100);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
   const navList = [
@@ -54,10 +55,12 @@ const Header = () => {
 
       var time = setTimeout(() => {
         setZIndex(0);
+        setNavHeight(100);
         clearTimeout(time);
       }, 500);
     } else {
       setZIndex(1);
+      setNavHeight(400);
       setIsOpen(true);
     }
   };
@@ -71,7 +74,9 @@ const Header = () => {
           </span>
         </div>{" "}
         <div style={{ zIndex }} className="absolute -top-1 -right-1">
-          <div className="relative flex justify-end items-stretch flex-1 rounded-[20px] h-[400px] w-[500px] max-w-full">
+          <div
+            className={`relative flex justify-end items-stretch flex-1 rounded-[20px] h-[${navHeight}px] w-[500px] max-w-full overflow-hidden`}
+          >
             <motion.nav
               initial={false}
               animate={isOpen ? "open" : "closed"}
