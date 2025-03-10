@@ -138,7 +138,7 @@ export const ConditionButton = ({
   return (
     <button
       onClick={addToCancelList}
-      className="border border-pinklet-500 hover:bg-pinklet-500 hover:text-white text-turquoise-900 rounded-full px-4 h-[33px]"
+      className="bg-pinklet-50 shadow-md hover:bg-pinklet-500 hover:text-white text-turquoise-900 rounded-full px-4 h-[33px]"
     >
       {name}
     </button>
@@ -155,7 +155,7 @@ export const ConditionCancelButton = ({
   return (
     <button
       onClick={addToList}
-      className="flex flex-row gap-2 items-center bg-pinklet-500 hover:bg-pinklet-600 text-white rounded-full px-3 h-[33px]"
+      className="flex flex-row gap-2 items-center bg-pinklet-500 shadow-md hover:bg-pinklet-600 text-white rounded-full px-3 h-[33px]"
     >
       <span>{name}</span>
       <X className="text-torquoise-900" size={23} strokeWidth={2} />
