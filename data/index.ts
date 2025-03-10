@@ -53,22 +53,27 @@ export const formTitles = {
   "mother-info": {
     name: "Mother's Info",
     image: "/pregnant_4.png",
+    skipUrl: "/register/details?type=birth-companion",
   },
   "birth-companion": {
     name: "Birth Companion",
     image: "/birth_companion.png",
+    skipUrl: "/register/details?type=baby-info",
   },
   "baby-info": {
     name: "Baby's Info",
     image: "/baby_2.png",
+    skipUrl: "/register/details?type=medical-history",
   },
   "medical-history": {
     name: "Medical History",
     image: "/medical_history.png",
+    skipUrl: "/book-appointment",
   },
   "payment-history": {
     name: "Payment History",
     image: "/payment_history.png",
+    skipUrl: "#",
   },
 };
 

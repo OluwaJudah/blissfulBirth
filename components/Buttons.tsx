@@ -52,6 +52,22 @@ export const BookButton = ({ url }: { url: string }) => {
   );
 };
 
+export const BackButtonWrapper = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const router = useRouter();
+  return (
+    <button
+      onClick={() => router.back()}
+      className={`flex justify-center items-center bg-turquoise-200 w-[65px] h-[40px] rounded-full`}
+    >
+      {children}
+    </button>
+  );
+};
+
 export const MedicalHistoryButton = () => {
   const router = useRouter();
   return (
@@ -69,7 +85,7 @@ export const SkipButton = ({ url }: { url: string }) => {
   return (
     <button
       onClick={() => router.push(url)}
-      className="border border-pinklet-500 hover:bg-white text-turquoise-900 rounded-full w-[70px] h-[30px]"
+      className="bg-pinklet-100 hover:bg-pinklet-200 shadow-md hover:bg-white text-turquoise-950 rounded-3xl px-4 h-[35px]"
     >
       Skip
     </button>
@@ -81,7 +97,7 @@ export const BackButton = () => {
   return (
     <button
       onClick={() => router.back()}
-      className="border border-pinklet-500 hover:bg-pinklet-300 text-turquoise-900 rounded-full w-[110px] h-[33px]"
+      className="bg-pinklet-100 hover:bg-pinklet-200 text-turquoise-950 shadow-md rounded-full w-[110px] h-[33px]"
     >
       Back
     </button>
