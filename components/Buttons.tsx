@@ -53,14 +53,19 @@ export const BookButton = ({ url }: { url: string }) => {
 };
 
 export const BackButtonWrapper = ({
+  url,
   children,
 }: {
+  url?: string;
   children: React.ReactNode;
 }) => {
   const router = useRouter();
   return (
     <button
-      onClick={() => router.back()}
+      onClick={() => {
+        if (url) router.push(url);
+        else router.back();
+      }}
       className={`flex justify-center items-center bg-turquoise-200 w-[65px] h-[40px] rounded-full`}
     >
       {children}
