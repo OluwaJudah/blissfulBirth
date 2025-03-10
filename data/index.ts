@@ -68,7 +68,7 @@ export const formTitles = {
   "medical-history": {
     name: "Medical History",
     image: "/medical_history.png",
-    skipUrl: "/book-appointment",
+    skipUrl: "/book-appointment?type=book",
   },
   "payment-history": {
     name: "Payment History",
