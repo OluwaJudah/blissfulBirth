@@ -1,10 +1,10 @@
 "use client";
 import { MenuToggle } from "@/components/MenuToggle";
 import { Navigation } from "@/components/Navigation";
-import { userNavList } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { userNavList } from "@/data";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,14 +57,14 @@ const Header = () => {
           <div className="flex justify-center items-center bg-turquoise-100 w-[45px] h-[45px] rounded-full">
             <Image
               className=""
-              src="/user_1.svg"
+              src="/calendar.svg"
               height={35}
               width={35}
               alt="User 1"
             />
           </div>
           <span className="font-mono font-semibold text-turquoise-900 text-xl">
-            Hi Yanela
+            Appointments
           </span>
         </div>{" "}
         <div style={{ zIndex }} className="absolute -top-1 -right-1">

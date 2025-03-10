@@ -1,4 +1,4 @@
-import { CalendarDays, TrendingUp } from "lucide-react";
+import { CalendarDays, Home, LogIn, SquareArrowUp, TrendingUp } from "lucide-react";
 
 export const steps = [1, 2, 3, 4];
 export const steps2 = [1, 2];
@@ -136,4 +136,21 @@ export const medicalHistoryInputDetails = [
   { label: "Medication", placeholder: "Enter Medications" },
   { label: "Operations", placeholder: "Enter Operations description" },
   { label: "Allergies", placeholder: "Enter Allergies" },
+];
+
+export const userNavList = [
+  { name: "Home", url: "/home", Icon: Home, bgColor: "pinklet" },
+  {
+    name: "Appointments",
+    url: "/appointments",
+    Icon: SquareArrowUp,
+    bgColor: "turquoise",
+  },
+  {
+    name: "Profile",
+    url: "/profile",
+    Icon: SquareArrowUp,
+    bgColor: "pinklet",
+  },
+  { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
 ];

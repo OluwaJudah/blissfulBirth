@@ -1,7 +1,7 @@
 "use client";
 import { MenuToggle } from "@/components/MenuToggle";
 import { Navigation } from "@/components/Navigation";
-import { Home, LogIn, SquareArrowUp } from "lucide-react";
+import { userNavList } from "@/data";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,22 +11,6 @@ const Header = () => {
   const [navHeight, setNavHeight] = useState(120);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
-  const navList = [
-    { name: "Home", url: "/home", Icon: Home, bgColor: "pinklet" },
-    {
-      name: "Appointments",
-      url: "#",
-      Icon: SquareArrowUp,
-      bgColor: "turquoise",
-    },
-    {
-      name: "Profile",
-      url: "/profile",
-      Icon: SquareArrowUp,
-      bgColor: "pinklet",
-    },
-    { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
-  ];
 
   const sidebarVariants = {
     open: (height = 1000) => ({
@@ -93,7 +77,7 @@ const Header = () => {
                   <MenuToggle toggle={() => toggleMenu()} />
                 </div>
               </motion.div>
-              <Navigation navList={navList} />
+              <Navigation navList={userNavList} />
             </motion.nav>
           </div>
         </div>
