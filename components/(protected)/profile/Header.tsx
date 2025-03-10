@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [zIndex, setZIndex] = useState(0);
-  const [navHeight, setNavHeight] = useState(100);
+  const [navHeight, setNavHeight] = useState(120);
   const containerRef = useRef<HTMLDivElement>(null);
   const { height } = useDimensions(containerRef);
   const navList = [
