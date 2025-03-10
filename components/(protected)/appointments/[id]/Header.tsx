@@ -1,5 +1,5 @@
 "use client";
-import { BackArrowButton, BackArrowUrlButton } from "@/components/Buttons";
+import { BackArrowUrlButton } from "@/components/Buttons";
 import { useParams, useSearchParams } from "next/navigation";
 
 const Header = () => {
