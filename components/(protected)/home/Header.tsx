@@ -56,7 +56,7 @@ const Header = () => {
 
       var time = setTimeout(() => {
         setZIndex(0);
-        setNavHeight(100);
+        setNavHeight(120);
         clearTimeout(time);
       }, 500);
     } else {
