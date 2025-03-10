@@ -28,14 +28,14 @@ export const LoginButton = () => {
   );
 };
 
-export const NextButton = ({ url }: { url: string }) => {
+export const NextButton = ({ url, name }: { url: string; name?: string }) => {
   const router = useRouter();
   return (
     <button
       onClick={() => router.push(url)}
       className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
     >
-      Next
+      {name ? name : "Next"}
     </button>
   );
 };
@@ -105,7 +105,7 @@ export const BackArrowUrlButton = ({ url }: { url: string }) => {
   return (
     <ArrowLeft
       className="text-pinklet-500"
-      size={23}
+      size={22}
       strokeWidth={3}
       onClick={() => router.push(url)}
     />

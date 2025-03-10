@@ -29,19 +29,19 @@ export const timeSlots = [
 export const profileInfos = [
   {
     name: "Mother's Info",
-    url: "#",
+    url: "/profile/details?type=mother-info",
     image: "/pregnant_4.png",
     bgColor: "turquoise",
   },
   {
     name: "Birth Companion",
-    url: "#",
+    url: "/profile/details?type=birth-companion",
     image: "/birth_companion.png",
     bgColor: "pinklet",
   },
   {
     name: "Baby's Info",
-    url: "#",
+    url: "/profile/details?type=baby-info",
     image: "/baby_2.png",
     bgColor: "turquoise",
   },
@@ -52,6 +52,25 @@ export const profileInfos = [
     bgColor: "pinklet",
   },
 ];
+
+export const formTitles = {
+  "mother-info": {
+    name: "Mother's Info",
+    image: "/pregnant_4.png",
+  },
+  "birth-companion": {
+    name: "Birth Companion",
+    image: "/birth_companion.png",
+  },
+  "baby-info": {
+    name: "Baby's Info",
+    image: "/baby_2.png",
+  },
+  "medical-history": {
+    name: "Medical History",
+    image: "/medical_history.png",
+  },
+};
 
 export const paymentHistory = [
   {
@@ -84,4 +103,25 @@ export const paymentHistory = [
     date: "20 Jan 2025",
     amount: "2,780",
   },
+];
+
+export const babyInputDetails = [
+  { label: "Full Name", placeholder: "E.g John" },
+  { label: "Surname", placeholder: "E.g Doe" },
+];
+
+export const motherInputDetails = [
+  { label: "Full Name", placeholder: "E.g John" },
+  { label: "Surname", placeholder: "E.g Doe" },
+  { label: "Maiden Name", placeholder: "E.g Doe" },
+  { label: "ID / Passport", placeholder: "E.g 93023234000 / D2341SDFASDF" },
+  { label: "Date of Birth", type: "date" },
+  { label: "Country of Origin", placeholder: "E.g South Africa" },
+  { label: "Day Job / Occupation", placeholder: "E.g Nurse" },
+  {
+    label: "Contact Number",
+    placeholder: "E.g 0677123123123",
+    isPhoneNumber: true,
+  },
+  { label: "Email Address", placeholder: "E.g john@doe.com", type: "email" },
 ];
