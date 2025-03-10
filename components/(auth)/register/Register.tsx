@@ -30,7 +30,7 @@ const Register = () => {
                   <label className="font-mono text-turquoise-900" htmlFor="">
                     Username
                   </label>
-                  <div className="flex items-center px-2 rounded-full border border-turquoise-900 overflow-hidden">
+                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
                     <Image
                       className=""
                       src="/femaleUser.svg"
@@ -40,7 +40,7 @@ const Register = () => {
                     />
                     <input
                       placeholder="Username"
-                      className="w-full border-none focus:ring-transparent focus:inset-ring-transparent"
+                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
                       type="text"
                     />
                   </div>
@@ -49,7 +49,7 @@ const Register = () => {
                   <label className="font-mono text-turquoise-900" htmlFor="">
                     Password
                   </label>
-                  <div className="flex items-center px-2 rounded-full border border-turquoise-900 overflow-hidden">
+                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
                     <Image
                       className=""
                       src="/passwordKey.svg"
@@ -59,7 +59,7 @@ const Register = () => {
                     />
                     <input
                       placeholder="Password"
-                      className="w-full border-none focus:ring-transparent focus:inset-ring-transparent"
+                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
                       type="password"
                     />
                   </div>
@@ -68,7 +68,7 @@ const Register = () => {
                   <label className="font-mono text-turquoise-900" htmlFor="">
                     Confirm Password
                   </label>
-                  <div className="flex items-center px-2 rounded-full border border-turquoise-900 overflow-hidden">
+                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
                     <Image
                       className=""
                       src="/passwordKey.svg"
@@ -78,7 +78,7 @@ const Register = () => {
                     />
                     <input
                       placeholder="Confirm Password"
-                      className="w-full border-none focus:ring-transparent focus:inset-ring-transparent"
+                      className="w-full bg-turquoise-50 border-none focus:border-turquoise-400 focus:ring-transparent focus:inset-ring-transparent"
                       type="password"
                     />
                   </div>
