@@ -20,7 +20,7 @@ const Body = () => {
       <div className="px-[20px] flex flex-col gap-5">
         <ProfileInfoCard
           name="Payment History"
-          url="/payment-history"
+          url="/profile/details?type=payment-history"
           image="/payment_history.png"
         />
       </div>

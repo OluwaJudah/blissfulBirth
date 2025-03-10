@@ -31,25 +31,21 @@ export const profileInfos = [
     name: "Mother's Info",
     url: "/profile/details?type=mother-info",
     image: "/pregnant_4.png",
-    bgColor: "turquoise",
   },
   {
     name: "Birth Companion",
     url: "/profile/details?type=birth-companion",
     image: "/birth_companion.png",
-    bgColor: "pinklet",
   },
   {
     name: "Baby's Info",
     url: "/profile/details?type=baby-info",
     image: "/baby_2.png",
-    bgColor: "turquoise",
   },
   {
     name: "Medical History",
-    url: "#",
+    url: "/profile/details?type=medical-history",
     image: "/medical_history.png",
-    bgColor: "pinklet",
   },
 ];
 
@@ -69,6 +65,10 @@ export const formTitles = {
   "medical-history": {
     name: "Medical History",
     image: "/medical_history.png",
+  },
+  "payment-history": {
+    name: "Payment History",
+    image: "/payment_history.png",
   },
 };
 
@@ -124,4 +124,11 @@ export const motherInputDetails = [
     isPhoneNumber: true,
   },
   { label: "Email Address", placeholder: "E.g john@doe.com", type: "email" },
+];
+
+export const medicalHistoryInputDetails = [
+  { label: "Details", placeholder: "Enter details of Family history" },
+  { label: "Medication", placeholder: "Enter Medications" },
+  { label: "Operations", placeholder: "Enter Operations description" },
+  { label: "Allergies", placeholder: "Enter Allergies" },
 ];

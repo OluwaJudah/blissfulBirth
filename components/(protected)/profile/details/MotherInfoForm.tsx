@@ -4,7 +4,7 @@ import { motherInputDetails } from "@/data";
 
 const MotherInfoForm = () => {
   return (
-    <div className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] pt-2 pb-8 md:py-4 px-7 md:overflow-scroll">
+    <div className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] pt-2 pb-8 px-7 md:overflow-scroll">
       <div className="w-full mb-2">
         {motherInputDetails.map((detail, index) => (
           <Input key={index} {...detail} />
