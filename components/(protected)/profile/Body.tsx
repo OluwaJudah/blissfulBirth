@@ -22,7 +22,6 @@ const Body = () => {
           name="Payment History"
           url="/payment-history"
           image="/payment_history.png"
-          bgColor="turquoise"
         />
       </div>
     </div>
