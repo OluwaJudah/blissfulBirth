@@ -1,7 +1,39 @@
+"use client";
+import { regsiterUser } from "@/actions/auth";
 import { RegisterButton } from "@/components/Buttons";
+import InputValidated from "@/components/InputValidated";
+import { RegisterUserForm, registerUserformSchema } from "@/lib/definitions";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
+import { startTransition, useActionState, useRef } from "react";
+import { useForm } from "react-hook-form";
+
 const Register = () => {
+  const initialState = {
+    message: "",
+    errors: {},
+  };
+
+  const [state, formAction, isPending] = useActionState(
+    regsiterUser,
+    initialState
+  );
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterUserForm>({
+    resolver: zodResolver(registerUserformSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <div className="flex h-[98vh] md:h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg- bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto md:p-6 md:overflow-hidden">
@@ -24,68 +56,58 @@ const Register = () => {
             <h3 className="font-mono leading-none mb-4 text-xl text-turquoise-900 font-medium">
               Sign Up
             </h3>
-            <div className="flex flex-col items-center">
+            <form
+              ref={formRef}
+              onSubmit={(evt) => {
+                evt.preventDefault();
+                handleSubmit(() => {
+                  const formData = new FormData(formRef.current!);
+                  startTransition(() => {
+                    formAction(formData);
+                  });
+                })(evt);
+              }}
+              className="flex flex-col items-center"
+            >
               <div className="w-full mb-4">
-                <div className="flex flex-col my-3">
-                  <label className="font-mono text-turquoise-900" htmlFor="">
-                    Username
-                  </label>
-                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
-                    <Image
-                      className=""
-                      src="/femaleUser.svg"
-                      height={23}
-                      width={23}
-                      alt="BlissfulLogo"
-                    />
-                    <input
-                      placeholder="Username"
-                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col my-3">
-                  <label className="font-mono text-turquoise-900" htmlFor="">
-                    Password
-                  </label>
-                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
-                    <Image
-                      className=""
-                      src="/passwordKey.svg"
-                      height={23}
-                      width={23}
-                      alt="BlissfulLogo"
-                    />
-                    <input
-                      placeholder="Password"
-                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
-                      type="password"
-                    />
-                  </div>
-                </div>{" "}
-                <div className="flex flex-col my-3">
-                  <label className="font-mono text-turquoise-900" htmlFor="">
-                    Confirm Password
-                  </label>
-                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
-                    <Image
-                      className=""
-                      src="/passwordKey.svg"
-                      height={23}
-                      width={23}
-                      alt="BlissfulLogo"
-                    />
-                    <input
-                      placeholder="Confirm Password"
-                      className="w-full bg-turquoise-50 border-none focus:border-turquoise-400 focus:ring-transparent focus:inset-ring-transparent"
-                      type="password"
-                    />
-                  </div>
-                </div>
+                <InputValidated
+                  label="Username"
+                  name="username"
+                  placeholder="E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc..."
+                  register={register}
+                  iconUrl="/femaleUser.svg"
+                  errors={errors}
+                  bgColour="bg-turquoise-50"
+                  isPending={isPending}
+                  stateError={state?.errors?.username}
+                />
+                <InputValidated
+                  label="Password"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  register={register}
+                  iconUrl="/passwordKey.svg"
+                  errors={errors}
+                  bgColour="bg-turquoise-50"
+                  isPending={isPending}
+                  stateError={state?.errors?.password}
+                />
+                <InputValidated
+                  label="Confirm Password"
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  register={register}
+                  iconUrl="/passwordKey.svg"
+                  errors={errors}
+                  bgColour="bg-turquoise-50"
+                  isPending={isPending}
+                  stateError={state?.errors?.confirmPassword}
+                />
               </div>
               <div>
-                <RegisterButton />
+                <RegisterButton isPending={isPending} />
               </div>
               <p className="mt-5 text-sm text-turquoise-900">
                 Already have an account?
@@ -96,7 +118,7 @@ const Register = () => {
                   Sign In here
                 </Link>
               </p>
-            </div>
+            </form>
           </div>
         </div>
       </main>

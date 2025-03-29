@@ -4,12 +4,13 @@ import { ArrowLeft, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export const RegisterButton = () => {
-  const router = useRouter();
+export const RegisterButton = ({ isPending }: { isPending: boolean }) => {
   return (
     <button
-      onClick={() => router.push("/register?type=welcome")}
-      className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+      type="submit"
+      className={`${
+        isPending ? "bg-gray-300" : "bg-turquoise-500 hover:bg-turquoise-700"
+      } text-white rounded-full w-[148px] h-[33px]`}
     >
       Sign Up
     </button>
