@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+export const CLIENT = "client";
+export const CREDENTIALS = "credentials";
+
 export const registerUserformSchema = z
   .object({
     username: z.string().min(1, { message: "Username is required." }),
@@ -34,4 +37,9 @@ export type RegisterUserState = {
     confirmPassword?: string[];
   };
   message?: string | null;
+};
+
+export type SessionPayload = {
+  userId: string;
+  expiresAt: Date;
 };

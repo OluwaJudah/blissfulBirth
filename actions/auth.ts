@@ -1,15 +1,15 @@
 "use server";
 import { registerUserformSchema, RegisterUserState } from "@/lib/definitions";
 import bcrypt from "bcrypt";
-import User from "@/models/user";
-import dbConnect from "@/lib/db";
 import { redirect } from "next/navigation";
+import { createSession, deleteSession } from "@/lib/session";
+import { createUser } from "./user";
+import { isUserExists } from "@/data/user";
 
 export async function regsiterUser(
   prevState: RegisterUserState | undefined,
   formData: FormData
 ) {
-  await dbConnect();
   const validatedFields = registerUserformSchema.safeParse(
     Object.fromEntries(formData)
   );
@@ -25,8 +25,8 @@ export async function regsiterUser(
   const { username, password } = validatedFields.data;
 
   try {
-    const userExist = await User.findOne({ username });
-    if (userExist) {
+    const isUserExist = await isUserExists(username);
+    if (isUserExist) {
       const state: RegisterUserState = {
         errors: { username: ["User already exists"] },
       };
@@ -39,14 +39,16 @@ export async function regsiterUser(
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
-    await User.create({
-      username,
-      password: hashedPassword,
-      authType: "credentials",
-      role: "client",
-    });
+    const user = await createUser(username, hashedPassword);
+    await createSession(user.id);
   } catch (error) {
     console.log("error: ", error);
   }
-  redirect("/register?type=welcome");
+
+  redirect("/welcome");
+}
+
+export async function logout() {
+  deleteSession();
+  redirect("/");
 }
