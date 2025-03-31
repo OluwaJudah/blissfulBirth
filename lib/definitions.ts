@@ -58,7 +58,3 @@ export interface UserContextProps {
   updatePropertyForm: (property: Partial<User>) => void;
 }
 
-export const NewPropertyFormContext = createContext<any>({
-  propertyForm: null,
-  updatePropertyForm: () => null,
-});

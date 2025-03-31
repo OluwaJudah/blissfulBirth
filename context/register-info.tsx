@@ -1,6 +1,11 @@
 "use client";
-import { User, NewPropertyFormContext } from "@/lib/definitions";
-import { useState } from "react";
+import { User } from "@/lib/definitions";
+import { createContext, useState } from "react";
+
+export const NewPropertyFormContext = createContext<any>({
+  propertyForm: null,
+  updatePropertyForm: () => null,
+});
 
 export function UserFormContextProvider({
   children,
