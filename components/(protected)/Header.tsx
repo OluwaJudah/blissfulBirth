@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const Header = () => {
+const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [zIndex, setZIndex] = useState(0);
   const [navHeight, setNavHeight] = useState(120);
@@ -52,19 +52,25 @@ const Header = () => {
 
   return (
     <div style={{ zIndex: 999 }} className="pb-[40px] sticky top-0">
-      <div className="relative flex content-center justify-between bg-turquoise-50 py-3 px-[20px]">
-        <div className="flex items-center gap-5">
-          <div className="flex justify-center items-center bg-turquoise-100 w-[45px] h-[45px] rounded-full">
-            <Image
-              className=""
-              src="/user_1.svg"
-              height={35}
-              width={35}
-              alt="User 1"
-            />
-          </div>
+      <div
+        className={`relative flex content-center justify-between bg-turquoise-50 ${
+          imgUrl ? "py-3" : "py-5"
+        } px-[20px]`}
+      >
+        <div className="flex items-center gap-3">
+          {imgUrl && (
+            <div className="flex justify-center items-center bg-turquoise-100 w-[45px] h-[45px] rounded-full">
+              <Image
+                className=""
+                src={imgUrl}
+                height={35}
+                width={35}
+                alt={title}
+              />
+            </div>
+          )}
           <span className="font-mono font-semibold text-turquoise-900 text-xl">
-            Hi Yanela
+            {title}
           </span>
         </div>{" "}
         <div style={{ zIndex }} className="absolute -top-1 -right-1">

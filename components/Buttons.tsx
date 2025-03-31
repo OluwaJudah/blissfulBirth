@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowLeft, X } from "lucide-react";
+import { logout } from "@/actions/auth";
+import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -166,5 +167,25 @@ export const ConditionCancelButton = ({
       <span>{name}</span>
       <X className="text-torquoise-900" size={23} strokeWidth={2} />
     </button>
+  );
+};
+
+type Item = { name: string; url: string; Icon: any; bgColor: string };
+
+export const LogOutButton = ({ item }: { item: Item }) => {
+  return (
+    <div onClick={logout} className="w-full flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <div
+          className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
+        >
+          <LogInIcon size={23} />
+        </div>
+        <p>{item.name}</p>
+      </div>
+      <div>
+        <ChevronRight />
+      </div>
+    </div>
   );
 };
