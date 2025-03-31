@@ -65,7 +65,7 @@ const Input = ({
         <span className="text-pinklet-500">{errors[name]?.message}</span>
       )}
       {stateError && (
-        <span className="text-pinklet-500">{stateError}</span>
+        <span className="text-pinklet-500">{stateError[name]}</span>
       )}
     </div>
   );

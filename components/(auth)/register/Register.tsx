@@ -2,6 +2,7 @@
 import { regsiterUser } from "@/actions/auth";
 import { RegisterButton } from "@/components/Buttons";
 import InputValidated from "@/components/InputValidated";
+import { registerFormData } from "@/data";
 import { RegisterUserForm, registerUserformSchema } from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -70,41 +71,16 @@ const Register = () => {
               className="flex flex-col items-center"
             >
               <div className="w-full mb-4">
-                <InputValidated
-                  label="Username"
-                  name="username"
-                  placeholder="E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc..."
-                  register={register}
-                  iconUrl="/femaleUser.svg"
-                  errors={errors}
-                  bgColour="bg-turquoise-50"
-                  isPending={isPending}
-                  stateError={state?.errors?.username}
-                />
-                <InputValidated
-                  label="Password"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  register={register}
-                  iconUrl="/passwordKey.svg"
-                  errors={errors}
-                  bgColour="bg-turquoise-50"
-                  isPending={isPending}
-                  stateError={state?.errors?.password}
-                />
-                <InputValidated
-                  label="Confirm Password"
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  register={register}
-                  iconUrl="/passwordKey.svg"
-                  errors={errors}
-                  bgColour="bg-turquoise-50"
-                  isPending={isPending}
-                  stateError={state?.errors?.confirmPassword}
-                />
+                {registerFormData.map((data) => (
+                  <InputValidated
+                    key={data.name}
+                    {...data}
+                    register={register}
+                    errors={errors}
+                    isPending={isPending}
+                    stateError={state?.errors}
+                  />
+                ))}
               </div>
               <div>
                 <RegisterButton isPending={isPending} />

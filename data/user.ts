@@ -3,13 +3,13 @@ import dbConnect from "@/lib/db";
 import User from "@/models/user";
 import { cache } from "react";
 
-export const getUser = cache(async (username: string) => {
-  const session = await verifySession();
-  if (!session) return null;
+export const getUser = cache(async (userData: any) => {
+  // const session = await verifySession();
+  // if (!session) return null;
 
   try {
     await dbConnect();
-    const user = await User.findOne({ username });
+    const user = await User.findOne(userData);
 
     return user;
   } catch (error) {
@@ -21,7 +21,7 @@ export const getUser = cache(async (username: string) => {
 export const isUserExists = async (username: string) => {
   try {
     await dbConnect();
-    const user = await getUser(username);
+    const user = await getUser({ username });
 
     return !!user;
   } catch (error) {

@@ -1,4 +1,10 @@
-import { CalendarDays, Home, LogIn, SquareArrowUp, TrendingUp } from "lucide-react";
+import {
+  CalendarDays,
+  Home,
+  LogIn,
+  SquareArrowUp,
+  TrendingUp,
+} from "lucide-react";
 
 export const steps = [1, 2, 3, 4];
 export const steps2 = [1, 2];
@@ -153,4 +159,30 @@ export const userNavList = [
     bgColor: "pinklet",
   },
   { name: "Sign Out", url: "#", Icon: LogIn, bgColor: "pinklet" },
+];
+
+export const registerFormData = [
+  {
+    name: "username",
+    label: "Username",
+    placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
+    iconUrl: "/femaleUser.svg",
+    bgColour: "bg-turquoise-50",
+  },
+  {
+    label: "Password",
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+  },
+  {
+    label: "Confirm Password",
+    type: "password",
+    name: "confirmPassword",
+    placeholder: "Confirm Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+  },
 ];
