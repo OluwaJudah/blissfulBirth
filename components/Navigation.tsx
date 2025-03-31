@@ -1,6 +1,7 @@
-import { Home } from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { LogOutButton } from "./Buttons";
 
 const navVariants = {
   open: {
@@ -38,22 +39,35 @@ const MenuItem = ({ item }: { item: Item }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Link href={item.url}>
-        <div className="flex items-center gap-3">
-          <div
-            className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
-          >
-            <item.Icon size={23} />
+      {item.name === "Sign Out" ? (
+        <LogOutButton item={item} />
+      ) : (
+        <Link
+          href={item.url}
+          className="w-full flex items-center justify-between"
+        >
+          <div className="flex items-center gap-3">
+            <div
+              className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
+            >
+              <item.Icon size={23} />
+            </div>
+            <p>{item.name}</p>
           </div>
-          <p>{item.name}</p>
-        </div>
-      </Link>
+          <div>
+            <ChevronRight />
+          </div>
+        </Link>
+      )}
     </motion.li>
   );
 };
 
 export const Navigation = ({ navList }: { navList: Item[] }) => (
-  <motion.ul className="list-none p-[25px] m-0 absolute top-[80px] w-[300px]"  variants={navVariants}>
+  <motion.ul
+    className="list-none p-[25px] m-0 absolute top-[80px] w-[300px]"
+    variants={navVariants}
+  >
     {navList.map((item) => (
       <MenuItem item={item} key={item.name} />
     ))}
