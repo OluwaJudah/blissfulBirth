@@ -5,7 +5,9 @@ export const CREDENTIALS = "credentials";
 
 export const registerUserformSchema = z
   .object({
-    username: z.string().min(1, { message: "Username is required." }),
+    username: z
+      .string()
+      .min(6, { message: "Username must be at leaast 6 characters long." }),
     password: z
       .string()
       .min(8, { message: "Be at least 8 characters long" })
@@ -40,7 +42,9 @@ export type RegisterUserState = {
 };
 
 export const loginUserformSchema = z.object({
-  username: z.string().min(1, { message: "Username is required." }),
+  username: z
+    .string()
+    .min(6, { message: "Username must be at leaast 6 characters long." }),
   password: z
     .string()
     .min(8, { message: "Be at least 8 characters long" })
