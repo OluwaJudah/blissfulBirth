@@ -1,40 +1,7 @@
-"use client";
-import { regsiterUser } from "@/actions/auth";
-import { RegisterButton } from "@/components/Buttons";
-import InputValidated from "@/components/InputValidated";
-import { registerFormData } from "@/data";
-import { RegisterUserForm, registerUserformSchema } from "@/lib/definitions";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import Link from "next/link";
-import { startTransition, useActionState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import RegisterForm from "./RegisterForm";
 
 const Register = () => {
-  const initialState = {
-    message: "",
-    errors: {},
-  };
-
-  const [state, formAction, isPending] = useActionState(
-    regsiterUser,
-    initialState
-  );
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterUserForm>({
-    resolver: zodResolver(registerUserformSchema),
-    defaultValues: {
-      username: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
-  const formRef = useRef<HTMLFormElement>(null);
-
   return (
     <div className="flex h-[98vh] md:h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg- bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto md:p-6 md:overflow-hidden">
@@ -57,44 +24,7 @@ const Register = () => {
             <h3 className="font-mono leading-none mb-4 text-xl text-turquoise-900 font-medium">
               Sign Up
             </h3>
-            <form
-              ref={formRef}
-              onSubmit={(evt) => {
-                evt.preventDefault();
-                handleSubmit(() => {
-                  const formData = new FormData(formRef.current!);
-                  startTransition(() => {
-                    formAction(formData);
-                  });
-                })(evt);
-              }}
-              className="flex flex-col items-center"
-            >
-              <div className="w-full mb-4">
-                {registerFormData.map((data) => (
-                  <InputValidated
-                    key={data.name}
-                    {...data}
-                    register={register}
-                    errors={errors}
-                    isPending={isPending}
-                    stateError={state?.errors}
-                  />
-                ))}
-              </div>
-              <div>
-                <RegisterButton isPending={isPending} />
-              </div>
-              <p className="mt-5 text-sm text-turquoise-900">
-                Already have an account?
-                <Link
-                  className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
-                  href="/login"
-                >
-                  Sign In here
-                </Link>
-              </p>
-            </form>
+            <RegisterForm />
           </div>
         </div>
       </main>
