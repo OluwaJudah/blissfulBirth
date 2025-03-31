@@ -1,6 +1,6 @@
-import { LoginButton } from "@/components/Buttons";
 import Image from "next/image";
-import Link from "next/link";
+import LoginForm from "./LoginForm";
+
 const Login = () => {
   return (
     <div className="flex h-[98vh] md:h-screen items-center ">
@@ -24,60 +24,7 @@ const Login = () => {
             <h3 className="font-mono leading-none mb-4 text-xl text-turquoise-900 font-medium">
               Sign In
             </h3>
-            <div className="flex flex-col items-center">
-              <div className="w-full mb-4">
-                <div className="flex flex-col my-3">
-                  <label className="font-mono text-turquoise-900" htmlFor="">
-                    Username
-                  </label>
-                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
-                    <Image
-                      className=""
-                      src="/femaleUser.svg"
-                      height={23}
-                      width={23}
-                      alt="BlissfulLogo"
-                    />
-                    <input
-                      placeholder="Username"
-                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col my-3">
-                  <label className="font-mono text-turquoise-900" htmlFor="">
-                    Password
-                  </label>
-                  <div className="flex items-center px-2 rounded-full bg-turquoise-50 overflow-hidden shadow-md">
-                    <Image
-                      className=""
-                      src="/passwordKey.svg"
-                      height={23}
-                      width={23}
-                      alt="BlissfulLogo"
-                    />
-                    <input
-                      placeholder="Password"
-                      className="w-full bg-turquoise-50 border-none focus:ring-transparent focus:inset-ring-transparent"
-                      type="password"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div>
-                <LoginButton />
-              </div>
-              <p className="mt-5 text-sm text-turquoise-900">
-                Don't have an account yet?
-                <Link
-                  className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
-                  href="/register"
-                >
-                  Sign Up here
-                </Link>
-              </p>
-            </div>
+            <LoginForm />
           </div>
         </div>
       </main>

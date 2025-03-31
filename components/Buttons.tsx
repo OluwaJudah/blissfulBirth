@@ -18,6 +18,25 @@ export const RegisterButton = ({ isPending }: { isPending: boolean }) => {
   );
 };
 
+export const SubmitButton = ({
+  name,
+  isPending,
+}: {
+  name: string;
+  isPending: boolean;
+}) => {
+  return (
+    <button
+      type="submit"
+      className={`${
+        isPending ? "bg-gray-300" : "bg-turquoise-500 hover:bg-turquoise-700"
+      } text-white rounded-full w-[148px] h-[33px]`}
+    >
+      {name}
+    </button>
+  );
+};
+
 export const LoginButton = () => {
   const router = useRouter();
   return (

@@ -186,3 +186,21 @@ export const registerFormData = [
     bgColour: "bg-turquoise-50",
   },
 ];
+
+export const loginFormData = [
+  {
+    name: "username",
+    label: "Username",
+    placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
+    iconUrl: "/femaleUser.svg",
+    bgColour: "bg-turquoise-50",
+  },
+  {
+    label: "Password",
+    type: "password",
+    name: "password",
+    placeholder: "Password",
+    iconUrl: "/passwordKey.svg",
+    bgColour: "bg-turquoise-50",
+  },
+];
