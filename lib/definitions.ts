@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import { z } from "zod";
 
 export const CLIENT = "client";
@@ -43,3 +44,21 @@ export type SessionPayload = {
   userId: string;
   expiresAt: Date;
 };
+
+export type User = {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  age: string;
+};
+
+export interface UserContextProps {
+  propertyForm: User | null;
+  updatePropertyForm: (property: Partial<User>) => void;
+}
+
+export const NewPropertyFormContext = createContext<any>({
+  propertyForm: null,
+  updatePropertyForm: () => null,
+});
