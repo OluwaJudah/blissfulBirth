@@ -38,7 +38,7 @@ export async function regsiterUser(
       return state;
     }
   } catch (error) {
-    console.error("Error fetching user:", error);
+    throw new Error("Error fetching user:" + error);
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -47,7 +47,7 @@ export async function regsiterUser(
     const user = await createUser(username, hashedPassword);
     await createSession(user.id);
   } catch (error) {
-    console.log("error: ", error);
+    throw new Error("Error creating user:" + error);
   }
 
   redirect("/welcome");
