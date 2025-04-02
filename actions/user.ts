@@ -1,6 +1,6 @@
 "server-only";
+import { CLIENT, CREDENTIALS } from "@/constants/user";
 import dbConnect from "@/lib/db";
-import { CLIENT, CREDENTIALS } from "@/lib/definitions";
 import User from "@/models/user";
 
 export const createUser = async (username: string, password: string) => {

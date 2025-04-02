@@ -1,6 +1,3 @@
-export const CLIENT = "client";
-export const CREDENTIALS = "credentials";
-
 export type User = {
   name: string;
   lastname: string;
