@@ -55,34 +55,6 @@ export const profileInfos = [
   },
 ];
 
-export const formTitles = {
-  "mother-info": {
-    name: "Mother's Info",
-    image: "/pregnant_4.png",
-    skipUrl: "/register/details?type=birth-companion",
-  },
-  "birth-companion": {
-    name: "Birth Companion",
-    image: "/birth_companion.png",
-    skipUrl: "/register/details?type=baby-info",
-  },
-  "baby-info": {
-    name: "Baby's Info",
-    image: "/baby_2.png",
-    skipUrl: "/register/details?type=medical-history",
-  },
-  "medical-history": {
-    name: "Medical History",
-    image: "/medical_history.png",
-    skipUrl: "/book-appointment?type=book",
-  },
-  "payment-history": {
-    name: "Payment History",
-    image: "/payment_history.png",
-    skipUrl: "#",
-  },
-};
-
 export const paymentHistory = [
   {
     name: "Consultation Fee",
@@ -168,6 +140,7 @@ export const registerFormData = [
     placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
     iconUrl: "/femaleUser.svg",
     bgColour: "bg-turquoise-50",
+    isRequired: true,
   },
   {
     label: "Password",
@@ -176,6 +149,7 @@ export const registerFormData = [
     placeholder: "Password",
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
+    isRequired: true,
   },
   {
     label: "Confirm Password",
@@ -184,6 +158,7 @@ export const registerFormData = [
     placeholder: "Confirm Password",
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
+    isRequired: true,
   },
 ];
 
@@ -194,6 +169,7 @@ export const loginFormData = [
     placeholder: "E.g johnDoe, johndoe@gmail.com, 061 234 5678, etc...",
     iconUrl: "/femaleUser.svg",
     bgColour: "bg-turquoise-50",
+    isRequired: true,
   },
   {
     label: "Password",
@@ -202,5 +178,6 @@ export const loginFormData = [
     placeholder: "Password",
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
+    isRequired: true,
   },
 ];

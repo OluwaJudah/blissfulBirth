@@ -14,6 +14,7 @@ const Input = ({
   stateError,
   bgColour,
   isPending,
+  isRequired,
 }: {
   type?: string;
   label: string;
@@ -22,17 +23,21 @@ const Input = ({
   isPhoneNumber?: boolean;
   register: UseFormRegister<any>;
   iconUrl?: string;
-  errors: any;
-  stateError: any;
+  errors?: any;
+  stateError?: any;
   bgColour: string;
-  isPending: boolean;
+  isPending?: boolean;
+  isRequired?: boolean;
 }) => {
   const disabledBgColour = "bg-gray-100";
   return (
     <div className="flex flex-col my-3">
-      <label className="font-mono text-turquoise-900" htmlFor="">
-        {label}
-      </label>
+      <div className="flex gap-1">
+        <label className="font-mono text-turquoise-900" htmlFor="">
+          {label}
+        </label>
+        {isRequired && <p className="font-mono text-pinklet-500">*</p>}
+      </div>
 
       <div
         className={`flex items-center px-2 rounded-full ${

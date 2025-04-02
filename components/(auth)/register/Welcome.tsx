@@ -24,10 +24,13 @@ const Welcome = () => {
             alt="BlissfulLogo"
           />
         </div>
-        <div style={{ zIndex: 999 }} className="absolute bottom-36 left-0 w-full">
+        <div
+          style={{ zIndex: 999 }}
+          className="absolute bottom-36 left-0 w-full"
+        >
           <Link
             className="flex items-center mx-auto justify-center gap-1 bg-turquoise-800 hover:bg-turquoise-700 text-white rounded-2xl w-[158px] h-[43px]"
-            href="/register/details?type=mother-info"
+            href="/register/details/mother-info"
           >
             <p className="text-center">Next</p>
             <ChevronRight color="#fff" />

@@ -1,5 +1,4 @@
 "use client";
-
 import { logout } from "@/actions/auth";
 import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -10,7 +9,7 @@ export const SubmitButton = ({
   isPending,
 }: {
   name: string;
-  isPending: boolean;
+  isPending?: boolean;
 }) => {
   return (
     <button

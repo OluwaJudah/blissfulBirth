@@ -3,7 +3,7 @@ import {
   BackButtonWrapper,
   SkipButton,
 } from "@/components/Buttons";
-import { formTitles } from "@/data";
+import { formTitles } from "@/constants/mother-info";
 import Image from "next/image";
 
 const Header = ({ type }: { type: keyof typeof formTitles }) => {
