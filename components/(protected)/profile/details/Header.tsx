@@ -1,5 +1,5 @@
 import { BackArrowUrlButton } from "@/components/Buttons";
-import { formTitles } from "@/data";
+import { formTitles } from "@/constants/mother-info";
 import Image from "next/image";
 import Link from "next/link";
 
