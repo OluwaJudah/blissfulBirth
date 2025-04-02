@@ -1,9 +1,9 @@
 "use client";
 import {
-  BabyInfo,
-  BirthCompanion,
-  MedicalHistory,
-  MotherInfo,
+  IBabyInfo,
+  IBirthCompanion,
+  ICreateMotherInfo,
+  IMotherInfo,
 } from "@/definitions/mother-info";
 import { createContext, useState } from "react";
 
@@ -32,12 +32,15 @@ const medicalHistoryData = {
   conditions: "",
   familyHistory: "",
   tbSymptomsScreen: "",
+  motherInfo: "",
+  babyInfo: "",
+  birthCompanion: "",
 };
 
 export const MotherInfoFormContext = createContext<any>({
   motherInfo: motherInfoData,
   setMotherInfo: () => null,
-  birthCompanion: medicalHistoryData,
+  birthCompanion: motherInfoData,
   setBirthCompanion: () => null,
   babyInfo: babyInfoData,
   setBabyInfo: () => null,
@@ -50,15 +53,18 @@ export function MotherInfoFormContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [motherInfo, setMotherInfo] = useState<MotherInfo>({
+  const [motherInfo, setMotherInfo] = useState<IMotherInfo>({
     ...motherInfoData,
-    lastMenstrualDate: "",
+    dateOfBirth: new Date(),
+    lastMenstrualDate: new Date(),
   });
-  const [birthCompanion, setBirthCompanion] =
-    useState<BirthCompanion>(motherInfoData);
-  const [babyInfo, setBabyInfo] = useState<BabyInfo>(babyInfoData);
+  const [birthCompanion, setBirthCompanion] = useState<IBirthCompanion>({
+    ...motherInfoData,
+    dateOfBirth: new Date(),
+  });
+  const [babyInfo, setBabyInfo] = useState<IBabyInfo>(babyInfoData);
   const [medicalHistory, setMedicalHistory] =
-    useState<MedicalHistory>(medicalHistoryData);
+    useState<ICreateMotherInfo>(medicalHistoryData);
 
   // adding this code 👇🏽
   return (

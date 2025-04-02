@@ -4,7 +4,7 @@ import Conditions from "./Conditions";
 import Input from "@/components/Input";
 import { medicalHistoryInputDetails } from "@/data";
 
-const MedicalHistoryForm = () => {
+const CreateMotherInfoForm = () => {
   return (
     <div className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] pt-2 pb-8 px-4 md:overflow-scroll">
       <div className="w-full my-3">
@@ -39,4 +39,4 @@ const MedicalHistoryForm = () => {
   );
 };
 
-export default MedicalHistoryForm;
+export default CreateMotherInfoForm;

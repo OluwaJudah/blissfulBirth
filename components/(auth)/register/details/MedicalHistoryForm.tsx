@@ -2,17 +2,23 @@
 import { conditions, familyHistory, tbSymptomsScreen } from "@/data/conditions";
 import { BackButton, SubmitButton } from "@/components/Buttons";
 import Selectables from "./Selectables";
-import { useContext, useState } from "react";
+import {
+  startTransition,
+  useActionState,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import { medicalHistoryFormData } from "@/constants/mother-info";
 import InputValidated from "@/components/InputValidated";
 import {
-  MedicalHistoryForm,
-  medicalHistorySchema,
+  CreateMotherInfoForm,
+  createMotherInfoSchema,
 } from "@/definitions/mother-info";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { MotherInfoFormContext } from "@/context/mother-info";
+import { createMotherInfo } from "@/actions/mother-info";
 type ConditionType = { name: string; isAdded: boolean };
 
 const MedicalHistory = () => {
@@ -36,7 +42,16 @@ const MedicalHistory = () => {
     );
   }
 
-  const { medicalHistory, setMedicalHistory } = context;
+  const initialState = {
+    message: "",
+    errors: {},
+  };
+
+  const { motherInfo, birthCompanion, babyInfo, medicalHistory } = context;
+
+  const motherInfoString = JSON.stringify(motherInfo);
+  const birthCompanionString = JSON.stringify(birthCompanion);
+  const babyInfoString = JSON.stringify(babyInfo);
 
   const [conditionList, setConditionList] = useState<ConditionType[]>(
     updateSelectablesArray(conditions, medicalHistory.conditions)
@@ -46,45 +61,60 @@ const MedicalHistory = () => {
   );
   const [tbSymptomsScreenList, setTbSymptomsScreenList] = useState<
     ConditionType[]
-    >(updateSelectablesArray(tbSymptomsScreen, medicalHistory.tbSymptomsScreen));
-  
-  const router = useRouter();
+  >(updateSelectablesArray(tbSymptomsScreen, medicalHistory.tbSymptomsScreen));
+
+  const formRef = useRef<HTMLFormElement>(null);
+  const [state, formAction, isPending] = useActionState(
+    createMotherInfo,
+    initialState
+  );
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<MedicalHistoryForm>({
-    resolver: zodResolver(medicalHistorySchema),
+  } = useForm<CreateMotherInfoForm>({
+    resolver: zodResolver(createMotherInfoSchema),
     defaultValues: medicalHistory,
   });
 
-  const onSubmit = (values: MedicalHistoryForm) => {
-    const conditions = conditionList
-      .filter((c) => c.isAdded)
-      .map((f) => f.name)
-      .toString();
-    const familyHistory = familyHistoryList
-      .filter((c) => c.isAdded)
-      .map((f) => f.name)
-      .toString();
-    const tbSymptomsScreen = tbSymptomsScreenList
-      .filter((c) => c.isAdded)
-      .map((f) => f.name)
-      .toString();
-    const data = {
-      ...values,
-      conditions,
-      familyHistory,
-      tbSymptomsScreen,
-    };
+  const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    handleSubmit(async () => {
+      if (formRef.current) {
+        const conditions = conditionList
+          .filter((c) => c.isAdded)
+          .map((f) => f.name)
+          .toString();
+        const familyHistory = familyHistoryList
+          .filter((c) => c.isAdded)
+          .map((f) => f.name)
+          .toString();
+        const tbSymptomsScreen = tbSymptomsScreenList
+          .filter((c) => c.isAdded)
+          .map((f) => f.name)
+          .toString();
 
-    setMedicalHistory(data);
-    router.push("/book-appointment?type=book");
+        const form = formRef.current;
+        (form.elements.namedItem("conditions") as HTMLInputElement).value =
+          conditions;
+        (form.elements.namedItem("familyHistory") as HTMLInputElement).value =
+          familyHistory;
+        (
+          form.elements.namedItem("tbSymptomsScreen") as HTMLInputElement
+        ).value = tbSymptomsScreen;
+      }
+      const formData = new FormData(formRef.current!);
+      startTransition(() => {
+        formAction(formData);
+      });
+    })(evt);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      ref={formRef}
+      onSubmit={onSubmit}
       className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] pt-2 pb-8 px-4 md:overflow-scroll"
     >
       <div className="w-full my-3">
@@ -92,6 +122,7 @@ const MedicalHistory = () => {
           Conditions
         </div>
         <Selectables list={conditionList} setList={setConditionList} />
+        <input type="hidden" name="conditions" value="" />
       </div>
 
       <div className="w-full my-3">
@@ -99,6 +130,7 @@ const MedicalHistory = () => {
           Family History
         </div>
         <Selectables list={familyHistoryList} setList={setFamilyHistoryList} />
+        <input type="hidden" name="familyHistory" value="" />
       </div>
 
       <div className="w-full mb-3">
@@ -108,6 +140,8 @@ const MedicalHistory = () => {
             {...data}
             register={register}
             errors={errors}
+            isPending={isPending}
+            stateError={state?.errors}
           />
         ))}
       </div>
@@ -119,10 +153,14 @@ const MedicalHistory = () => {
           list={tbSymptomsScreenList}
           setList={setTbSymptomsScreenList}
         />
+        <input type="hidden" name="tbSymptomsScreen" value="" />
       </div>
+      <input type="hidden" name="motherInfo" value={motherInfoString} />
+      <input type="hidden" name="birthCompanion" value={birthCompanionString} />
+      <input type="hidden" name="babyInfo" value={babyInfoString} />
       <div className="flex gap-3">
         <BackButton />
-        <SubmitButton name="Submit" />
+        <SubmitButton isPending={isPending} name="Submit" />
       </div>
     </form>
   );

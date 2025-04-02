@@ -94,28 +94,51 @@ export const babyInfoSchema = z.object({
 
 export type BabyInfoForm = z.infer<typeof babyInfoSchema>;
 
-export const medicalHistorySchema = z.object({
-  details: z
-    .string()
-    .min(6, { message: "Details must be at leaast 6 characters long." })
-    .trim(),
-  medication: z
-    .string()
-    .min(6, { message: "Medication must be at leaast 6 characters long." })
-    .trim(),
-  operations: z
-    .string()
-    .min(6, { message: "Operations must be at leaast 6 characters long." })
-    .trim(),
-  allergies: z
-    .string()
-    .min(6, { message: "Allergies must be at leaast 6 characters long." })
-    .trim(),
+export const createMotherInfoSchema = z.object({
+  details: z.string().trim(),
+  medication: z.string().trim(),
+  operations: z.string().trim(),
+  allergies: z.string().trim(),
+  conditions: z.string().trim(),
+  familyHistory: z.string().trim(),
+  tbSymptomsScreen: z.string().trim(),
+  motherInfo: z.string().trim(),
+  birthCompanion: z.string().trim(),
+  babyInfo: z.string().trim(),
 });
 
-export type MedicalHistoryForm = z.infer<typeof medicalHistorySchema>;
+export type CreateMotherInfoForm = z.infer<typeof createMotherInfoSchema>;
 
-export type MedicalHistory = {
+export type CreateMotherInfoFormState = {
+  errors?: {
+    details?: string[];
+    medication?: string[];
+    operations?: string[];
+    allergies?: string[];
+    conditions?: string[];
+    familyHistory?: string[];
+    tbSymptomsScreen?: string[];
+    motherInfo?: string[];
+    birthCompanion?: string[];
+    babyInfo?: string[];
+  };
+  message?: string | null;
+};
+
+export type ICreateMotherInfo = {
+  details: string;
+  medication: string;
+  operations: string;
+  allergies: string;
+  conditions: string;
+  familyHistory: string;
+  tbSymptomsScreen: string;
+  motherInfo: string;
+  birthCompanion: string;
+  babyInfo: string;
+};
+
+export type IMedicalHistory = {
   details: string;
   medication: string;
   operations: string;
@@ -125,23 +148,23 @@ export type MedicalHistory = {
   tbSymptomsScreen: string;
 };
 
-export type BirthCompanion = {
+export type IBirthCompanion = {
   fullName: string;
   surname: string;
   maidenName: string;
   idPassportNo: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   contactNumber: string;
   email: string;
   countryOfOrigin: string;
   occupation: string;
 };
 
-export type MotherInfo = BirthCompanion & {
-  lastMenstrualDate: string;
+export type IMotherInfo = IBirthCompanion & {
+  lastMenstrualDate: Date;
 };
 
-export type BabyInfo = {
+export type IBabyInfo = {
   fullName: string;
   surname: string;
 };
