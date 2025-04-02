@@ -52,6 +52,7 @@ export async function regsiterUser(
 
   redirect("/welcome");
 }
+
 export async function loginUser(
   prevState: LoginUserState | undefined,
   formData: FormData
