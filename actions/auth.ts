@@ -4,7 +4,7 @@ import {
   LoginUserState,
   registerUserformSchema,
   RegisterUserState,
-} from "@/lib/definitions";
+} from "@/definitions/auth";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { createSession, deleteSession } from "@/lib/session";
