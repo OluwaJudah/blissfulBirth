@@ -7,11 +7,6 @@ import {
 } from "@/definitions/mother-info";
 import { createContext, useState } from "react";
 
-export const MotherInfoFormContext = createContext<any>({
-  propertyForm: null,
-  updatePropertyForm: () => null,
-});
-
 const motherInfoData = {
   fullName: "",
   surname: "",
@@ -38,6 +33,17 @@ const medicalHistoryData = {
   familyHistory: "",
   tbSymptomsScreen: "",
 };
+
+export const MotherInfoFormContext = createContext<any>({
+  motherInfo: motherInfoData,
+  setMotherInfo: () => null,
+  birthCompanion: medicalHistoryData,
+  setBirthCompanion: () => null,
+  babyInfo: babyInfoData,
+  setBabyInfo: () => null,
+  medicalHistory: medicalHistoryData,
+  setMedicalHistory: () => null,
+});
 
 export function MotherInfoFormContextProvider({
   children,

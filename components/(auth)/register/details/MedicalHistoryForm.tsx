@@ -59,7 +59,6 @@ const MedicalHistory = () => {
   });
 
   const onSubmit = (values: MedicalHistoryForm) => {
-    console.log("values:", values);
     const conditions = conditionList
       .filter((c) => c.isAdded)
       .map((f) => f.name)
@@ -78,9 +77,9 @@ const MedicalHistory = () => {
       familyHistory,
       tbSymptomsScreen,
     };
-    console.log("data: ", data);
+
     setMedicalHistory(data);
-    // router.push("/register/details/birth-companion");
+    router.push("/book-appointment?type=book");
   };
 
   return (

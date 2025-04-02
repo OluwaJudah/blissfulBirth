@@ -33,7 +33,6 @@ const BirthCompanionInfoForm = () => {
   });
 
   const onSubmit = (values: BirthCompanionForm) => {
-    console.log("values:", values);
     setBirthCompanion(values);
     router.push("/register/details/baby-info");
   };

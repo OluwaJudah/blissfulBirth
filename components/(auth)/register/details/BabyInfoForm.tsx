@@ -30,7 +30,6 @@ const BabyInfo = () => {
   });
 
   const onSubmit = (values: BabyInfoForm) => {
-    console.log("values:", values);
     setBabyInfo(values);
     router.push("/register/details/medical-history");
   };
