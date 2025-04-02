@@ -3,7 +3,7 @@ import { regsiterUser } from "@/actions/auth";
 import { SubmitButton } from "@/components/Buttons";
 import InputValidated from "@/components/InputValidated";
 import { registerFormData } from "@/data";
-import { RegisterUserForm, registerUserformSchema } from "@/lib/definitions";
+import { RegisterUserForm, registerUserformSchema } from "@/definitions/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { startTransition, useActionState, useRef } from "react";

@@ -3,7 +3,7 @@ import { loginUser } from "@/actions/auth";
 import { SubmitButton } from "@/components/Buttons";
 import InputValidated from "@/components/InputValidated";
 import { loginFormData } from "@/data";
-import { LoginUserForm, loginUserformSchema } from "@/lib/definitions";
+import { LoginUserForm, loginUserformSchema } from "@/definitions/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { startTransition, useActionState, useRef } from "react";
