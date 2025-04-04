@@ -26,11 +26,11 @@ const Header = ({ type }: { type: keyof typeof formTitles }) => {
                 />
               </div>
             </BackButtonWrapper>
-            <span className="font-mono font-semibold text-turquoise-900 text-xl">
+            <span className="font-mono font-semibold text-turquoise-900 text-lg">
               {name}
             </span>
           </div>
-          <div>{type !== "mother-info" && <SkipButton url={skipUrl} />}</div>
+          <div>{!(["mother-info", "medical-history"].includes(type)) && <SkipButton url={skipUrl} />}</div>
         </div>
       </div>
     </div>
