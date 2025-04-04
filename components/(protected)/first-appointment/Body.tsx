@@ -1,50 +1,57 @@
 "use client";
-import { Pen } from "lucide-react";
 import Location from "./Location";
 import { useState } from "react";
 import DateSlots from "./DateSlots";
+import { createFirstAppointment } from "@/actions/appointment";
+import { FIRST_APPOINTMENT, firstAppointmentTrimester } from "@/constants/user";
+import Notes from "./Notes";
+import { calculateTrimester } from "@/utils";
 
-const Body = () => {
+const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const [selectedSlot, setSelectedSlot] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
-
-  const submit = () => {
+  const trimester = calculateTrimester(pregnancyWeeks);
+  const trimesterStr = firstAppointmentTrimester[trimester];
+  const submit = async () => {
     if (selectedSlot === "") {
       setError("Please select a Date");
       return;
     }
-    console.log({ note, selectedSlot });
+
+    try {
+      await createFirstAppointment({
+        date: new Date(selectedSlot),
+        note,
+        type: FIRST_APPOINTMENT,
+      });
+    } catch (err) {
+      setError("Something went wrong");
+    }
   };
   return (
     <>
-      <div className="w-full flex flex-col overflow-hidden pb-0 h-[165px]">
+      <div className="w-full flex flex-col overflow-hidden pt-2 h-[175px]">
         <DateSlots
+          trimester={trimester}
           setError={setError}
-          selectedSlot={selectedSlot}
           setSelectedSlot={setSelectedSlot}
         />
-        {error && <p className="text-center text-pinklet-500">{error}</p>}
+        {error && <p className="text-center text-pinklet-700">{error}</p>}
       </div>
       <div className="flex flex-col h-full gap-[10px] rounded-t-[50px] bg-turquoise-50 py-6 flex flex-col">
-        <Location />
-        <div className="flex flex-col gap-3 px-7">
-          <div className="flex items-center gap-2">
-            <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
-              <Pen size={20} strokeWidth={3} />
-            </div>
-            <p className="font-mono font-bold">Notes</p>
-          </div>
-          <div className="w-full">
-            <textarea
-              onChange={() => setNote("")}
-              className="w-full h-[150px] rounded-2xl border border-turquoise-200 focus:border-turquoise-400 focus:ring-transparent focus:inset-ring-transparent"
-              name=""
-              id=""
-            />
-          </div>
+        <div className="flex flex-col px-7 text-center">
+          <p className="font-sans font-bold text-lg text-pinklet-700">
+            Congratulations
+          </p>
+          <p className="font-mono text-sm text-turquoise-800 tracking-tight">
+            You're in your{" "}
+            <b className="text-turquoise-900">{trimesterStr} Trimester</b>
+          </p>
         </div>
         <div className="border border-t-turquoise-100 my-3"></div>
+        <Location />
+        <Notes setNote={setNote} />
         <div className="w-full px-7">
           <button
             onClick={submit}

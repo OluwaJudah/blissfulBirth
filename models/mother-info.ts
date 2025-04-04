@@ -3,6 +3,8 @@ import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface MotherInfo extends Document, IMotherInfo {
   userId: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const MotherInfoSchema = new Schema<MotherInfo>(

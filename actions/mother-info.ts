@@ -67,7 +67,7 @@ export async function createMotherInfo(
     throw new Error("Error creating MotherInfo:" + error);
   }
 
-  redirect("/book-appointment?type=book");
+  redirect("/first-appointment");
 }
 
 export const createMotherInfoData = async (

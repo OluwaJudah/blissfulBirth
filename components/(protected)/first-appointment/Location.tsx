@@ -5,7 +5,7 @@ const Location = () => {
     <div className="bg-turquoise-50">
       <div className="flex gap-2 px-7">
         <div className="w-[40px]">
-          <div className="flex justify-center items-center bg-pinklet-200 w-[40px] h-[40px] rounded-full">
+          <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
             <Image src="/pin.svg" height={23} width={23} alt="pin" />
           </div>
         </div>

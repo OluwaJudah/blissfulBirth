@@ -1,17 +1,19 @@
 "use client";
+import { firstAppointmentTimeSlots } from "@/constants/user";
 import { useMemo, useState } from "react";
 
 const DateSlots = ({
-  selectedSlot,
+  trimester,
   setSelectedSlot,
   setError,
 }: {
-  selectedSlot: string;
+  trimester: number;
   setSelectedSlot: (slot: string) => void;
   setError: (slot: string) => void;
 }) => {
   const [currentDate, setCurrentDate] = useState<any>(new Date());
   const [selectedDate, setSelectedDate] = useState<any>(null);
+  const timeSlot = firstAppointmentTimeSlots[trimester];
 
   const getTuesdays = (year: number, month: number) => {
     let result = [];
@@ -162,12 +164,14 @@ const DateSlots = ({
             <button
               key={dateStr}
               onClick={() => {
-                setSelectedSlot(dateStr);
+                setSelectedSlot(`${dateStr} ${timeSlot}`);
                 setError("");
               }}
               className={`bg-pinklet-50 hover:bg-pinklet-500 hover:text-white text-turquoise-900 rounded-full px-5 h-[35px]`}
             >
-              <span className="md:text-sm">{dateStr}, 8:00 AM</span>
+              <span className="md:text-sm">
+                {dateStr}, {timeSlot}
+              </span>
             </button>
           ))
         ) : (

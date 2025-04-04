@@ -12,6 +12,7 @@ const protectedRoutes = [
   "/schedules",
   "/welcome",
   "/register/details",
+  "/first-appointment",
 ];
 
 const publicRoutes = ["/login", "/regsiter", "/"];
