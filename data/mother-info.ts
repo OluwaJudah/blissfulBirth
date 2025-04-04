@@ -4,7 +4,7 @@ import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import MotherInfo from "@/models/mother-info";
 
-export const getLastMentralDate = async () => {
+export const getMotherInfoData = async (fields: string) => {
   await dbConnect();
 
   const session = await verifySession();
@@ -12,10 +12,7 @@ export const getLastMentralDate = async () => {
 
   const userId = session?.userId;
 
-  const lastMenstrualDate = await MotherInfo.findOne(
-    { userId },
-    "lastMenstrualDate createdAt"
-  );
+  const lastMenstrualDate = await MotherInfo.findOne({ userId }, fields);
 
   return lastMenstrualDate;
 };
