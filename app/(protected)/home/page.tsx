@@ -13,7 +13,6 @@ export default async function HomePage() {
   if (motherInfo) dueDate = calculateDueDate(motherInfo.lastMenstrualDate);
 
   const appointment = await getNextAppointmentData("pregnancyWeeks date");
-  console.log({ appointment });
   const date = appointment?.date || "";
   const pregnancyWeeks = appointment?.pregnancyWeeks || 0;
 
