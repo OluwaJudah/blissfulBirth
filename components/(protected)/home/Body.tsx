@@ -19,8 +19,8 @@ const Body = ({
         appointmentDate={appointmentDate}
         pregnancyWeeks={pregnancyWeeks}
       />
-      <MyBaby />
-      <MyBody />
+      <MyBaby pregnancyWeeks={pregnancyWeeks} />
+      <MyBody pregnancyWeeks={pregnancyWeeks} />
       <DueDate dueDate={dueDate} />
     </div>
   );

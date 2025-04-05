@@ -1,16 +1,23 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { calculateTrimester } from "@/utils";
+import { trimesters } from "@/constants/user";
 
-const MyBody = () => {
+const MyBody = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
+  const trimester = calculateTrimester(pregnancyWeeks);
+  const trimesterStr = trimesters[trimester];
+
   return (
     <div className="flex flex-col gap-y-4">
-      <p className="font-mono font-bold text-turquoise-900 tracking-tight">My Body</p>
+      <p className="font-mono font-bold text-turquoise-900 tracking-tight">
+        My Body
+      </p>
       <div className="shadow-xl relative w-full h-[180px] bg-turquoise-100 rounded-2xl px-4 md:px-2 py-5 overflow-hidden">
         <div className="flex flex-col h-full w-4/6 gap-3">
           <div className="text-center">
             <h2 className="mb-0 font-sans font-bold text-turquoise-900 tracking-wide">
-              Week 16 - 2nd Trimester
+              Week {pregnancyWeeks} - {trimesterStr} Trimester
             </h2>
           </div>
           <div className="flex justify-between">

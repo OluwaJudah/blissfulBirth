@@ -6,23 +6,16 @@ import { calculateDueDate, calculatePregnancyWeeks } from "@/utils";
 
 export default async function HomePage() {
   const imgUrl = "/user_1.svg";
-  const motherInfo = await getMotherInfoData(
-    "fullName lastMenstrualDate createdAt"
-  );
+  const motherInfo = await getMotherInfoData("fullName lastMenstrualDate");
 
   const title = `Hi ${motherInfo?.fullName}`;
-  let pregnancyWeeks = 0;
   let dueDate = "";
-  if (motherInfo) {
-    const { lastMenstrualDate, createdAt } = motherInfo;
-    if (lastMenstrualDate && createdAt) {
-      pregnancyWeeks = calculatePregnancyWeeks(lastMenstrualDate, createdAt);
-      dueDate = calculateDueDate(lastMenstrualDate);
-    }
-  }
+  if (motherInfo) dueDate = calculateDueDate(motherInfo.lastMenstrualDate);
 
-  const appointmentDate = await getNextAppointmentData("date");
-  let date = appointmentDate?.date || "";
+  const appointment = await getNextAppointmentData("pregnancyWeeks date");
+  console.log({ appointment });
+  const date = appointment?.date || "";
+  const pregnancyWeeks = appointment?.pregnancyWeeks || 0;
 
   return (
     <div className="flex h-screen items-center">
