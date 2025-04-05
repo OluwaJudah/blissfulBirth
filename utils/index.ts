@@ -13,6 +13,20 @@ export const calculatePregnancyWeeks = (
   return Math.floor(differenceInTime / (1000 * 60 * 60 * 24 * 7));
 };
 
+export const calculateDueDate = (lastMenstrualDate: Date) => {
+  const lmpDate = new Date(lastMenstrualDate);
+
+  lmpDate.setFullYear(lmpDate.getFullYear() + 1);
+  lmpDate.setMonth(lmpDate.getMonth() - 3);
+  lmpDate.setDate(lmpDate.getDate() + 7);
+
+  return lmpDate.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+};
+
 export const getTuesdays = (year: number, month: number) => {
   let result = [];
   for (let month = new Date().getMonth(); month < 144; month++) {
