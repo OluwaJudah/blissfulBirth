@@ -23,6 +23,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
       await createFirstAppointment({
         date: selectedSlot,
         note,
+        pregnancyWeeks,
         type: FIRST_APPOINTMENT,
       });
     } catch (err) {}

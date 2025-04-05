@@ -9,6 +9,7 @@ const AppointmentSchema = new Schema<Appointment>(
   {
     date: { type: String, required: true },
     note: { type: String },
+    pregnancyWeeks: { type: Number, required: true },
     userId: { type: String, required: true },
   },
   { timestamps: true }
