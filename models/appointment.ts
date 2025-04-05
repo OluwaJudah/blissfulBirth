@@ -7,7 +7,7 @@ interface Appointment extends Document, IAppointment {
 
 const AppointmentSchema = new Schema<Appointment>(
   {
-    date: { type: Date, required: true },
+    date: { type: String, required: true },
     note: { type: String },
     userId: { type: String, required: true },
   },

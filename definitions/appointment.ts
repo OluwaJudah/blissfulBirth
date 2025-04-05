@@ -1,5 +1,5 @@
 export type IAppointment = {
   type: string;
-  date: Date;
+  date: string;
   note: string;
 };

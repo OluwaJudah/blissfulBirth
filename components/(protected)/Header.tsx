@@ -69,7 +69,7 @@ const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
               />
             </div>
           )}
-          <span className="font-mono font-semibold text-turquoise-900 text-xl">
+          <span className="font-mono font-semibold text-turquoise-900 text-lg">
             {title}
           </span>
         </div>{" "}

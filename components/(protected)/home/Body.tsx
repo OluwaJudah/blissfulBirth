@@ -4,10 +4,16 @@ import MyBaby from "./MyBaby";
 import MyBody from "./MyBody";
 import DueDate from "./DueDate";
 
-const Body = () => {
+const Body = ({
+  appointmentDate,
+  pregnancyWeeks,
+}: {
+  appointmentDate: string;
+  pregnancyWeeks: number;
+}) => {
   return (
     <div className="px-[20px] flex flex-col gap-[35px]">
-      <NextAppointment />
+      <NextAppointment appointmentDate={appointmentDate} pregnancyWeeks={pregnancyWeeks} />
       <MyBaby />
       <MyBody />
       <DueDate />
