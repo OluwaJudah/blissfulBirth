@@ -3,12 +3,20 @@ import ProfilePicture from "./ProfilePicture";
 import DueDate from "../home/DueDate";
 import { profileInfos } from "@/data";
 
-const Body = () => {
+const Body = ({
+  username,
+  dueDate,
+  pregnancyWeeks,
+}: {
+  username: string;
+  dueDate: string;
+  pregnancyWeeks: number;
+}) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="px-[20px] flex flex-col gap-3">
-        <ProfilePicture />
-        <DueDate />
+        <ProfilePicture username={username} pregnancyWeeks={pregnancyWeeks} />
+        <DueDate dueDate={dueDate} />
       </div>
 
       <div className="px-[20px] flex flex-col gap-3">
