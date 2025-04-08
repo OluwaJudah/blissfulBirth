@@ -33,7 +33,7 @@ const NextAppointment = () => {
           <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href="/book-appointment?from=home"
+              href="/confirm-appointment?from=appointments"
             >
               <p className="text-center w-full text-sm">More Details</p>
             </Link>
