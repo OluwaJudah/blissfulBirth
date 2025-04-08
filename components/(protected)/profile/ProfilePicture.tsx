@@ -12,8 +12,8 @@ const ProfilePicture = () => {
           alt="User 1"
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <span className="font-sans font-bold text-turquoise-900 text-lg leading-none">
+      <div className="flex flex-col gap-1 w-[200px]">
+        <span className="font-sans font-bold text-turquoise-900 text-lg leading-none truncate">
           Yanela Oluwaseeki
         </span>
         <p className="text-black text-sm leading-none">
