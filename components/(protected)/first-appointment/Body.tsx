@@ -3,18 +3,20 @@ import { Pen } from "lucide-react";
 import Location from "./Location";
 import { useState } from "react";
 import DateSlots from "./DateSlots";
+import { useRouter } from "next/navigation";
 
 const Body = () => {
   const [selectedSlot, setSelectedSlot] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const submit = () => {
     if (selectedSlot === "") {
       setError("Please select a Date");
       return;
     }
     console.log({ note, selectedSlot });
+    router.push("/home");
   };
   return (
     <>
@@ -26,7 +28,7 @@ const Body = () => {
         />
         {error && <p className="text-center text-pinklet-500">{error}</p>}
       </div>
-      <div className="flex flex-col h-full gap-[10px] rounded-t-[50px] bg-turquoise-50 py-6 flex flex-col">
+      <div className="flex flex-col h-full gap-[10px] rounded-t-[50px] bg-turquoise-50 py-10 flex flex-col">
         <Location />
         <div className="flex flex-col gap-3 px-7">
           <div className="flex items-center gap-2">
