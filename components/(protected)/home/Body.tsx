@@ -3,6 +3,8 @@ import NextAppointment from "./NextAppointment";
 import MyBaby from "./MyBaby";
 import MyBody from "./MyBody";
 import DueDate from "./DueDate";
+import ToExpectForBaby from "./ToExpectForBaby";
+import ToExpectForBody from "./ToExpectForBody";
 
 const Body = ({
   appointmentDate,
@@ -22,6 +24,8 @@ const Body = ({
       <MyBaby pregnancyWeeks={pregnancyWeeks} />
       <MyBody pregnancyWeeks={pregnancyWeeks} />
       <DueDate dueDate={dueDate} />
+      {/* <ToExpectForBaby />
+      <ToExpectForBody /> */}
     </div>
   );
 };
