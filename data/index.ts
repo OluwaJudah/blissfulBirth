@@ -1,4 +1,10 @@
-import { CalendarDays, Home, LogIn, SquareArrowUp, TrendingUp } from "lucide-react";
+import {
+  CalendarDays,
+  Home,
+  LogIn,
+  SquareArrowUp,
+  TrendingUp,
+} from "lucide-react";
 
 export const steps = [1, 2, 3, 4];
 export const steps2 = [1, 2];
@@ -68,7 +74,7 @@ export const formTitles = {
   "medical-history": {
     name: "Medical History",
     image: "/medical_history.png",
-    skipUrl: "/book-appointment?type=book",
+    skipUrl: "/first-appointment",
   },
   "payment-history": {
     name: "Payment History",
