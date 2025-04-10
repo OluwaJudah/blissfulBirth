@@ -44,7 +44,7 @@ const MommyReport = () => {
         </div>{" "}
         <div className="flex justify-between p-6 bg-turquoise-200 rounded-3xl">
           <p className="font-sans text-black text-lg tracking-tight leading-none">
-            Blood Pressure
+            FH
           </p>
           <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
             116
