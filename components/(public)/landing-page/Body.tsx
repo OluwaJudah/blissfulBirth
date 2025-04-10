@@ -6,11 +6,13 @@ import HeroSection from "./HeroSection";
 
 const Body = () => {
   return (
-    <div className="px-[20px] flex flex-col gap-[35px]">
+    <div className="px-[20px] flex flex-col gap-[30px]">
       <HeroSection />
-      <Services />
-      <Features />
-      <Testimonials />
+      <div className="flex flex-col gap-[15px]">
+        <Services />
+        <Features />
+        <Testimonials />
+      </div>
     </div>
   );
 };

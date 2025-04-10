@@ -60,7 +60,7 @@ const Header = () => {
   };
 
   return (
-    <div style={{ zIndex: 999 }} className="pb-[40px] sticky top-0">
+    <div style={{ zIndex: 999 }} className="pb-[30px] sticky top-0">
       <div className="relative flex content-center justify-between bg-turquoise-50 py-5 px-[20px]">
         <div className="flex items-center">
           <span className="font-mono font-semibold text-turquoise-900 text-xl">
