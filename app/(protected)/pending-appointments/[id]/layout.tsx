@@ -1,5 +1,5 @@
-import Header from "@/components/(protected)/appointments/[id]/Header";
-import Tabs from "@/components/(protected)/appointments/[id]/Tabs";
+import Header from "@/components/(protected)/pending-appointments/[id]/Header";
+import Tabs from "@/components/(protected)/pending-appointments/[id]/Tabs";
 
 export default function Layout({
   children,

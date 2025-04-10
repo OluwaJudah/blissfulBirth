@@ -6,7 +6,7 @@ import { useParams, usePathname, useSearchParams } from "next/navigation";
 const Tabs = () => {
   const { id } = useParams<{ id: string }>();
   const pathname = usePathname();
-  const baseUrl = `/appointments/${id}`;
+  const baseUrl = `/pending-appointments/${id}`;
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
   const tabs = [
