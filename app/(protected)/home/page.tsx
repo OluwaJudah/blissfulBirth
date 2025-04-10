@@ -1,6 +1,6 @@
 import Header from "@/components/(protected)/Header";
 import Body from "@/components/(protected)/home/Body";
-import { getNextAppointmentData } from "@/data/appointment";
+import { getLastAppointmentData, getNextAppointmentData } from "@/data/appointment";
 import { getMotherInfoData } from "@/data/mother-info";
 import { calculateDueDate, calculatePregnancyWeeks } from "@/utils";
 
@@ -13,6 +13,7 @@ export default async function HomePage() {
   if (motherInfo) dueDate = calculateDueDate(motherInfo.lastMenstrualDate);
 
   const appointment = await getNextAppointmentData("pregnancyWeeks date");
+  const lastAppointment = await getLastAppointmentData("pregnancyWeeks date");
   const date = appointment?.date || "";
   const pregnancyWeeks = appointment?.pregnancyWeeks || 0;
 
@@ -24,6 +25,7 @@ export default async function HomePage() {
           appointmentDate={date}
           pregnancyWeeks={pregnancyWeeks}
           dueDate={dueDate}
+          lastAppointment={lastAppointment}
         />
       </main>
     </div>

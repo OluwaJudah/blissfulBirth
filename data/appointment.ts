@@ -18,3 +18,18 @@ export const getNextAppointmentData = async (fields: string) => {
 
   return appointment[0];
 };
+
+export const getLastAppointmentData = async (fields: string) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId;
+  const appointment = await Appointment.find({ userId }, fields)
+    .sort({ createdAt: -1 })
+    .limit(1)
+    .lean();
+
+  return appointment.length > 1 ? appointment[1] : null;
+};

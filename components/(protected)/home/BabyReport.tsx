@@ -1,7 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { calculateTrimester } from "@/utils";
+import { trimesters } from "@/constants/user";
 
-const BabyReport = () => {
+const BabyReport = ({
+  pregnancyWeeks,
+  lastAppointment,
+}: {
+  pregnancyWeeks: number;
+  lastAppointment: any;
+}) => {
+  const trimester = calculateTrimester(pregnancyWeeks);
+  const trimesterStr = trimesters[trimester];
+
   return (
     <div className="embla__slide__1 h-[210] md:w-[80] w-[90]">
       <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
@@ -9,7 +20,7 @@ const BabyReport = () => {
           <div className="flex flex-col h-full w-4/6 gap-3 float-right">
             <div className="text-center">
               <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900">
-                Week 16 - 2nd Trimester
+                Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
             <div className="flex justify-between px-2">
@@ -44,7 +55,7 @@ const BabyReport = () => {
         <div className="absolute bottom-0 w-full pb-5">
           <Link
             className="flex mx-auto items-center bg-turquoise-700 hover:bg-turquoise-700 text-white rounded-2xl w-[130px] h-[30px]"
-            href="/appointments/12/my-baby?from=home"
+            href={`/appointments/${pregnancyWeeks}/my-baby?from=home`}
           >
             <p className="text-center w-full text-sm">View Report</p>
           </Link>

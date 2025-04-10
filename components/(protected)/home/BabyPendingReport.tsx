@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { calculateTrimester } from "@/utils";
+import { trimesters } from "@/constants/user";
 
-const BabyPendingReport = () => {
+const BabyPendingReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
+  const trimester = calculateTrimester(pregnancyWeeks);
+  const trimesterStr = trimesters[trimester];
+
   return (
     <div className="embla__slide__1 h-[210] md:w-[80] w-[90]">
       <div className="relative embla__slide__number shadow-xl flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
@@ -9,7 +14,7 @@ const BabyPendingReport = () => {
           <div className="flex flex-col h-full w-4/6 gap-1 float-right">
             <div className="text-center">
               <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900">
-                Week 16 - 2nd Trimester
+                Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
             <div className="flex flex-col gap-1 pl-4">
@@ -20,7 +25,7 @@ const BabyPendingReport = () => {
                 <div className="border border-t-turquoise-200 w-1/2"></div>
               </div>
               <p className="font-sans font-medium text-turquoise-900 text-sm">
-                Symptoms to expect for your baby in your 16 weeks
+                Symptoms to expect for your baby in your {pregnancyWeeks} weeks
               </p>
             </div>
           </div>
@@ -37,7 +42,7 @@ const BabyPendingReport = () => {
         <div className="absolute -bottom-1 w-full pb-5">
           <Link
             className="flex mx-auto items-center bg-turquoise-700 hover:bg-turquoise-700 text-white rounded-2xl w-[130px] h-[30px]"
-            href="/pending-appointments/12/my-baby?from=home"
+            href={`/pending-appointments/${pregnancyWeeks}/my-baby?from=home`}
           >
             <p className="text-center w-full text-sm">Read More</p>
           </Link>
