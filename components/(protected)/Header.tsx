@@ -51,7 +51,7 @@ const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
   };
 
   return (
-    <div style={{ zIndex: 999 }} className="pb-[40px] sticky top-0">
+    <div style={{ zIndex: 999 }} className="pb-[20px] sticky top-0">
       <div
         className={`relative flex content-center justify-between bg-turquoise-50 ${
           imgUrl ? "py-3" : "py-5"
