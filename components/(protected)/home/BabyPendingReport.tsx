@@ -4,11 +4,11 @@ import Link from "next/link";
 const BabyPendingReport = () => {
   return (
     <div className="embla__slide__1 h-[210] md:w-[80] w-[90]">
-      <div className="relative embla__slide__number shadow-xl flex flex-col w-[320px] md:w-[310px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
+      <div className="relative embla__slide__number shadow-xl flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
         <div className="relative">
           <div className="flex flex-col h-full w-4/6 gap-1 float-right">
             <div className="text-center">
-              <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900 tracking-wide">
+              <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900">
                 Week 16 - 2nd Trimester
               </h2>
             </div>

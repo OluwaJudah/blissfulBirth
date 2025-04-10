@@ -4,10 +4,10 @@ import Link from "next/link";
 const MyReport = () => {
   return (
     <div className="embla__slide__1 h-[210] md:w-[80] w-[90]">
-      <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[320px] md:w-[310px] h-[180px] bg-turquoise-100 rounded-2xl px-4 md:px-2 py-5 overflow-y-hidden">
+      <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl px-4 md:px-2 py-5 overflow-y-hidden">
         <div className="flex flex-col h-full w-4/6 gap-3">
           <div className="text-center">
-            <h2 className="mb-0 font-sans font-bold text-turquoise-900 tracking-wide">
+            <h2 className="mb-0 font-sans font-bold text-turquoise-900">
               Week 16 - 2nd Trimester
             </h2>
           </div>
