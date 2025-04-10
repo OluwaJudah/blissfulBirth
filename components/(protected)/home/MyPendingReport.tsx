@@ -1,28 +1,24 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const ToExpectForBody = () => {
+const MyPendingReport = () => {
   return (
-    <div className="flex flex-col gap-y-4">
-      <p className="font-mono font-bold text-turquoise-900 tracking-tight">
-        My Body
-      </p>
-      <div className="shadow-xl relative w-full h-[180px] bg-turquoise-100 rounded-2xl px-4 md:px-2 py-5 overflow-hidden">
+    <div className="embla__slide__1 h-[210] md:w-[80] w-[90]">
+      <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl px-4 md:px-2 py-5 overflow-y-hidden">
         <div className="flex flex-col h-full w-4/6 gap-1">
           <div className="text-center">
-            <h2 className="mb-0 font-sans font-bold text-turquoise-900 tracking-wide">
+            <h2 className="mb-0 font-sans font-bold text-turquoise-900">
               Week 16 - 2nd Trimester
             </h2>
           </div>
-          <div className="flex flex-col gap-2 pl-2 mb-1">
+          <div className="flex flex-col gap-1 pl-2 mb-1">
             <div>
-              <p className="font-sans font-medium text-turquoise-800 text-sm mb-1">
+              <p className="font-sans font-medium text-turquoise-900 text-base mb-1">
                 What to Expect
               </p>
               <div className="border border-t-turquoise-200 w-1/2"></div>
             </div>
-            <p className="font-sans font-medium text-turquoise-800 text-sm">
+            <p className="font-sans font-medium text-turquoise-900 text-sm">
               Symptoms to expect for your body in your 16 weeks{" "}
             </p>
           </div>
@@ -49,4 +45,4 @@ const ToExpectForBody = () => {
   );
 };
 
-export default ToExpectForBody;
+export default MyPendingReport;

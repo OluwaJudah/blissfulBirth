@@ -3,8 +3,6 @@ import NextAppointment from "./NextAppointment";
 import MyBaby from "./MyBaby";
 import MyBody from "./MyBody";
 import DueDate from "./DueDate";
-import ToExpectForBaby from "./ToExpectForBaby";
-import ToExpectForBody from "./ToExpectForBody";
 
 const Body = ({
   appointmentDate,
@@ -16,16 +14,16 @@ const Body = ({
   pregnancyWeeks: number;
 }) => {
   return (
-    <div className="px-[20px] flex flex-col gap-[35px]">
+    <div className="px-[20px] flex flex-col gap-[30px] overflow-x-hidden">
       <NextAppointment
         appointmentDate={appointmentDate}
         pregnancyWeeks={pregnancyWeeks}
       />
-      <MyBaby pregnancyWeeks={pregnancyWeeks} />
-      <MyBody pregnancyWeeks={pregnancyWeeks} />
+      <div className="flex flex-col gap-[15px]">
+        <MyBaby pregnancyWeeks={pregnancyWeeks} />
+        <MyBody pregnancyWeeks={pregnancyWeeks} />
+      </div>
       <DueDate dueDate={dueDate} />
-      {/* <ToExpectForBaby />
-      <ToExpectForBody /> */}
     </div>
   );
 };

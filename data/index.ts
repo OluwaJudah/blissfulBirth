@@ -2,6 +2,7 @@ import {
   CalendarDays,
   Home,
   LogIn,
+  ShieldPlus,
   SquareArrowUp,
   TrendingUp,
 } from "lucide-react";
@@ -11,10 +12,37 @@ export const steps2 = [1, 2];
 export const services = [
   { name: "Antenatal Care", img: "/services_1.png" },
   { name: "Birthing Unit", img: "/services_2.png" },
+  { name: "Doula Service", img: "/services_1.png" },
+  { name: "PostNatal Home Visit ", img: "/services_2.png" },
 ];
+
+export const testimonials = [
+  {
+    name: "John Doe",
+    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+  },
+  {
+    name: "Dolly Gwen",
+    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+  },
+  {
+    name: "Michelle King",
+    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+  },
+  {
+    name: "Blake Michael",
+    comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer...`,
+  },
+];
+
 export const features = [
   { name: "Track Pregnancy", Icon: TrendingUp },
   { name: "Manage Appointments", Icon: CalendarDays },
+  { name: "Get Expert Tips", Icon: ShieldPlus },
 ];
 export const schedulesNos = [
   8, 13, 18, 21, 24, 28, 30, 32, 34, 36, 37, 38, 39, 40, 41, 42,
