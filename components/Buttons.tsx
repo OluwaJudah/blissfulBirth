@@ -196,21 +196,25 @@ export const LogOutButton = ({ item }: { item: Item }) => {
 };
 
 export const DateSlotButton = ({
-  dateTime,
+  date,
+  time,
   setSelectedSlot,
   setError,
 }: {
-  dateTime: string;
-  setSelectedSlot: (dateTime: string) => void;
-  setError: (dateTime: string) => void;
+  date: string;
+  time: string;
+  setSelectedSlot: (date: string) => void;
+  setError: (error: string) => void;
 }) => (
   <button
     onClick={() => {
-      setSelectedSlot(dateTime);
+      setSelectedSlot(date);
       setError("");
     }}
     className={`bg-pinklet-50 md:focus:bg-pinklet-500 md:focus:text-white hover:bg-pinklet-500 hover:text-white text-turquoise-900 rounded-full px-5 h-[35px]`}
   >
-    <span className="md:text-sm">{dateTime}</span>
+    <span className="md:text-sm">
+      {date} {time}
+    </span>
   </button>
 );

@@ -1,6 +1,6 @@
 import { Clock } from "lucide-react";
 
-const TimeSlot = () => {
+const TimeSlot = ({ time }: { time: string }) => {
   return (
     <>
       <div className="flex flex-col px-7 ">
@@ -9,7 +9,7 @@ const TimeSlot = () => {
             <Clock size={20} strokeWidth={3} />
           </div>
 
-          <p className="font-mono font-bold text-turquoise-900">8:00 AM</p>
+          <p className="font-mono font-bold text-turquoise-900">{time}</p>
         </div>
       </div>
       <div className="border border-t-turquoise-100 my-3"></div>
