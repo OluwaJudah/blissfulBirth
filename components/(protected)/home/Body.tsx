@@ -20,6 +20,7 @@ const Body = ({
       <NextAppointment
         appointmentDate={appointmentDate}
         pregnancyWeeks={pregnancyWeeks}
+        lastAppointment={lastAppointment}
       />
       <div className="flex flex-col gap-[15px]">
         <MyBaby

@@ -7,13 +7,15 @@ import { trimesters } from "@/constants/user";
 const NextAppointment = ({
   appointmentDate,
   pregnancyWeeks,
+  lastAppointment,
 }: {
   appointmentDate: string;
   pregnancyWeeks: number;
+  lastAppointment: any;
 }) => {
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
-
+  
   return (
     <div className="flex flex-col gap-y-4">
       <p className="font-mono font-bold text-turquoise-900 tracking-tight">
