@@ -16,7 +16,7 @@ const Body = () => {
       return;
     }
     console.log({ note, selectedSlot });
-    router.push("/home");
+    router.push("/confirmed-booking");
   };
   return (
     <>

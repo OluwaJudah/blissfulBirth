@@ -29,9 +29,9 @@ const Body = ({ from }: { from: string }) => {
     if (isError) return;
 
     console.log({ note, selectedDateSlot, selectedTimeSlot });
-    router.push(`/pending-appointments/12/my-baby?from=${from}`);
+    router.push(`/confirmed-booking`);
   };
-  
+
   return (
     <>
       <div className="w-full flex flex-col overflow-hidden pb-0 h-[195px]">
