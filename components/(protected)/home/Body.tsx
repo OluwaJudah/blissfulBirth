@@ -5,23 +5,24 @@ import MyBody from "./MyBody";
 import DueDate from "./DueDate";
 
 const Body = ({
-  appointmentDate,
+  appointment,
   dueDate,
-  pregnancyWeeks,
   lastAppointment,
 }: {
-  appointmentDate: string;
+  appointment: {
+    _id: string;
+    date: string;
+    time: string;
+    status: string;
+    pregnancyWeeks: number;
+  };
   dueDate: string;
-  pregnancyWeeks: number;
   lastAppointment: any;
 }) => {
+  const { pregnancyWeeks } = appointment;
   return (
     <div className="px-[20px] flex flex-col gap-[30px] overflow-x-hidden">
-      <NextAppointment
-        appointmentDate={appointmentDate}
-        pregnancyWeeks={pregnancyWeeks}
-        lastAppointment={lastAppointment}
-      />
+      <NextAppointment appointment={appointment} />
       <div className="flex flex-col gap-[15px]">
         <MyBaby
           pregnancyWeeks={pregnancyWeeks}
