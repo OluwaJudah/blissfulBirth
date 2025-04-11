@@ -12,12 +12,15 @@ export const createFirstAppointment = async (appointmentData: IAppointment) => {
   if (!session) return null;
 
   const userId = session?.userId;
-
+  let appointment = null;
   try {
-    await Appointment.create({ ...appointmentData, userId });
+    appointment = await Appointment.create({
+      ...appointmentData,
+      userId,
+    });
   } catch (error) {
-    throw new Error("Error creating MotherInfo:" + error);
+    throw new Error("Error creating Appointment:" + error);
   }
 
-  redirect("/home");
+  redirect(`/confirmed-booking?bookingId=${appointment.id}`);
 };

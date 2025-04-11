@@ -3,7 +3,11 @@ import Location from "./Location";
 import { useState } from "react";
 import DateSlots from "./DateSlots";
 import { createFirstAppointment } from "@/actions/appointment";
-import { FIRST_APPOINTMENT, trimesters } from "@/constants/user";
+import {
+  FIRST_APPOINTMENT,
+  firstAppointmentTimeSlots,
+  trimesters,
+} from "@/constants/user";
 import Notes from "./Notes";
 import { calculateTrimester } from "@/utils";
 
@@ -13,6 +17,8 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const [error, setError] = useState("");
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
+  const time = firstAppointmentTimeSlots[trimester];
+
   const submit = async () => {
     if (selectedSlot === "") {
       setError("Please select a Date");
@@ -22,6 +28,8 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
     try {
       await createFirstAppointment({
         date: selectedSlot,
+        time,
+        status: "confirmed",
         note,
         pregnancyWeeks,
         type: FIRST_APPOINTMENT,

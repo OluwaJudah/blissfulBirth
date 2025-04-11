@@ -51,7 +51,7 @@ const DateSlots = ({
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
-  const tuesdayArray = useMemo(() => getTuesdays(year, month), [year, month])
+  const tuesdayArray = useMemo(() => getTuesdays(year, month), [year, month]);
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -91,7 +91,8 @@ const DateSlots = ({
           tuesdayArray.map((dateStr) => (
             <DateSlotButton
               key={dateStr}
-              dateTime={`${dateStr} ${timeSlot}`}
+              date={dateStr}
+              time={timeSlot}
               setError={setError}
               setSelectedSlot={setSelectedSlot}
             />
