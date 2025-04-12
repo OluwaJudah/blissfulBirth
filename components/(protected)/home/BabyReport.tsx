@@ -42,9 +42,9 @@ const BabyReport = ({
               </div>
             </div>
           </div>
-          <div className="absolute -top-5 -left-6">
+          <div className="absolute -top-5 -left-6 md:-top-3 ">
             <Image
-              className="mb-4"
+              className="mb-4 md:w-[140px]"
               src="/baby_1.svg"
               height={210}
               width={155}
