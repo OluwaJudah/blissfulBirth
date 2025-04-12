@@ -9,10 +9,10 @@ const Features = () => {
         <EmblaCarouselWrapper>
           {features.map((feature, index) => (
             <div
-              className="embla__slide h-[175] md:w-[110] w-[120]"
+              className="embla__slide h-[175px] md:w-[110px] w-[120px]"
               key={index}
             >
-              <div className="embla__slide__number flex items-center justify-center rounded-[2rem] bg-turquoise-100 md:w-[145] w-[150] h-[140] shadow-xl">
+              <div className="embla__slide__number flex items-center justify-center rounded-[2rem] bg-turquoise-100 md:w-[145px] w-[150px] h-[140px] shadow-xl">
                 <div className="flex flex-col items-center gap-2 p-3">
                   <div className="flex justify-center items-center w-[60px] h-[60px] bg-turquoise-400 rounded-full overflow-hidden">
                     <feature.Icon color="#fff" size={35} />

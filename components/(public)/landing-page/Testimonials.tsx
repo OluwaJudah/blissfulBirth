@@ -10,7 +10,7 @@ const Testimonials = () => {
         <EmblaCarouselWrapper>
           {testimonials.map((testimonial, index) => (
             <div
-              className="embla__slide__1 h-[210] md:w-[80] w-[90]"
+              className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]"
               key={index}
             >
               <div className="embla__slide__number shadow-xl gap-4 flex flex-col w-[330px] md:w-[310px] h-[180px] bg-turquoise-100 rounded-2xl p-5 overflow-y-hidden">
