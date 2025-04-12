@@ -2,17 +2,27 @@
 import { useDotButton } from "./EmblaCarouselDotButton";
 import useEmblaCarousel from "embla-carousel-react";
 import "./embla.css";
+import { useEffect, useState } from "react";
 
 const EmblaCarouselWrapper = ({ children }: { children: React.ReactNode }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ slidesToScroll: "auto" });
-
+  const [transform, setTransform] = useState("");
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
 
+  useEffect(() => {
+    setTimeout(() => setTransform("translate3d(-7px, 0px, 0px)"), 0);
+  }, []);
+
   return (
     <section className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">{children}</div>
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div
+          style={{ transform }}
+          className="flex touch-pan-y touch-pinch-zoom"
+        >
+          {children}
+        </div>
       </div>
 
       <div className="flex justify-center">

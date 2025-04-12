@@ -10,7 +10,7 @@ const Services = () => {
         <EmblaCarouselWrapper>
           {services.map((service, index) => (
             <div className="embla__slide h-[175px] md:w-[80px] w-[90px]" key={index}>
-              <div className="embla__slide__number flex items-center justify-center rounded-[2rem] bg-turquoise-100 md:w-[145px] w-[150px] h-[140px] shadow-xl">
+              <div className="embla__slide__number flex items-center justify-center rounded-[2rem] bg-turquoise-100 md:w-[140px] w-[150px] h-[140px] md:h-[135px] shadow-xl">
                 <div className="flex flex-col items-center gap-2 p-3">
                   <div className="w-[74px] h-[57px] rounded-3xl overflow-hidden">
                     <Image

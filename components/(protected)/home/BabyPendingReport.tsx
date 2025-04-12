@@ -12,7 +12,7 @@ const BabyPendingReport = () => {
                 Week 16 - 2nd Trimester
               </h2>
             </div>
-            <div className="flex flex-col gap-1 pl-4">
+            <div className="flex flex-col md:gap-0 md:pl-3 gap-1 pl-4">
               <div>
                 <p className="font-sans font-medium text-turquoise-900 text-base mb-1">
                   What to Expect
@@ -24,9 +24,9 @@ const BabyPendingReport = () => {
               </p>
             </div>
           </div>
-          <div className="absolute -top-5 -left-6">
+          <div className="absolute -top-5 -left-6 md:-top-3 ">
             <Image
-              className="mb-4"
+              className="mb-4 md:w-[140px]"
               src="/baby_1.svg"
               height={210}
               width={155}
