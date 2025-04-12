@@ -15,7 +15,7 @@ const BabyReport = ({
 
   return (
     <div className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]">
-      <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[320px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
+      <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[300px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
         <div className="relative">
           <div className="flex flex-col h-full w-4/6 gap-3 float-right">
             <div className="text-center">
@@ -44,7 +44,7 @@ const BabyReport = ({
           </div>
           <div className="absolute -top-5 -left-6 md:-top-3 ">
             <Image
-              className="mb-4 md:w-[140px]"
+              className="mb-4 w-[140px]"
               src="/baby_1.svg"
               height={210}
               width={155}
