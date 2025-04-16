@@ -1,5 +1,5 @@
 "use client";
-import { firstAppointmentTimeSlots, monthNames } from "@/constants/user";
+import { firstAppointmentTimeSlots, monthNames } from "@/constants/appointment";
 import { useMemo, useState } from "react";
 import DateSlotHeader from "./DateSlotHeader";
 import { DateSlotButton } from "@/components/Buttons";

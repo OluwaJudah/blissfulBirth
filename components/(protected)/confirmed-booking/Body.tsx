@@ -4,7 +4,7 @@ import TimeSlot from "./TimeSlot";
 import Link from "next/link";
 import type { IAppointment } from "@/definitions/appointment";
 import { calculateTrimester } from "@/utils";
-import { trimesters } from "@/constants/user";
+import { trimesters } from "@/constants/appointment";
 import Note from "./Note";
 
 const Body = ({ appointment }: { appointment: IAppointment }) => {

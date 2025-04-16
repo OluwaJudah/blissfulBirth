@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { calculateTrimester } from "@/utils";
-import { trimesters } from "@/constants/user";
+import { trimesters } from "@/constants/appointment";
 
 const NextAppointment = ({
   appointment,

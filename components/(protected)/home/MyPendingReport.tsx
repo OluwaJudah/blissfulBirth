@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { calculateTrimester } from "@/utils";
-import { trimesters } from "@/constants/user";
+import { trimesters } from "@/constants/appointment";
 
 const MyPendingReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const trimester = calculateTrimester(pregnancyWeeks);
