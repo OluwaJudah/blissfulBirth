@@ -2,7 +2,7 @@
 import Location from "./Location";
 import { useState } from "react";
 import DateSlots from "./DateSlots";
-import { createFirstAppointment } from "@/actions/appointment";
+import { createAppointment } from "@/actions/appointment";
 import {
   CONFIRMED_APPOINTMENT,
   FIRST_APPOINTMENT,
@@ -27,7 +27,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
     }
 
     try {
-      await createFirstAppointment({
+      await createAppointment({
         date: selectedSlot,
         time,
         status: CONFIRMED_APPOINTMENT,

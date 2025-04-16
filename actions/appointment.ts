@@ -5,7 +5,7 @@ import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
 import { redirect } from "next/navigation";
 
-export const createFirstAppointment = async (appointmentData: IAppointment) => {
+export const createAppointment = async (appointmentData: IAppointment) => {
   await dbConnect();
 
   const session = await verifySession();
