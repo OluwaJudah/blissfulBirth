@@ -4,10 +4,11 @@ import { useState } from "react";
 import DateSlots from "./DateSlots";
 import { createFirstAppointment } from "@/actions/appointment";
 import {
+  CONFIRMED_APPOINTMENT,
   FIRST_APPOINTMENT,
   firstAppointmentTimeSlots,
   trimesters,
-} from "@/constants/user";
+} from "@/constants/appointment";
 import Notes from "./Notes";
 import { calculateTrimester } from "@/utils";
 
@@ -29,7 +30,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
       await createFirstAppointment({
         date: selectedSlot,
         time,
-        status: "confirmed",
+        status: CONFIRMED_APPOINTMENT,
         note,
         pregnancyWeeks,
         type: FIRST_APPOINTMENT,
