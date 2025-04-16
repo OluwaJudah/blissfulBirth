@@ -1,4 +1,4 @@
-import { trimesters } from "@/constants/user";
+import { trimesters } from "@/constants/appointment";
 import { calculateTrimester } from "@/utils";
 import Image from "next/image";
 
