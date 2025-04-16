@@ -1,7 +1,19 @@
+import { appointmentWeeks } from "@/constants/appointment";
+
 export const calculateTrimester = (pregnancyWeeks: number) => {
   if (pregnancyWeeks <= 12) return 0;
   else if (pregnancyWeeks <= 27) return 1;
   return 2;
+};
+
+export const getNextAppointmentWeek = (currentWeek: number) => {
+  const currentIndex = appointmentWeeks.findIndex(
+    (week) => week === currentWeek
+  );
+  if (currentIndex + 1 < appointmentWeeks.length)
+    return appointmentWeeks[currentIndex + 1];
+
+  return 41;
 };
 
 export const calculatePregnancyWeeks = (

@@ -5,8 +5,16 @@ import { useState } from "react";
 import DateSlots from "./DateSlots";
 import { useRouter } from "next/navigation";
 import TimeSlot from "./TimeSlot";
+import { createAppointment } from "@/actions/appointment";
+import { APPOINTMENT, CONFIRMED_APPOINTMENT } from "@/constants/appointment";
 
-const Body = ({ from }: { from: string }) => {
+const Body = ({
+  from,
+  pregnancyWeeks,
+}: {
+  from: string;
+  pregnancyWeeks: number;
+}) => {
   const [selectedDateSlot, setSelectedDateSlot] = useState("");
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const [note, setNote] = useState("");
@@ -14,7 +22,7 @@ const Body = ({ from }: { from: string }) => {
   const [timeError, setTimeError] = useState("");
 
   const router = useRouter();
-  const submit = () => {
+  const submit = async () => {
     let isError = false;
     if (selectedDateSlot === "") {
       setDateError("Please select a Date");
@@ -28,8 +36,16 @@ const Body = ({ from }: { from: string }) => {
 
     if (isError) return;
 
-    console.log({ note, selectedDateSlot, selectedTimeSlot });
-    router.push(`/confirmed-booking`);
+    try {
+      await createAppointment({
+        date: selectedDateSlot,
+        time: selectedTimeSlot,
+        status: CONFIRMED_APPOINTMENT,
+        note,
+        pregnancyWeeks,
+        type: APPOINTMENT,
+      });
+    } catch (err) {}
   };
 
   return (
