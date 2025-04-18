@@ -1,11 +1,17 @@
 import ToBeBabyReport from "@/components/(protected)/pending-appointments/[id]/my-baby/ToBeBabyReport";
 import ToBeFetus from "@/components/(protected)/pending-appointments/[id]/my-baby/ToBeFetus";
 
-export default function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  
   return (
     <>
-      <ToBeFetus />
-      <ToBeBabyReport />
+      <ToBeFetus pregnancyWeeks={+id} />
+      <ToBeBabyReport pregnancyWeeks={+id} />
     </>
   );
 }

@@ -1,6 +1,13 @@
+import { trimesters } from "@/constants/appointment";
+import { calculateTrimester, getPregnancyMonth } from "@/utils";
 import Image from "next/image";
 
-const ToBeMommy = () => {
+const ToBeMommy = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
+  const month = getPregnancyMonth(pregnancyWeeks);
+  const trimester = calculateTrimester(pregnancyWeeks);
+  const trimesterStr = trimesters[trimester];
+  const daysPregnant = pregnancyWeeks * 7;
+
   return (
     <div className="w-full p-5">
       <div className="h-[270px] flex items-center justify-center">
@@ -18,10 +25,10 @@ const ToBeMommy = () => {
           </div>
           <div className="flex flex-col items-center gap-1">
             <span className="font-mono font-bold text-turquoise-800 text-lg tracking-tight leading-none">
-              2nd Month
+              {month} Month
             </span>
             <p className="font-sans text-turquoise-800 text-base tracking-tight leading-none">
-              175 days so far - 2nd Trimester
+              {daysPregnant} days so far - {trimesterStr} Trimester
             </p>
           </div>
         </div>
