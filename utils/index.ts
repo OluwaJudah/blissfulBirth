@@ -6,6 +6,13 @@ export const calculateTrimester = (pregnancyWeeks: number) => {
   return 2;
 };
 
+export const getPregnancyMonth = (weeksPregnant: number) => {
+  const months = Math.floor(weeksPregnant / 4.345);
+  const s = ["th", "st", "nd", "rd"],
+    v = months % 100;
+  return months + (s[(v - 20) % 10] || s[v] || s[0]);
+};
+
 export const getNextAppointmentWeek = (currentWeek: number) => {
   const currentIndex = appointmentWeeks.findIndex(
     (week) => week === currentWeek
@@ -23,6 +30,16 @@ export const calculatePregnancyWeeks = (
   const differenceInTime =
     new Date(currentDate).getTime() - new Date(lastMenstrualDate).getTime();
   return Math.floor(differenceInTime / (1000 * 60 * 60 * 24 * 7));
+};
+
+export const getPregnancyDays = (lmpDateStr: string): number => {
+  const lmpDate = new Date(lmpDateStr);
+  const today = new Date();
+
+  const diffTime = today.getTime() - lmpDate.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  return diffDays;
 };
 
 export const calculateDueDate = (lastMenstrualDate: Date) => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div style={{ zIndex: 999 }} className="pb-[20px] sticky top-0">
+    <div style={{ zIndex: 999 }} className=" sticky top-0">
       <div className="px-4 flex content-center justify-between py-4 bg-white">
         <div className="flex items-center gap-3">
           <BackButtonWrapper url="/home">

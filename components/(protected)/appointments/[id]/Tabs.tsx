@@ -9,16 +9,17 @@ const Tabs = () => {
   const baseUrl = `/appointments/${id}`;
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
+  const fromParams = from === "home" ? "?from=home" : "";
   const tabs = [
     {
       name: "My Baby",
-      url: `${baseUrl}/my-baby${from === "home" && "?from=home"}`,
+      url: `${baseUrl}/my-baby${fromParams}`,
       pathname: `${baseUrl}/my-baby`,
       icon: "/baby_2.png",
     },
     {
       name: "My Body",
-      url: `${baseUrl}/my-body${from === "home" && "?from=home"}`,
+      url: `${baseUrl}/my-body${fromParams}`,
       pathname: `${baseUrl}/my-body`,
       icon: "/pregnant_4.png",
     },

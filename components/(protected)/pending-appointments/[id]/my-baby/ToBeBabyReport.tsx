@@ -1,4 +1,6 @@
-const ToBeBabyReport = () => {
+import { pregnancySymptoms } from "@/constants/appointment";
+
+const ToBeBabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex flex-col gap-2 px-4">
@@ -9,7 +11,7 @@ const ToBeBabyReport = () => {
           <div className="border border-t-turquoise-200 w-1/2 mx-auto"></div>
         </div>
         <p className="font-sans tracking-tight text-turquoise-800">
-          No baby yet — just the beginning of your menstrual cycle.
+          {pregnancySymptoms[pregnancyWeeks - 1].baby}
         </p>
       </div>
     </div>

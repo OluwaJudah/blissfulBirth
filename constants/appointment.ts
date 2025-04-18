@@ -23,45 +23,211 @@ export const monthNames = [
   "December",
 ];
 
-export const pregnancyWeeks = [
-  "Week 1: First day of your last menstrual period. Not technically pregnant yet.",
-  "Week 2: Ovulation likely occurs. Conception may happen now.",
-  "Week 3: Fertilization occurs; zygote forms and begins dividing.",
-  "Week 4: Implantation happens. hCG hormone begins to rise.",
-  "Week 5: Missed period. Positive pregnancy test possible.",
-  "Week 6: Heartbeat may be detectable via ultrasound.",
-  "Week 7: Baby's brain and face start forming.",
-  "Week 8: Arms and legs are growing. Morning sickness may increase.",
-  "Week 9: Facial features are more distinct. Embryo starts moving.",
-  "Week 10: Fetus status! Organs are developed. Fingernails forming.",
-  "Week 11: Baby's bones are hardening. Genitals begin forming.",
-  "Week 12: First trimester ends soon. Fingernails and intestines develop.",
-  "Week 13: Second trimester begins. Baby has fingerprints.",
-  "Week 14: Facial expressions develop. You might feel more energetic.",
-  "Week 15: Baby can sense light. You may see baby on ultrasound.",
-  "Week 16: Muscles and bones continue developing. May detect gender.",
-  "Week 17: Baby's fat stores begin forming. Movement may be felt soon.",
-  "Week 18: Ears in final position. Baby may hear your voice.",
-  "Week 19: Vernix (protective coating) forms. Genitals visible on scan.",
-  "Week 20: Halfway! Anomaly scan typically done now.",
-  "Week 21: Baby starts swallowing and has a sleeping pattern.",
-  "Week 22: Lanugo (fine hair) covers baby. Taste buds form.",
-  "Week 23: Lungs developing. Baby responds to sound and touch.",
-  "Week 24: Viability milestone—baby could survive with care if born.",
-  "Week 25: Baby's nervous system maturing. May respond to your voice.",
-  "Week 26: Eyes start to open. Lungs continue to develop.",
-  "Week 27: End of second trimester. Brain activity increases.",
-  "Week 28: Third trimester begins. Baby's kicks more noticeable.",
-  "Week 29: Muscles and lungs continue maturing.",
-  "Week 30: Baby gaining weight steadily. May turn head-down soon.",
-  "Week 31: Central nervous system controls body temp.",
-  "Week 32: Skin smoothing out. Baby practices breathing.",
-  "Week 33: Skull soft and flexible. Baby's immune system building.",
-  "Week 34: Fingernails reach fingertips. More fat accumulates.",
-  "Week 35: Organs nearly ready. Baby’s head may drop (lightening).",
-  "Week 36: Baby considered early term. More frequent urination.",
-  "Week 37: Full-term approaching. Baby preparing for birth.",
-  "Week 38: Baby gaining half an ounce a day. Lungs mature.",
-  "Week 39: Full term! Baby ready for life outside the womb.",
-  "Week 40: Estimated due date! Labor could begin any time.",
+export const pregnancySymptoms = [
+  {
+    week: 1,
+    mother:
+      "This is the first day of your last period — you’re not pregnant yet, but your body is preparing for ovulation.",
+    baby: "No baby yet — just the beginning of your menstrual cycle.",
+  },
+  {
+    week: 2,
+    mother:
+      "Ovulation may occur this week. Your body releases an egg, ready for fertilization.",
+    baby: "Still no baby, but conception may happen if sperm meets egg.",
+  },
+  {
+    week: 3,
+    mother: "Fertilization may occur now. You may not feel anything yet.",
+    baby: "The fertilized egg is now a zygote and begins dividing.",
+  },
+  {
+    week: 4,
+    mother: "You might experience implantation spotting and mild cramps.",
+    baby: "The embryo implants into the uterus. hCG hormone production begins.",
+  },
+  {
+    week: 5,
+    mother: "You may miss your period and get a positive pregnancy test.",
+    baby: "The embryo is growing rapidly and the neural tube is forming.",
+  },
+  {
+    week: 6,
+    mother: "Nausea and fatigue may start. Your body is adjusting to hormones.",
+    baby: "The heart is beating and facial features begin to form.",
+  },
+  {
+    week: 7,
+    mother:
+      "Breasts may feel tender. Food aversions and mood swings are common.",
+    baby: "Arms and legs begin forming. Brain growing rapidly.",
+  },
+  {
+    week: 8,
+    mother: "You may have frequent urination and morning sickness.",
+    baby: "Fingers and toes are developing. Baby is constantly moving (though you won’t feel it yet).",
+  },
+  {
+    week: 9,
+    mother: "Your uterus is growing. You might feel bloated or constipated.",
+    baby: "Baby’s heartbeat can be detected via ultrasound. Eyes and ears forming.",
+  },
+  {
+    week: 10,
+    mother: "Symptoms may intensify — nausea, mood swings, and fatigue.",
+    baby: "All vital organs are formed. Baby is now officially a fetus.",
+  },
+  {
+    week: 11,
+    mother: "You might notice changes in hair and nails. Bloating may persist.",
+    baby: "Fingers and toes are no longer webbed. External genitals begin forming.",
+  },
+  {
+    week: 12,
+    mother:
+      "Your uterus is rising above your pelvis. Morning sickness may ease.",
+    baby: "Reflexes are developing. Baby may start to make movements.",
+  },
+  {
+    week: 13,
+    mother: "Welcome to the second trimester! You may feel more energized.",
+    baby: "Vocal cords and teeth start to develop. Baby's head is more proportionate.",
+  },
+  {
+    week: 14,
+    mother:
+      "Your skin may glow. Some women develop a linea nigra (dark line on belly).",
+    baby: "Facial expressions develop. Baby can squint and frown.",
+  },
+  {
+    week: 15,
+    mother: "You might notice a baby bump starting. Weight gain begins.",
+    baby: "Bones hardening. Baby might respond to light and sound soon.",
+  },
+  {
+    week: 16,
+    mother: "You may feel fluttering movements (quickening) soon.",
+    baby: "Muscles strengthening. Baby’s eyes can move slightly.",
+  },
+  {
+    week: 17,
+    mother: "Increased appetite and energy may return.",
+    baby: "Fat stores begin forming. Skeleton is changing from cartilage to bone.",
+  },
+  {
+    week: 18,
+    mother: "You may feel baby kicks! Backaches may start.",
+    baby: "Ears are in final position. Baby can hear sounds now.",
+  },
+  {
+    week: 19,
+    mother: "Stretch marks may appear. Skin may feel itchy.",
+    baby: "Vernix caseosa forms — a protective coating on baby’s skin.",
+  },
+  {
+    week: 20,
+    mother: "Halfway there! Anatomy scan is usually done now.",
+    baby: "Baby is swallowing, and digestive system is developing.",
+  },
+  {
+    week: 21,
+    mother: "You may feel strong kicks. Leg cramps or swelling can begin.",
+    baby: "Baby is gaining weight. Movements become more coordinated.",
+  },
+  {
+    week: 22,
+    mother: "Stretch marks and skin changes continue.",
+    baby: "Lips, eyelids, and eyebrows are formed. Taste buds are developing.",
+  },
+  {
+    week: 23,
+    mother: "You may notice Braxton Hicks contractions.",
+    baby: "Lungs are developing. Baby can hear and may respond to your voice.",
+  },
+  {
+    week: 24,
+    mother: "You may experience lower back pain and bloating.",
+    baby: "Baby reaches viability outside the womb with intensive care.",
+  },
+  {
+    week: 25,
+    mother: "Shortness of breath and frequent urination increase.",
+    baby: "Baby’s skin is wrinkled, but fat is starting to build.",
+  },
+  {
+    week: 26,
+    mother: "You might notice more vivid dreams and insomnia.",
+    baby: "Eyes begin to open. Lungs continue to develop.",
+  },
+  {
+    week: 27,
+    mother: "End of second trimester. Fatigue may return.",
+    baby: "Brain tissue is developing rapidly. Hearing is fully functional.",
+  },
+  {
+    week: 28,
+    mother: "Welcome to the third trimester! You might feel more tired.",
+    baby: "Eyes can open and close. Dream (REM) sleep begins.",
+  },
+  {
+    week: 29,
+    mother: "You may experience heartburn and shortness of breath.",
+    baby: "Muscles and lungs are maturing. Baby is growing steadily.",
+  },
+  {
+    week: 30,
+    mother: "Your belly is expanding. Balance may feel off.",
+    baby: "Bone marrow is producing red blood cells. Brain growth continues.",
+  },
+  {
+    week: 31,
+    mother: "Sleep may become uncomfortable. Frequent urination continues.",
+    baby: "Baby can turn head side to side. A layer of fat is developing.",
+  },
+  {
+    week: 32,
+    mother: "You may feel clumsy and experience Braxton Hicks contractions.",
+    baby: "Baby’s toenails and fingernails are fully formed.",
+  },
+  {
+    week: 33,
+    mother: "You may notice colostrum leakage from breasts.",
+    baby: "Skull remains soft and flexible. Immune system developing.",
+  },
+  {
+    week: 34,
+    mother: "Pelvic pressure and leg cramps may increase.",
+    baby: "Baby’s skin is smoother. Lungs almost fully mature.",
+  },
+  {
+    week: 35,
+    mother: "Your body is preparing for labor. Baby may drop lower.",
+    baby: "Kidneys are fully developed. Liver is processing waste.",
+  },
+  {
+    week: 36,
+    mother: "You may have difficulty sleeping and feel heavier.",
+    baby: "Baby is gaining weight rapidly and practicing breathing.",
+  },
+  {
+    week: 37,
+    mother: "You’re considered early term. Nesting instinct may kick in.",
+    baby: "Baby’s organs are ready. Head may be engaged in pelvis.",
+  },
+  {
+    week: 38,
+    mother: "Labor signs may start. Keep hospital bag ready.",
+    baby: "Lanugo (fine hair) is shedding. Baby’s brain still developing.",
+  },
+  {
+    week: 39,
+    mother: "You’re full term. Contractions may increase.",
+    baby: "Baby’s lungs are mature. Fat continues to build for temperature regulation.",
+  },
+  {
+    week: 40,
+    mother:
+      "You’ve reached your due date! Be ready for signs of labor any time.",
+    baby: "Baby is fully developed and ready for birth. About the size of a watermelon.",
+  },
 ];
