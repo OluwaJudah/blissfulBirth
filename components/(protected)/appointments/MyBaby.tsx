@@ -4,14 +4,16 @@ import { appointmentWeeks } from "@/constants/appointment";
 import BabyPendingReport from "./BabyPendingReport";
 
 const MyBaby = () => {
+  const lastMenstrualWeeks = 17;
+  const weeks = appointmentWeeks.filter((w) => w >= lastMenstrualWeeks);
   const pregnancyWeeks = 24;
 
   return (
     <div className="flex flex-col gap-y-4">
       <p className="font-mono font-bold text-turquoise-900">My Appointments</p>
       <div className="">
-        <EmblaCarouselWrapper2 pregnancyWeeks={pregnancyWeeks}>
-          {appointmentWeeks.map((w) =>
+        <EmblaCarouselWrapper2 weeks={weeks} pregnancyWeeks={pregnancyWeeks}>
+          {weeks.map((w) =>
             pregnancyWeeks >= w ? (
               <BabyReport key={w} pregnancyWeeks={w} />
             ) : (

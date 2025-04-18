@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { appointmentWeeks } from "@/constants/appointment";
 
 const EmblaCarouselWrapper = ({
+  weeks,
   pregnancyWeeks,
   children,
 }: {
+  weeks: number[];
   pregnancyWeeks: number;
   children: React.ReactNode;
 }) => {
@@ -16,7 +18,7 @@ const EmblaCarouselWrapper = ({
   const [transform, setTransform] = useState("");
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
-
+  
   useEffect(() => {
     setTimeout(() => setTransform("translate3d(-7px, 0px, 0px)"), 0);
   }, []);
@@ -24,14 +26,14 @@ const EmblaCarouselWrapper = ({
   return (
     <section className="embla flex flex-col gap-3">
       <div className="overflow-x-auto pb-3">
-        <div className="embla__dots flex items-center px-1 gap-4 w-[668px]">
+        <div className={`flex px-1 gap-4 w-[668px]`}>
           {scrollSnaps.map((_, index) => {
             const selected =
               index === selectedIndex
                 ? "bg-pinklet-500 text-white"
                 : "border border-pinklet-400";
             const completed =
-              appointmentWeeks[index] <= pregnancyWeeks
+              weeks[index] <= pregnancyWeeks
                 ? "bg-pinklet-400 text-white border-none"
                 : "";
 
@@ -41,7 +43,7 @@ const EmblaCarouselWrapper = ({
                 key={index}
                 className={`w-8 h-8 flex justify-center items-center cursor-pointer ${selected} ${completed} rounded-full`}
               >
-                <span className="">{appointmentWeeks[index]}</span>
+                <span className="">{weeks[index]}</span>
               </div>
             );
           })}
