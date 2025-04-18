@@ -25,7 +25,7 @@ const NextAppointment = () => {
             </div>
             <div className="flex gap-3 items-center">
               <Image src="/pin.svg" height={23} width={23} alt="pin" />
-              <p className="font-sans font-medium text-black text-sm">
+              <p className="font-sans font-medium text-black text-sm md:tracking-normal tracking-tight">
                 200 Sanders Creek Rd, Joha...
               </p>
             </div>

@@ -19,7 +19,7 @@ const Times = ({
               : "bg-white border border-turquoise-100 hover:bg-pinklet-500 hover:text-white text-turquoise-900";
           return (
             <div key={t} className="relative">
-              <div className="absolute -right-1 -top-2 w-[20] h-[20] bg-pinklet-300 text-black rounded-full text-center font-semibold text-sm">
+              <div className="absolute -right-1 -top-2 w-[20px] h-[20px] bg-pinklet-300 text-black rounded-full text-center font-semibold text-sm">
                 4
               </div>
               <button
