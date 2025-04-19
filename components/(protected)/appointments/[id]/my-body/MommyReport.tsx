@@ -49,10 +49,10 @@ const MommyReport = async ({ id }: { id: string }) => {
         </div>{" "}
         <div className="flex justify-between p-6 bg-turquoise-200 rounded-3xl">
           <p className="font-sans text-black text-lg tracking-tight leading-none">
-            Blood Pressurre
+            Blood Pressure
           </p>
           <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-            <span className="mr-2">{motherBloodPressure}</span>'C
+            <span className="mr-2">{motherBloodPressure}</span>
           </p>
         </div>{" "}
         <div className="flex justify-between p-6 bg-turquoise-200 rounded-3xl">

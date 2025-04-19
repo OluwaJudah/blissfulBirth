@@ -8,7 +8,7 @@ import BabyPendingReport from "./BabyPendingReport";
 import {
   getAppointments,
   getBabyReports,
-  getLastAppointmentData,
+  getNextAppointmentData,
 } from "@/data/appointment";
 
 const generateBabyReport = (babyReports: any[], appointments: any[]) => {
@@ -37,11 +37,11 @@ const generateBabyReport = (babyReports: any[], appointments: any[]) => {
 const MyBaby = async () => {
   const appointments = (await getAppointments()) || [];
   const appointmentIds = appointments?.map((a) => a._id.toString()) || [];
-  const babyReports =
-    (await getBabyReports(appointmentIds)) || [];
-  const babyReport = generateBabyReport(babyReports, appointments);
+  const babyReports = (await getBabyReports(appointmentIds)) || [];
+  const generateBabyData = generateBabyReport(babyReports, appointments);
+  console.log({ generateBabyData });
 
-  const lastAppointment = await getLastAppointmentData();
+  const lastAppointment = await getNextAppointmentData();
   let pregnancyWeeks = lastAppointment?.pregnancyWeeks || 0;
   const isCompleted = lastAppointment?.status === COMPLETED_APPOINTMENT;
 
@@ -54,7 +54,7 @@ const MyBaby = async () => {
             pregnancyWeeks > w || isCompleted ? (
               <BabyReport
                 key={w}
-                babyReport={babyReport[w]}
+                babyReport={generateBabyData[w]}
                 pregnancyWeeks={w}
               />
             ) : (

@@ -2,16 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { calculateTrimester } from "@/utils";
 import { trimesters } from "@/constants/appointment";
+import { getMotherReport } from "@/data/appointment";
 
-const MyReport = ({
+const MyReport = async ({
+  appointmentId,
   pregnancyWeeks,
-  lastAppointment,
 }: {
+  appointmentId: string;
   pregnancyWeeks: number;
-  lastAppointment: any;
 }) => {
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
+  const motherReport = await getMotherReport(appointmentId);
+  if (!motherReport) return null;
+
+  const { motherBloodPressure, motherWeight } = motherReport;
 
   return (
     <div className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]">
@@ -28,7 +33,7 @@ const MyReport = ({
                 Blood Pressure
               </p>
               <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                120/80
+                {motherBloodPressure}
               </span>
             </div>
             <div className="flex flex-col gap-1 items-center">
@@ -36,14 +41,14 @@ const MyReport = ({
                 Weight
               </p>
               <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                110kg
+                {motherWeight}kg
               </span>
             </div>
           </div>
           <div className="w-full">
             <Link
               className="flex items-center mx-auto bg-turquoise-700 hover:bg-turquoise-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href="/appointments/12/my-body?from=home"
+              href={`/appointments/${appointmentId}/my-body?pregnancyWeeks=${pregnancyWeeks}&from=home`}
             >
               <p className="text-center w-full text-sm">View Report</p>
             </Link>
