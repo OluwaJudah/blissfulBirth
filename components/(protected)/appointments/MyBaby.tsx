@@ -50,17 +50,18 @@ const MyBaby = async () => {
       <p className="font-mono font-bold text-turquoise-900">My Appointments</p>
       <div className="">
         <EmblaCarouselWrapper2 pregnancyWeeks={pregnancyWeeks}>
-          {appointmentWeeks.map((w) =>
-            pregnancyWeeks > w || isCompleted ? (
-              <BabyReport
-                key={w}
-                babyReport={generateBabyData[w]}
-                pregnancyWeeks={w}
-              />
-            ) : (
-              <BabyPendingReport key={w} pregnancyWeeks={w} />
-            )
-          )}
+          {generateBabyData &&
+            appointmentWeeks.map((w) =>
+              pregnancyWeeks > w || isCompleted ? (
+                <BabyReport
+                  key={w}
+                  babyReport={generateBabyData[w] || {}}
+                  pregnancyWeeks={w}
+                />
+              ) : (
+                <BabyPendingReport key={w} pregnancyWeeks={w} />
+              )
+            )}
         </EmblaCarouselWrapper2>
       </div>
     </div>
