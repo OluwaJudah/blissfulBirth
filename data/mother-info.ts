@@ -12,7 +12,5 @@ export const getMotherInfoData = async (fields: string) => {
 
   const userId = session?.userId;
 
-  const lastMenstrualDate = await MotherInfo.findOne({ userId }, fields);
-
-  return lastMenstrualDate;
+  return await MotherInfo.findOne({ userId }, fields);
 };

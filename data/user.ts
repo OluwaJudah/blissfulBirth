@@ -1,21 +1,10 @@
-import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import User from "@/models/user";
 import { cache } from "react";
 
 export const getUser = cache(async (userData: any) => {
-  // const session = await verifySession();
-  // if (!session) return null;
-
-  try {
-    await dbConnect();
-    const user = await User.findOne(userData);
-
-    return user;
-  } catch (error) {
-    console.log("Failed to fetch user");
-    return null;
-  }
+  await dbConnect();
+  return await User.findOne(userData);
 });
 
 export const isUserExists = async (username: string) => {
