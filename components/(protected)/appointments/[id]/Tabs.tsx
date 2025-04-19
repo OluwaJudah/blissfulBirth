@@ -6,20 +6,22 @@ import { useParams, usePathname, useSearchParams } from "next/navigation";
 const Tabs = () => {
   const { id } = useParams<{ id: string }>();
   const pathname = usePathname();
-  const baseUrl = `/appointments/${id}`;
   const searchParams = useSearchParams();
+  const pregnancyWeeks = searchParams.get("pregnancyWeeks");
   const from = searchParams.get("from");
-  const fromParams = from === "home" ? "?from=home" : "";
+
+  const baseUrl = `/appointments/${id}`;
+  const fromParam = from === "home" ? "?from=home" : "";
   const tabs = [
     {
       name: "My Baby",
-      url: `${baseUrl}/my-baby${fromParams}`,
+      url: `${baseUrl}/my-baby?pregnancyWeeks=${pregnancyWeeks}&from=${fromParam}`,
       pathname: `${baseUrl}/my-baby`,
       icon: "/baby_2.png",
     },
     {
       name: "My Body",
-      url: `${baseUrl}/my-body${fromParams}`,
+      url: `${baseUrl}/my-body?pregnancyWeeks=${pregnancyWeeks}&from=${fromParam}`,
       pathname: `${baseUrl}/my-body`,
       icon: "/pregnant_4.png",
     },

@@ -1,6 +1,13 @@
+import { getBabyReport } from "@/data/appointment";
 import { ChevronDown } from "lucide-react";
 
-const BabyReport = () => {
+const BabyReport = async ({ id }: { id: string }) => {
+  const babyReport = await getBabyReport(id);
+  if (!babyReport) return null;
+
+  const { babyHeight, babyPosition, babyWeight, babyHeartRate, babyNote } =
+    babyReport;
+
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex space-x-8">
@@ -10,7 +17,7 @@ const BabyReport = () => {
               Weight
             </p>
             <span className="font-mono font-bold text-black text-3xl tracking-tight leading-none">
-              <span className="mr-2">24</span>g
+              <span className="mr-2">{babyWeight}</span>g
             </span>
           </div>
         </div>
@@ -20,7 +27,7 @@ const BabyReport = () => {
               Height
             </p>
             <span className="font-mono font-bold text-black text-3xl tracking-tight leading-none">
-              <span className="mr-2">24</span>cm
+              <span className="mr-2">{babyHeight}</span>cm
             </span>
           </div>
         </div>
@@ -31,7 +38,7 @@ const BabyReport = () => {
             Heart Rate
           </p>
           <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-            <span className="mr-1">24</span>bpm
+            <span className="mr-1">{babyHeartRate}</span>bpm
           </p>
         </div>{" "}
         <div className="flex justify-between p-6 bg-turquoise-200 rounded-3xl">
@@ -39,7 +46,7 @@ const BabyReport = () => {
             Position
           </p>
           <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-            Vertex
+            {babyPosition}
           </p>
         </div>{" "}
         <div className="flex justify-between px-6 py-5 bg-turquoise-200 rounded-3xl items-center">

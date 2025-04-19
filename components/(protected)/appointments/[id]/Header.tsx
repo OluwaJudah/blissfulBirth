@@ -1,11 +1,11 @@
 "use client";
 import { BackArrowUrlButton } from "@/components/Buttons";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const Header = () => {
-  const { id } = useParams<{ id: string }>();
   const searchParams = useSearchParams();
   const from = searchParams.get("from");
+  const pregnancyWeeks = searchParams.get("pregnancyWeeks");
 
   return (
     <div className="px-4 flex content-center justify-between pt-4 pb-7">
@@ -16,7 +16,7 @@ const Header = () => {
           />
         </div>
         <span className="font-mono font-semibold text-turquoise-900 text-xl">
-          Week {id}
+          Week {pregnancyWeeks}
         </span>
       </div>
     </div>
