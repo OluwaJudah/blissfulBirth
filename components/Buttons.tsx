@@ -2,6 +2,7 @@
 import { logout } from "@/actions/auth";
 import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React from "react";
 
 export const SubmitButton = ({
@@ -218,3 +219,29 @@ export const DateSlotButton = ({
     </span>
   </button>
 );
+
+export const NextAppointmentButton = ({
+  id,
+  nextPregnancyWeeks,
+  isCofirmed,
+}: {
+  id: string;
+  nextPregnancyWeeks: number;
+  isCofirmed: boolean;
+}) => {
+  return isCofirmed ? (
+    <Link
+      className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
+      href={`/confirmed-booking?bookingId=${id}&from=home`}
+    >
+      <p className="text-center w-full text-sm">View Details</p>
+    </Link>
+  ) : (
+    <Link
+      className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
+      href={`/confirm-appointment?from=home&appointmentWeek=${nextPregnancyWeeks}`}
+    >
+      <p className="text-center w-full text-sm">Book Appointment</p>
+    </Link>
+  );
+};

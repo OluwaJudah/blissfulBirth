@@ -1,23 +1,20 @@
 import EmblaCarouselWrapper from "../carousel/EmblaCarouselWrapper";
 import MyReport from "./MyReport";
 import MyPendingReport from "./MyPendingReport";
+import { getLastAppointmentData } from "@/data/appointment";
 
-const MyBody = ({
-  pregnancyWeeks,
-  lastAppointment,
-}: {
-  pregnancyWeeks: number;
-  lastAppointment: any;
-}) => {
+const MyBody = async ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
+  const appointment = await getLastAppointmentData();
+
   return (
     <div className="flex flex-col gap-y-4">
       <p className="font-mono font-bold text-turquoise-900">My Body</p>
       <div className="">
         <EmblaCarouselWrapper>
-          {lastAppointment && (
+          {appointment && (
             <MyReport
-              lastAppointment={lastAppointment}
-              pregnancyWeeks={pregnancyWeeks}
+              appointmentId={appointment._id.toString()}
+              pregnancyWeeks={appointment.pregnancyWeeks}
             />
           )}
 

@@ -1,9 +1,6 @@
 import Header from "@/components/(protected)/Header";
 import Body from "@/components/(protected)/home/Body";
-import {
-  getLastAppointmentData,
-  getNextAppointmentData,
-} from "@/data/appointment";
+import { getLastAppointmentData } from "@/data/appointment";
 import { getMotherInfoData } from "@/data/mother-info";
 import { calculateDueDate } from "@/utils";
 
@@ -23,29 +20,17 @@ export default async function HomePage() {
     pregnancyWeeks: 0,
   };
 
-  const appointment = await getNextAppointmentData(
-    "pregnancyWeeks date time status"
-  );
-  const lastAppointment = await getLastAppointmentData(
-    "pregnancyWeeks date time status"
-  );
+  const appointment = await getLastAppointmentData();
 
   const appointmentData = appointment
     ? { ...appointment, _id: appointment._id.toString() }
     : appointmentDefault;
-  const lastAppointmentData = lastAppointment
-    ? { ...lastAppointment, _id: lastAppointment._id.toString() }
-    : null;
 
   return (
     <div className="flex h-screen items-center">
       <main className="pb-[40px] md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-x-hidden">
         <Header title={title} imgUrl={imgUrl} />
-        <Body
-          appointment={appointmentData}
-          dueDate={dueDate}
-          lastAppointment={lastAppointmentData}
-        />
+        <Body appointment={appointmentData} dueDate={dueDate} />
       </main>
     </div>
   );

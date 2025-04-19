@@ -7,7 +7,6 @@ import DueDate from "./DueDate";
 const Body = ({
   appointment,
   dueDate,
-  lastAppointment,
 }: {
   appointment: {
     _id: string;
@@ -17,21 +16,15 @@ const Body = ({
     pregnancyWeeks: number;
   };
   dueDate: string;
-  lastAppointment: any;
 }) => {
   const { pregnancyWeeks } = appointment;
+
   return (
     <div className="px-[20px] flex flex-col gap-[30px] overflow-x-hidden">
-      <NextAppointment appointment={appointment} />
+      <NextAppointment />
       <div className="flex flex-col gap-[15px]">
-        <MyBaby
-          pregnancyWeeks={pregnancyWeeks}
-          lastAppointment={lastAppointment}
-        />
-        <MyBody
-          pregnancyWeeks={pregnancyWeeks}
-          lastAppointment={lastAppointment}
-        />
+        <MyBaby pregnancyWeeks={pregnancyWeeks} />
+        <MyBody pregnancyWeeks={pregnancyWeeks} />
       </div>
       <DueDate dueDate={dueDate} />
     </div>

@@ -1,21 +1,25 @@
-import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { calculateTrimester, getNextAppointmentWeek } from "@/utils";
 import { CONFIRMED_APPOINTMENT, trimesters } from "@/constants/appointment";
+import { getNextAppointmentData } from "@/data/appointment";
+import { NextAppointmentButton } from "@/components/Buttons";
 
-const NextAppointment = ({
-  appointment,
-}: {
-  appointment: {
-    _id: string;
-    date: string;
-    time: string;
-    status: string;
-    pregnancyWeeks: number;
+const NextAppointment = async () => {
+  const appointment = await getNextAppointmentData();
+
+  const appointmentDefault = {
+    _id: "",
+    date: "",
+    time: "",
+    status: "",
+    pregnancyWeeks: 0,
   };
-}) => {
-  const { date, time, status, pregnancyWeeks } = appointment;
+
+  const appointmentData = appointment
+    ? { ...appointment, _id: appointment._id.toString() }
+    : appointmentDefault;
+
+  const { date, time, status, pregnancyWeeks } = appointmentData;
   const isCofirmed = status === CONFIRMED_APPOINTMENT;
   const nextPregnancyWeeks = isCofirmed
     ? pregnancyWeeks
@@ -52,21 +56,11 @@ const NextAppointment = ({
             </div>
           </div>
           <div className="w-full">
-            {isCofirmed ? (
-              <Link
-                className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
-                href={`/confirmed-booking?bookingId=${appointment._id}`}
-              >
-                <p className="text-center w-full text-sm">View Details</p>
-              </Link>
-            ) : (
-              <Link
-                className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
-                href={`/confirm-appointment?from=home&appointmentWeek=${nextPregnancyWeeks}`}
-              >
-                <p className="text-center w-full text-sm">Book Appointment</p>
-              </Link>
-            )}
+            <NextAppointmentButton
+              id={appointmentData._id}
+              nextPregnancyWeeks={nextPregnancyWeeks}
+              isCofirmed={isCofirmed}
+            />
           </div>
         </div>
         <div className="absolute -bottom-10 md:-bottom-8 -right-3">

@@ -1,4 +1,5 @@
 "use server";
+import { COMPLETED_APPOINTMENT } from "@/constants/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
@@ -14,22 +15,7 @@ export const getAppointment = async (id: string) => {
   return await Appointment.findById(id, "date time status note pregnancyWeeks");
 };
 
-export const getNextAppointmentData = async (fields: string) => {
-  await dbConnect();
-
-  const session = await verifySession();
-  if (!session) return null;
-
-  const userId = session?.userId;
-  const appointment = await Appointment.find({ userId }, fields)
-    .sort({ createdAt: -1 })
-    .limit(1)
-    .lean();
-
-  return appointment[0];
-};
-
-export const getLastAppointmentData = async () => {
+export const getNextAppointmentData = async (fields = "") => {
   await dbConnect();
 
   const session = await verifySession();
@@ -44,7 +30,31 @@ export const getLastAppointmentData = async () => {
     .limit(1)
     .lean();
 
-  return appointment.length > 0 ? appointment[0] : null;
+  return appointment[0];
+};
+
+export const getLastAppointmentData = async () => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId;
+  const appointments = await Appointment.find(
+    { userId },
+    "pregnancyWeeks date time status"
+  )
+    .sort({ createdAt: -1 })
+    .lean();
+
+  if (appointments[0].status === COMPLETED_APPOINTMENT) return appointments[0];
+  if (
+    appointments.length > 1 &&
+    appointments[1].status === COMPLETED_APPOINTMENT
+  )
+    return appointments[1];
+
+  return null;
 };
 
 export const getAppointments = async (fields = "") => {
