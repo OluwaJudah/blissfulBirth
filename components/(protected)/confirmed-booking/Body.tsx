@@ -7,10 +7,17 @@ import { calculateTrimester } from "@/utils";
 import { trimesters } from "@/constants/appointment";
 import Note from "./Note";
 
-const Body = ({ appointment }: { appointment: IAppointment }) => {
+const Body = ({
+  appointment,
+  from,
+}: {
+  appointment: IAppointment;
+  from: string;
+}) => {
   const { date, time, pregnancyWeeks, note } = appointment;
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
+  const url = from === "home" ? "/home" : "/appointments";
 
   return (
     <>
@@ -42,7 +49,7 @@ const Body = ({ appointment }: { appointment: IAppointment }) => {
         <div className="w-full px-7">
           <Link
             className="flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]"
-            href="/home"
+            href={url}
           >
             <Home size={15} color="#fff" />
             <p className="text-center">Back to Home</p>
