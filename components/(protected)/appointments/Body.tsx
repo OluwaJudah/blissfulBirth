@@ -7,8 +7,10 @@ const Body = () => {
   return (
     <div className="px-[20px] flex flex-col gap-[30px]">
       <NextAppointment />
-      <MyBaby />
-      <DueDate />
+      <div className="flex flex-col gap-[10px]">
+        <MyBaby />
+        <DueDate />
+      </div>
     </div>
   );
 };

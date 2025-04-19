@@ -3,9 +3,16 @@ import { calculateTrimester } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const BabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
+const BabyReport = ({
+  pregnancyWeeks,
+  babyReport,
+}: {
+  pregnancyWeeks: number;
+  babyReport: { appointmentId: string; babyHeight: number; babyWeight: number };
+}) => {
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
+  const { appointmentId, babyHeight, babyWeight } = babyReport;
 
   return (
     <div className="embla__slide__1 h-[200px] md:w-[80px] w-[90px]">
@@ -17,13 +24,13 @@ const BabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
                 Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
-            <div className="flex justify-between px-2">
+            <div className="flex justify-between px-4">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Avg Size
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  14.2cm
+                  {babyHeight}cm
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
@@ -31,7 +38,7 @@ const BabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
                   Weight
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  300g
+                  {babyWeight}g
                 </span>
               </div>
             </div>
@@ -49,7 +56,7 @@ const BabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
         <div className="absolute bottom-0 w-full pb-5">
           <Link
             className="flex mx-auto items-center bg-turquoise-700 hover:bg-turquoise-700 text-white rounded-2xl w-[130px] h-[30px]"
-            href={`/appointments/${pregnancyWeeks}/my-baby`}
+            href={`/appointments/${appointmentId}/my-baby?pregnancyWeeks=${pregnancyWeeks}`}
           >
             <p className="text-center w-full text-sm">View Report</p>
           </Link>

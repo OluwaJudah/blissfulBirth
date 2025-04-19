@@ -24,7 +24,7 @@ const EmblaCarouselWrapper = ({
   return (
     <section className="embla flex flex-col gap-3">
       <div className="overflow-x-auto pb-3">
-        <div className="embla__dots flex items-center px-1 gap-4 w-[668px]">
+        <div className="flex px-1 gap-4 w-[668px]">
           {scrollSnaps.map((_, index) => {
             const selected =
               index === selectedIndex

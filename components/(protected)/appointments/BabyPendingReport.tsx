@@ -25,7 +25,7 @@ const BabyPendingReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
                 <div className="border border-t-turquoise-200 w-1/2"></div>
               </div>
               <p className="font-sans font-medium text-turquoise-900 text-sm">
-                Symptoms to expect for your baby in your 16 weeks
+                Symptoms to expect for your baby in your {pregnancyWeeks} weeks
               </p>
             </div>
           </div>
