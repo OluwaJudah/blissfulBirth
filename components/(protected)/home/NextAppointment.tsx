@@ -1,32 +1,21 @@
 import Image from "next/image";
-import { calculateTrimester, getNextAppointmentWeek } from "@/utils";
-import { CONFIRMED_APPOINTMENT, trimesters } from "@/constants/appointment";
-import { getNextAppointmentData } from "@/data/appointment";
+import { calculateTrimester } from "@/utils";
+import { trimesters } from "@/constants/appointment";
 import { NextAppointmentButton } from "@/components/Buttons";
 
-const NextAppointment = async () => {
-  const appointment = await getNextAppointmentData();
-
-  const appointmentDefault = {
-    _id: "",
-    date: "",
-    time: "",
-    status: "",
-    pregnancyWeeks: 0,
-  };
-
-  const appointmentData = appointment
-    ? { ...appointment, _id: appointment._id.toString() }
-    : appointmentDefault;
-
-  const { date, time, status, pregnancyWeeks } = appointmentData;
-  const isCofirmed = status === CONFIRMED_APPOINTMENT;
-  const nextPregnancyWeeks = isCofirmed
-    ? pregnancyWeeks
-    : getNextAppointmentWeek(pregnancyWeeks);
+const NextAppointment = async ({
+  appointmentId,
+  dateTime,
+  nextPregnancyWeeks,
+  isCofirmed,
+}: {
+  appointmentId: string;
+  dateTime: string;
+  nextPregnancyWeeks: number;
+  isCofirmed: boolean;
+}) => {
   const trimester = calculateTrimester(nextPregnancyWeeks);
   const trimesterStr = trimesters[trimester];
-  const dateTime = isCofirmed ? `${date} ${time}` : "To be Confirmed";
 
   return (
     <div className="flex flex-col gap-y-4">
@@ -57,7 +46,7 @@ const NextAppointment = async () => {
           </div>
           <div className="w-full">
             <NextAppointmentButton
-              id={appointmentData._id}
+              id={appointmentId}
               nextPregnancyWeeks={nextPregnancyWeeks}
               isCofirmed={isCofirmed}
             />
