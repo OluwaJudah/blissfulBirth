@@ -3,6 +3,7 @@ import { IAppointment } from "@/definitions/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
+import { Types } from "mongoose";
 import { redirect } from "next/navigation";
 
 export const createAppointment = async (appointmentData: IAppointment) => {
@@ -11,12 +12,12 @@ export const createAppointment = async (appointmentData: IAppointment) => {
   const session = await verifySession();
   if (!session) return null;
 
-  const userId = session?.userId;
+  const userId = session?.userId as string;
   let appointment = null;
   try {
     appointment = await Appointment.create({
       ...appointmentData,
-      userId,
+      userId: new Types.ObjectId(userId),
     });
   } catch (error) {
     throw new Error("Error creating Appointment:" + error);

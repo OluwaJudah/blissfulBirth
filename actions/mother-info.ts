@@ -14,6 +14,7 @@ import { verifySession } from "@/lib/dal";
 import BirthCompanion from "@/models/birth-companion";
 import BabyInfo from "@/models/baby-info";
 import MedicalHistory from "@/models/medical-history";
+import { Types } from "mongoose";
 
 export async function createMotherInfo(
   prevState: CreateMotherInfoFormState | undefined,
@@ -81,18 +82,21 @@ export const createMotherInfoData = async (
   const session = await verifySession();
   if (!session) return null;
 
-  const userId = session?.userId;
+  const userId = session?.userId as string;
   await MotherInfo.create({
     ...motherInfoData,
     dateOfBirth: new Date(motherInfoData.dateOfBirth),
     lastMenstrualDate: new Date(motherInfoData.lastMenstrualDate),
-    userId,
+    userId: new Types.ObjectId(userId),
   });
   await BirthCompanion.create({
     ...birthCompanion,
     dateOfBirth: new Date(motherInfoData.dateOfBirth),
-    userId,
+    userId: new Types.ObjectId(userId),
   });
-  await BabyInfo.create({ ...babyInfo, motherId: userId });
-  await MedicalHistory.create({ ...medicalHistory, userId });
+  await BabyInfo.create({ ...babyInfo, motherId: new Types.ObjectId(userId) });
+  await MedicalHistory.create({
+    ...medicalHistory,
+    userId: new Types.ObjectId(userId),
+  });
 };

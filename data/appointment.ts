@@ -5,6 +5,7 @@ import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
 import BabyReport from "@/models/baby-report";
 import MotherReport from "@/models/mother-report";
+import { Types } from "mongoose";
 
 export const getAppointment = async (id: string) => {
   await dbConnect();
@@ -21,9 +22,9 @@ export const getNextAppointmentData = async (fields = "") => {
   const session = await verifySession();
   if (!session) return null;
 
-  const userId = session?.userId;
+  const userId = session?.userId as string;
   const appointment = await Appointment.find(
-    { userId },
+    { userId: new Types.ObjectId(userId) },
     "pregnancyWeeks date time status"
   )
     .sort({ createdAt: -1 })
@@ -39,9 +40,9 @@ export const getLastAppointmentData = async () => {
   const session = await verifySession();
   if (!session) return null;
 
-  const userId = session?.userId;
+  const userId = session?.userId as string;
   const appointments = await Appointment.find(
-    { userId },
+    { userId: new Types.ObjectId(userId) },
     "pregnancyWeeks date time status"
   )
     .sort({ createdAt: -1 })
@@ -63,8 +64,11 @@ export const getAppointments = async (fields = "") => {
   const session = await verifySession();
   if (!session) return null;
 
-  const userId = session?.userId;
-  return await Appointment.find({ userId }, fields).lean();
+  const userId = session?.userId as string;
+  return await Appointment.find(
+    { userId: new Types.ObjectId(userId) },
+    fields
+  ).lean();
 };
 
 export const getBabyReports = async (appointmentIds: string[], fields = "") => {
@@ -73,8 +77,10 @@ export const getBabyReports = async (appointmentIds: string[], fields = "") => {
   const session = await verifySession();
   if (!session) return null;
 
+  const objectIds = appointmentIds.map((id) => new Types.ObjectId(id));
+
   return await BabyReport.find(
-    { appointmentId: { $in: appointmentIds } },
+    { appointmentId: { $in: objectIds } },
     fields
   ).lean();
 };
@@ -86,7 +92,7 @@ export const getBabyReport = async (appointmentId: string) => {
   if (!session) return null;
 
   return await BabyReport.findOne(
-    { appointmentId },
+    { appointmentId: new Types.ObjectId(appointmentId) },
     "babyHeight babyPosition babyWeight babyHeartRate babyNote"
   ).lean();
 };
@@ -98,7 +104,7 @@ export const getMotherReport = async (appointmentId: string) => {
   if (!session) return null;
 
   return await MotherReport.findOne(
-    { appointmentId },
+    { appointmentId: new Types.ObjectId(appointmentId) },
     { _id: 0, createdAt: 0, updatedAt: 0, __v: 0, appointmentId: 0 }
   ).lean();
 };

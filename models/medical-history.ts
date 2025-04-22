@@ -1,14 +1,14 @@
 import type { IMedicalHistory } from "@/definitions/mother-info";
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
 export interface MedicalHistory extends Document, IMedicalHistory {
-  userId: string;
+  userId: Types.ObjectId;
 }
 
 const MedicalHistorySchema = new Schema<MedicalHistory>(
   {
     details: { type: String },
-    userId: { type: String },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     medication: { type: String },
     operations: { type: String },
     allergies: { type: String },

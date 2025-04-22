@@ -1,14 +1,14 @@
 import type { IBirthCompanion } from "@/definitions/mother-info";
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
- interface BirthCompanion extends Document, IBirthCompanion {
-  userId: string;
+interface BirthCompanion extends Document, IBirthCompanion {
+  userId: Types.ObjectId;
 }
 
 const BirthCompanionSchema = new Schema<BirthCompanion>(
   {
     fullName: { type: String, required: true },
-    userId: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     surname: { type: String, required: true },
     maidenName: { type: String },
     idPassportNo: { type: String, required: true },
