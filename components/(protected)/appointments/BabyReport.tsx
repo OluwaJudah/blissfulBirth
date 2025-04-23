@@ -12,7 +12,6 @@ const BabyReport = ({
 }) => {
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
-  if (!babyReport) return null;
   const { appointmentId, babyHeight, babyWeight } = babyReport;
 
   return (
