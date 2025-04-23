@@ -16,6 +16,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const [selectedSlot, setSelectedSlot] = useState("");
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
   const time = firstAppointmentTimeSlots[trimester];
@@ -26,6 +27,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
       return;
     }
 
+    setIsLoading(true);
     try {
       await createAppointment({
         date: selectedSlot,
@@ -63,7 +65,9 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
         <div className="w-full px-7">
           <button
             onClick={submit}
-            className="bg-pinklet-500 w-full hover:bg-pinklet-700 text-white rounded-full h-[35px]"
+            className={`${
+              isLoading ? "bg-gray-300" : "bg-pinklet-500"
+            } w-full hover:bg-pinklet-700 text-white rounded-full h-[35px]`}
           >
             Book
           </button>
