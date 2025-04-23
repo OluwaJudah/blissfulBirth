@@ -5,57 +5,26 @@ import {
   COMPLETED_APPOINTMENT,
 } from "@/constants/appointment";
 import BabyPendingReport from "./BabyPendingReport";
-import {
-  getAppointments,
-  getBabyReports,
-  getNextAppointmentData,
-} from "@/data/appointment";
-
-const generateBabyReport = (babyReports: any[], appointments: any[]) => {
-  const babyReportsIndex = babyReports?.reduce((acc, report) => {
-    const appointmentId = report?.appointmentId;
-    if (appointmentId) {
-      acc[appointmentId] = report;
-    }
-    return acc;
-  }, {} as Record<string, any>);
-
-  return appointments?.reduce((acc, item) => {
-    const pregnancyWeeks = item.pregnancyWeeks;
-    const id = item._id.toString();
-    if (pregnancyWeeks) {
-      acc[pregnancyWeeks] = {};
-      if (babyReportsIndex && babyReportsIndex[id]) {
-        const { babyHeight, babyWeight } = babyReportsIndex[id];
-        acc[pregnancyWeeks] = { appointmentId: id, babyHeight, babyWeight };
-      }
-    }
-    return acc;
-  }, {} as Record<number, { appointmentId: string; babyHeight: number; babyWeight: number }>);
-};
+import { getAppointments, getNextAppointmentData } from "@/data/appointment";
 
 const MyBaby = async () => {
-  const appointments = (await getAppointments()) || [];
-  const appointmentIds = appointments?.map((a) => a._id.toString()) || [];
-  const babyReports = (await getBabyReports(appointmentIds)) || [];
-  const generateBabyData = generateBabyReport(babyReports, appointments);
-  console.log({ generateBabyData });
-
+  const appointments = await getAppointments();
   const lastAppointment = await getNextAppointmentData();
-  let pregnancyWeeks = lastAppointment?.pregnancyWeeks || 0;
-  const isCompleted = lastAppointment?.status === COMPLETED_APPOINTMENT;
+  const pregnancyWeeks = lastAppointment?.pregnancyWeeks || 0;
+  console.log({ appointments });
 
   return (
     <div className="flex flex-col gap-y-4">
       <p className="font-mono font-bold text-turquoise-900">My Appointments</p>
       <div className="">
         <EmblaCarouselWrapper2 pregnancyWeeks={pregnancyWeeks}>
-          {generateBabyData &&
+          {appointments &&
             appointmentWeeks.map((w) =>
-              pregnancyWeeks > w || isCompleted ? (
+              appointments[w] &&
+              appointments[w].status === COMPLETED_APPOINTMENT ? (
                 <BabyReport
                   key={w}
-                  babyReport={generateBabyData[w] || {}}
+                  babyReport={appointments[w]}
                   pregnancyWeeks={w}
                 />
               ) : (

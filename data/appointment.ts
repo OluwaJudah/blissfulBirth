@@ -65,10 +65,39 @@ export const getAppointments = async (fields = "") => {
   if (!session) return null;
 
   const userId = session?.userId as string;
-  return await Appointment.find(
-    { userId: new Types.ObjectId(userId) },
-    fields
-  ).lean();
+  const data = await Appointment.aggregate([
+    {
+      $match: { userId: new Types.ObjectId(userId) }, // Filter by specific userId
+    },
+    {
+      $lookup: {
+        from: "babyreports",
+        localField: "_id",
+        foreignField: "appointmentId",
+        as: "babyreports",
+      },
+    },
+    {
+      $unwind: {
+        path: "$babyreports",
+        preserveNullAndEmptyArrays: true,
+      },
+    },
+  ]);
+
+  return data.reduce(
+    (acc: any, { _id, babyreports, status, pregnancyWeeks }) => {
+      const { babyHeight, babyWeight } = babyreports;
+      acc[pregnancyWeeks] = {
+        appointmentId: _id.toString(),
+        babyHeight,
+        babyWeight,
+        status,
+      };
+      return acc;
+    },
+    {}
+  );
 };
 
 export const getBabyReports = async (appointmentIds: string[], fields = "") => {
