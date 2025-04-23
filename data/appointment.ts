@@ -87,14 +87,17 @@ export const getAppointments = async (fields = "") => {
 
   return data.reduce(
     (acc: any, { _id, babyreports, status, pregnancyWeeks }) => {
-      const { babyHeight, babyWeight } = babyreports;
-      acc[pregnancyWeeks] = {
-        appointmentId: _id.toString(),
-        babyHeight,
-        babyWeight,
-        status,
-      };
-      return acc;
+      if (babyreports) {
+        const { babyHeight, babyWeight } = babyreports;
+        acc[pregnancyWeeks] = {
+          appointmentId: _id.toString(),
+          babyHeight,
+          babyWeight,
+          status,
+        };
+        return acc;
+      }
+      return {};
     },
     {}
   );
