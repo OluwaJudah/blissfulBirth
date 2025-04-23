@@ -49,6 +49,7 @@ const NextAppointment = async ({
               id={appointmentId}
               nextPregnancyWeeks={nextPregnancyWeeks}
               isCofirmed={isCofirmed}
+              from="home"
             />
           </div>
         </div>

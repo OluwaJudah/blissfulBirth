@@ -222,24 +222,28 @@ export const DateSlotButton = ({
 
 export const NextAppointmentButton = ({
   id,
+  from,
   nextPregnancyWeeks,
   isCofirmed,
 }: {
   id: string;
+  from?: string;
   nextPregnancyWeeks: number;
   isCofirmed: boolean;
 }) => {
   return isCofirmed ? (
     <Link
       className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
-      href={`/confirmed-booking?bookingId=${id}&from=home`}
+      href={`/confirmed-booking?bookingId=${id}${from ? `&from=${from}` : ""}`}
     >
       <p className="text-center w-full text-sm">View Details</p>
     </Link>
   ) : (
     <Link
       className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
-      href={`/confirm-appointment?from=home&appointmentWeek=${nextPregnancyWeeks}`}
+      href={`/confirm-appointment?appointmentWeek=${nextPregnancyWeeks}${
+        from ? `&from=${from}` : ""
+      }`}
     >
       <p className="text-center w-full text-sm">Book Appointment</p>
     </Link>
