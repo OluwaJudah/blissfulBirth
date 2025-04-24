@@ -1,14 +1,19 @@
 import { DollarSign } from "lucide-react";
 
 const PaymentEntry = ({
-  name,
+  type,
   amount,
   date,
 }: {
-  name: string;
+  type: string;
   amount: string;
-  date: string; 
+  date: string;
 }) => {
+  const paymentMap = {
+    "birthing-unit": "Birthing Unit",
+    consultation: "Consultation",
+  };
+
   return (
     <div className="rounded-3xl flex px-3 py-4 items-center justify-between bg-turquoise-100 group">
       <div className="flex gap-3 items-center">
@@ -19,7 +24,7 @@ const PaymentEntry = ({
         </div>
         <div className="flex flex-col gap-2">
           <span className="font-sans font-bold text-black text-lg leading-none">
-            {name}
+            {paymentMap[type as keyof typeof paymentMap]}
           </span>
           <p className="font-light text-black text-sm leading-none">
             Date: {date}
