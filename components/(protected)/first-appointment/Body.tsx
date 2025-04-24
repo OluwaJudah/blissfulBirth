@@ -29,14 +29,17 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
 
     setIsLoading(true);
     try {
-      await createAppointment({
-        date: selectedSlot,
-        time,
-        status: CONFIRMED_APPOINTMENT,
-        note,
-        pregnancyWeeks,
-        type: FIRST_APPOINTMENT,
-      });
+      await createAppointment(
+        {
+          date: selectedSlot,
+          time,
+          status: CONFIRMED_APPOINTMENT,
+          note,
+          pregnancyWeeks,
+          type: FIRST_APPOINTMENT,
+        },
+        "home"
+      );
     } catch (err) {}
   };
   return (

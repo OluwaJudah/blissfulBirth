@@ -6,7 +6,10 @@ import Appointment from "@/models/appointment";
 import { Types } from "mongoose";
 import { redirect } from "next/navigation";
 
-export const createAppointment = async (appointmentData: IAppointment) => {
+export const createAppointment = async (
+  appointmentData: IAppointment,
+  from = ""
+) => {
   await dbConnect();
 
   const session = await verifySession();
@@ -23,5 +26,9 @@ export const createAppointment = async (appointmentData: IAppointment) => {
     throw new Error("Error creating Appointment:" + error);
   }
 
-  redirect(`/confirmed-booking?bookingId=${appointment.id}`);
+  redirect(
+    `/confirmed-booking?bookingId=${appointment.id}${
+      from !== "" ? `&from=${from}` : ""
+    }`
+  );
 };

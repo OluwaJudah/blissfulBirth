@@ -3,7 +3,6 @@ import { Pen } from "lucide-react";
 import Location from "./Location";
 import { useState } from "react";
 import DateSlots from "./DateSlots";
-import { useRouter } from "next/navigation";
 import TimeSlot from "./TimeSlot";
 import { createAppointment } from "@/actions/appointment";
 import { APPOINTMENT, CONFIRMED_APPOINTMENT } from "@/constants/appointment";
@@ -20,8 +19,8 @@ const Body = ({
   const [note, setNote] = useState("");
   const [dateError, setDateError] = useState("");
   const [timeError, setTimeError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const router = useRouter();
   const submit = async () => {
     let isError = false;
     if (selectedDateSlot === "") {
@@ -36,15 +35,19 @@ const Body = ({
 
     if (isError) return;
 
+    setIsLoading(true);
     try {
-      await createAppointment({
-        date: selectedDateSlot,
-        time: selectedTimeSlot,
-        status: CONFIRMED_APPOINTMENT,
-        note,
-        pregnancyWeeks,
-        type: APPOINTMENT,
-      });
+      await createAppointment(
+        {
+          date: selectedDateSlot,
+          time: selectedTimeSlot,
+          status: CONFIRMED_APPOINTMENT,
+          note,
+          pregnancyWeeks,
+          type: APPOINTMENT,
+        },
+        from
+      );
     } catch (err) {}
   };
 
@@ -89,7 +92,9 @@ const Body = ({
         <div className="w-full px-7">
           <button
             onClick={submit}
-            className="bg-pinklet-500 w-full hover:bg-pinklet-700 text-white rounded-full h-[35px]"
+            className={`${
+              isLoading ? "bg-gray-300" : "bg-pinklet-500"
+            } w-full hover:bg-pinklet-700 text-white rounded-full h-[35px]`}
           >
             Book
           </button>
