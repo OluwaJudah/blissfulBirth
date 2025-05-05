@@ -10,7 +10,7 @@ import {
   trimesters,
 } from "@/constants/appointment";
 import Notes from "./Notes";
-import { calculateTrimester } from "@/utils";
+import { calculateTrimester, findClosestNextAppointment } from "@/utils";
 
 const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const [selectedSlot, setSelectedSlot] = useState("");
@@ -35,7 +35,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
           time,
           status: CONFIRMED_APPOINTMENT,
           note,
-          pregnancyWeeks,
+          pregnancyWeeks: findClosestNextAppointment(pregnancyWeeks),
           type: FIRST_APPOINTMENT,
         },
         "home"

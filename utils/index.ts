@@ -1,4 +1,5 @@
 import { appointmentWeeks } from "@/constants/appointment";
+import { schedulesNos } from "@/data";
 
 export const calculateTrimester = (pregnancyWeeks: number) => {
   if (pregnancyWeeks <= 12) return 0;
@@ -75,4 +76,10 @@ export const getTuesdays = (year: number, month: number) => {
     let date = new Date(dateStr);
     return date.getMonth() === month; // May is month index 4 (0-based index)
   });
+};
+
+export const findClosestNextAppointment = (target: number) => {
+  return schedulesNos.reduce((closest, current) =>
+    Math.abs(current - target) < Math.abs(closest - target) ? current : closest
+  );
 };
