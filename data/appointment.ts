@@ -48,7 +48,8 @@ export const getLastAppointmentData = async () => {
     .sort({ createdAt: -1 })
     .lean();
 
-  if (appointments[0].status === COMPLETED_APPOINTMENT) return appointments[0];
+  if (appointments[0] && appointments[0].status === COMPLETED_APPOINTMENT)
+    return appointments[0];
   if (
     appointments.length > 1 &&
     appointments[1].status === COMPLETED_APPOINTMENT
