@@ -17,6 +17,9 @@ import MedicalHistory from "@/models/medical-history";
 import { Types } from "mongoose";
 
 export async function createMotherInfo(
+  motherInfo: IMotherInfo,
+  birthCompanion: IBirthCompanion,
+  babyInfo: IBabyInfo,
   prevState: CreateMotherInfoFormState | undefined,
   formData: FormData
 ) {
@@ -39,14 +42,8 @@ export async function createMotherInfo(
     conditions,
     familyHistory,
     tbSymptomsScreen,
-    motherInfo,
-    birthCompanion,
-    babyInfo,
   } = validatedFields.data;
 
-  const motherInfoData = JSON.parse(motherInfo);
-  const birthCompanionData = JSON.parse(birthCompanion);
-  const babyInfoData = JSON.parse(babyInfo);
   const medicalHistory = {
     details,
     medication,
@@ -59,20 +56,20 @@ export async function createMotherInfo(
 
   try {
     await createMotherInfoData(
-      motherInfoData,
-      birthCompanionData,
-      babyInfoData,
+      motherInfo,
+      birthCompanion,
+      babyInfo,
       medicalHistory
     );
   } catch (error) {
-    throw new Error("Error creating MotherInfo:" + error);
+    throw new Error("Error:" + error);
   }
 
   redirect("/first-appointment");
 }
 
 export const createMotherInfoData = async (
-  motherInfoData: IMotherInfo,
+  motherInfo: IMotherInfo,
   birthCompanion: IBirthCompanion,
   babyInfo: IBabyInfo,
   medicalHistory: IMedicalHistory
@@ -83,20 +80,43 @@ export const createMotherInfoData = async (
   if (!session) return null;
 
   const userId = session?.userId as string;
-  await MotherInfo.create({
-    ...motherInfoData,
-    dateOfBirth: new Date(motherInfoData.dateOfBirth),
-    lastMenstrualDate: new Date(motherInfoData.lastMenstrualDate),
-    userId: new Types.ObjectId(userId),
-  });
-  await BirthCompanion.create({
-    ...birthCompanion,
-    dateOfBirth: new Date(motherInfoData.dateOfBirth),
-    userId: new Types.ObjectId(userId),
-  });
-  await BabyInfo.create({ ...babyInfo, motherId: new Types.ObjectId(userId) });
-  await MedicalHistory.create({
-    ...medicalHistory,
-    userId: new Types.ObjectId(userId),
-  });
+
+  try {
+    await MotherInfo.create({
+      ...motherInfo,
+      dateOfBirth: new Date(motherInfo.dateOfBirth),
+      lastMenstrualDate: new Date(motherInfo.lastMenstrualDate),
+      userId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating MotherInfo:" + error);
+  }
+
+  try {
+    await BirthCompanion.create({
+      ...birthCompanion,
+      dateOfBirth: new Date(motherInfo.dateOfBirth),
+      userId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating BirthCompanion:" + error);
+  }
+
+  try {
+    await BabyInfo.create({
+      ...babyInfo,
+      motherId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating BabyInfo:" + error);
+  }
+
+  try {
+    await MedicalHistory.create({
+      ...medicalHistory,
+      userId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating MedicalHistory:" + error);
+  }
 };

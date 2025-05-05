@@ -102,9 +102,6 @@ export const createMotherInfoSchema = z.object({
   conditions: z.string().trim(),
   familyHistory: z.string().trim(),
   tbSymptomsScreen: z.string().trim(),
-  motherInfo: z.string().trim(),
-  birthCompanion: z.string().trim(),
-  babyInfo: z.string().trim(),
 });
 
 export type CreateMotherInfoForm = z.infer<typeof createMotherInfoSchema>;
@@ -118,9 +115,6 @@ export type CreateMotherInfoFormState = {
     conditions?: string[];
     familyHistory?: string[];
     tbSymptomsScreen?: string[];
-    motherInfo?: string[];
-    birthCompanion?: string[];
-    babyInfo?: string[];
   };
   message?: string | null;
 };

@@ -15,6 +15,8 @@ const Input = ({
   bgColour,
   isPending,
   isRequired,
+  min,
+  max,
 }: {
   type?: string;
   label: string;
@@ -28,6 +30,8 @@ const Input = ({
   bgColour: string;
   isPending?: boolean;
   isRequired?: boolean;
+  min?: string;
+  max?: string;
 }) => {
   const disabledBgColour = "bg-gray-100";
   return (
@@ -64,6 +68,8 @@ const Input = ({
           type={type ? type : "text"}
           disabled={isPending}
           {...register(name)}
+          min={min ? min : ""}
+          max={max ? max : ""}
         />
       </div>
       {errors && errors[name] && (

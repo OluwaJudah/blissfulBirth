@@ -26,6 +26,17 @@ export const formTitles = {
   },
 };
 
+const today = new Date();
+const sixteenYearsAgo = new Date( // 16 years before
+  today.getFullYear() - 16,
+  today.getMonth(),
+  today.getDate()
+);
+
+const fortyWeeksLater = new Date();
+fortyWeeksLater.setDate(today.getDate() - 40 * 7); // 40 weeks = 280 days
+const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
 export const motherInputFormData = [
   {
     name: "fullName",
@@ -59,6 +70,7 @@ export const motherInputFormData = [
     label: "Date of Birth",
     type: "date",
     bgColour: "bg-turquoise-100",
+    max: formatDate(sixteenYearsAgo),
     isRequired: true,
   },
   {
@@ -66,6 +78,8 @@ export const motherInputFormData = [
     label: "Last Menstrual Date",
     type: "date",
     bgColour: "bg-turquoise-100",
+    min: formatDate(fortyWeeksLater),
+    max: formatDate(today),
     isRequired: true,
   },
   {
@@ -175,6 +189,7 @@ export const birthCompanionFormData = [
     label: "Date of Birth",
     type: "date",
     bgColour: "bg-turquoise-100",
+    max: formatDate(sixteenYearsAgo),
     isRequired: true,
   },
   {

@@ -30,7 +30,11 @@ const Header = ({ type }: { type: keyof typeof formTitles }) => {
               {name}
             </span>
           </div>
-          <div>{!(["mother-info", "medical-history"].includes(type)) && <SkipButton url={skipUrl} />}</div>
+          <div>
+            {!["mother-info", "medical-history", "birth-companion"].includes(
+              type
+            ) && <SkipButton url={skipUrl} />}
+          </div>
         </div>
       </div>
     </div>

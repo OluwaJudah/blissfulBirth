@@ -49,10 +49,6 @@ const MedicalHistory = () => {
 
   const { motherInfo, birthCompanion, babyInfo, medicalHistory } = context;
 
-  const motherInfoString = JSON.stringify(motherInfo);
-  const birthCompanionString = JSON.stringify(birthCompanion);
-  const babyInfoString = JSON.stringify(babyInfo);
-
   const [conditionList, setConditionList] = useState<ConditionType[]>(
     updateSelectablesArray(conditions, medicalHistory.conditions)
   );
@@ -63,9 +59,16 @@ const MedicalHistory = () => {
     ConditionType[]
   >(updateSelectablesArray(tbSymptomsScreen, medicalHistory.tbSymptomsScreen));
 
+  const createMotherInfoWithExtraData = createMotherInfo.bind(
+    null,
+    motherInfo,
+    birthCompanion,
+    babyInfo
+  );
+  
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, isPending] = useActionState(
-    createMotherInfo,
+    createMotherInfoWithExtraData,
     initialState
   );
 
@@ -81,29 +84,6 @@ const MedicalHistory = () => {
   const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     handleSubmit(async () => {
-      if (formRef.current) {
-        const conditions = conditionList
-          .filter((c) => c.isAdded)
-          .map((f) => f.name)
-          .toString();
-        const familyHistory = familyHistoryList
-          .filter((c) => c.isAdded)
-          .map((f) => f.name)
-          .toString();
-        const tbSymptomsScreen = tbSymptomsScreenList
-          .filter((c) => c.isAdded)
-          .map((f) => f.name)
-          .toString();
-
-        const form = formRef.current;
-        (form.elements.namedItem("conditions") as HTMLInputElement).value =
-          conditions;
-        (form.elements.namedItem("familyHistory") as HTMLInputElement).value =
-          familyHistory;
-        (
-          form.elements.namedItem("tbSymptomsScreen") as HTMLInputElement
-        ).value = tbSymptomsScreen;
-      }
       const formData = new FormData(formRef.current!);
       startTransition(() => {
         formAction(formData);
@@ -155,9 +135,6 @@ const MedicalHistory = () => {
         />
         <input type="hidden" name="tbSymptomsScreen" value="" />
       </div>
-      <input type="hidden" name="motherInfo" value={motherInfoString} />
-      <input type="hidden" name="birthCompanion" value={birthCompanionString} />
-      <input type="hidden" name="babyInfo" value={babyInfoString} />
       <div className="flex gap-3">
         <BackButton />
         <SubmitButton isPending={isPending} name="Submit" />
