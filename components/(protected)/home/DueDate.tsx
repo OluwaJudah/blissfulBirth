@@ -17,7 +17,7 @@ const DueDate = () => {
             Due date:
           </p>
         </div>
-        <span className="font-mono font-bold text-2xl text-turquoise-900 tracking-tight">
+        <span className="font-mono font-bold text-2xl md:text-xl text-turquoise-900 tracking-tight">
           19 Oct 2025
         </span>
       </div>

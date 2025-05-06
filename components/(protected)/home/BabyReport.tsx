@@ -12,21 +12,21 @@ const BabyReport = () => {
                 Week 16 - 2nd Trimester
               </h2>
             </div>
-            <div className="flex justify-between px-2">
+            <div className="flex justify-between">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Avg Size
+                  Heart Rate
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  14.2cm
+                  120/10
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Weight
+                  Height
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  300g
+                  14.2cm
                 </span>
               </div>
             </div>

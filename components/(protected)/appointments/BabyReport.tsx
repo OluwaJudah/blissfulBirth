@@ -8,30 +8,30 @@ const BabyReport = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
   const trimesterStr = trimesters[trimester];
 
   return (
-    <div className="embla__slide__1 h-[200px] md:w-[80px] w-[90px]">
+    <div className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]">
       <div className="relative embla__slide__number shadow-xl gap-4 flex flex-col w-[310px] md:w-[295px] h-[180px] bg-turquoise-100 rounded-2xl pr-4 py-6 overflow-y-hidden">
         <div className="relative">
           <div className="flex flex-col h-full w-4/6 gap-3 float-right">
             <div className="text-center">
               <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900 tracking-tight">
-                Week {pregnancyWeeks} - {trimesterStr} Trimester
+              Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
-            <div className="flex justify-between px-2">
+            <div className="flex justify-between">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Avg Size
+                  Heart Rate
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  14.2cm
+                  120/10
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Weight
+                  Height
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  300g
+                  14.2cm
                 </span>
               </div>
             </div>
