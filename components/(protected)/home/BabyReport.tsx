@@ -28,10 +28,10 @@ const BabyReport = async ({
                 Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
-            <div className="flex justify-between px-4">
+            <div className="flex justify-between">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Avg Size
+                  Heart Rate
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
                   {babyHeight}cm
@@ -39,7 +39,7 @@ const BabyReport = async ({
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
-                  Weight
+                  Height
                 </p>
                 <span className="font-mono font-bold text-black text-2xl tracking-tight">
                   {babyWeight}g

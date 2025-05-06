@@ -2,6 +2,7 @@ import Image from "next/image";
 import { calculateTrimester } from "@/utils";
 import { trimesters } from "@/constants/appointment";
 import { NextAppointmentButton } from "@/components/Buttons";
+import Link from "next/link";
 
 const NextAppointment = async ({
   appointmentId,
@@ -51,6 +52,12 @@ const NextAppointment = async ({
               isCofirmed={isCofirmed}
               from="home"
             />
+            <Link
+              className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
+              href="/confirmed-booking?book=true&from=home"
+            >
+              <p className="text-center w-full text-sm">More Details</p>
+            </Link>
           </div>
         </div>
         <div className="absolute -bottom-10 md:-bottom-8 -right-3">

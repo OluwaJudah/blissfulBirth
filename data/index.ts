@@ -81,7 +81,45 @@ export const profileInfos = [
     url: "/profile/details?type=medical-history",
     image: "/medical_history.png",
   },
+  {
+    name: "Blood Test",
+    url: "/profile/details?type=medical-history",
+    image: "/medical_history.png",
+  },
+  {
+    name: "Payment History",
+    url: "/profile/details?type=payment-history",
+    image: "/payment_history.png",
+  },
 ];
+
+export const formTitles = {
+  "mother-info": {
+    name: "Mother's Info",
+    image: "/pregnant_4.png",
+    skipUrl: "/register/details?type=birth-companion",
+  },
+  "birth-companion": {
+    name: "Birth Companion",
+    image: "/birth_companion.png",
+    skipUrl: "/register/details?type=baby-info",
+  },
+  "baby-info": {
+    name: "Baby's Info",
+    image: "/baby_2.png",
+    skipUrl: "/register/details?type=medical-history",
+  },
+  "medical-history": {
+    name: "Medical History",
+    image: "/medical_history.png",
+    skipUrl: "/new-intake",
+  },
+  "payment-history": {
+    name: "Payment History",
+    image: "/payment_history.png",
+    skipUrl: "#",
+  },
+};
 
 export const paymentHistory = [
   {

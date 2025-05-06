@@ -78,6 +78,32 @@ export const getTuesdays = (year: number, month: number) => {
   });
 };
 
+export const getLastTuesdayFromCurrentOrNextMonth = () => {
+  const today = new Date();
+
+  function getLastTuesday(year: number, month: number) {
+    const lastDay = new Date(year, month + 1, 0); // last day of month
+    while (lastDay.getDay() !== 2) {
+      lastDay.setDate(lastDay.getDate() - 1);
+    }
+    return lastDay;
+  }
+
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth();
+
+  let lastTuesday = getLastTuesday(currentYear, currentMonth);
+
+  // If it's before today, move to next month
+  if (lastTuesday < today) {
+    const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+    const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+    lastTuesday = getLastTuesday(nextYear, nextMonth);
+  }
+
+  return lastTuesday.toDateString();
+};
+
 export const findClosestNextAppointment = (target: number) => {
   return schedulesNos.reduce((closest, current) =>
     Math.abs(current - target) < Math.abs(closest - target) ? current : closest

@@ -1,6 +1,9 @@
 import { Calendar1, CalendarCheck, Home, Pen } from "lucide-react";
 import Location from "./Location";
 import TimeSlot from "./TimeSlot";
+import NoteBackHome from "./NoteBackHome";
+import NotesAndBooking from "./NotesButton";
+
 import Link from "next/link";
 import type { IAppointment } from "@/definitions/appointment";
 import { calculateTrimester } from "@/utils";
@@ -10,9 +13,11 @@ import Note from "./Note";
 const Body = ({
   appointment,
   from,
+  book,
 }: {
   appointment: IAppointment;
   from: string;
+  book: string;
 }) => {
   const { date, time, pregnancyWeeks, note } = appointment;
   const trimester = calculateTrimester(pregnancyWeeks);
@@ -44,17 +49,7 @@ const Body = ({
         <div className="border border-t-turquoise-100 my-3"></div>
         <TimeSlot time={time} />
         <Location />
-        <Note note={note} />
-        <div className="border border-t-turquoise-100 my-3"></div>
-        <div className="w-full px-7">
-          <Link
-            className="flex items-center mx-auto justify-center gap-3 bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-full h-[35px]"
-            href={url}
-          >
-            <Home size={15} color="#fff" />
-            <p className="text-center">Back to Home</p>
-          </Link>
-        </div>
+        {book ? <NotesAndBooking from={from} /> : <NoteBackHome from={from} />}
       </div>
     </>
   );
