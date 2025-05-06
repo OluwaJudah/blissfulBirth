@@ -81,6 +81,16 @@ export const profileInfos = [
     url: "/profile/details?type=medical-history",
     image: "/medical_history.png",
   },
+  {
+    name: "Blood Test",
+    url: "/profile/details?type=medical-history",
+    image: "/medical_history.png",
+  },
+  {
+    name: "Payment History",
+    url: "/profile/details?type=payment-history",
+    image: "/payment_history.png",
+  },
 ];
 
 export const formTitles = {
@@ -102,7 +112,7 @@ export const formTitles = {
   "medical-history": {
     name: "Medical History",
     image: "/medical_history.png",
-    skipUrl: "/first-appointment",
+    skipUrl: "/new-intake",
   },
   "payment-history": {
     name: "Payment History",
