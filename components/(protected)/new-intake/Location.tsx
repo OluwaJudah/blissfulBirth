@@ -2,10 +2,10 @@ import Image from "next/image";
 
 const Location = () => {
   return (
-    <div className="">
+    <>
       <div className="flex gap-2 px-7">
         <div className="w-[40px]">
-          <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
+          <div className="flex justify-center items-center bg-pinklet-200 w-[40px] h-[40px] rounded-full">
             <Image src="/pin.svg" height={23} width={23} alt="pin" />
           </div>
         </div>
@@ -18,8 +18,8 @@ const Location = () => {
           </p>
         </div>
       </div>
-      <div className="border border-t-turquoise-100 my-3"></div>
-    </div>
+      <div className="border border-t-turquoise-100 my-2"></div>
+    </>
   );
 };
 
