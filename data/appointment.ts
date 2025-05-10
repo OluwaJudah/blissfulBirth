@@ -25,7 +25,7 @@ export const getNextAppointmentData = async (fields = "") => {
   const userId = session?.userId as string;
   const appointment = await Appointment.find(
     { userId: new Types.ObjectId(userId) },
-    "pregnancyWeeks date time status"
+    "pregnancyWeeks date time status type"
   )
     .sort({ createdAt: -1 })
     .limit(1)
@@ -43,7 +43,7 @@ export const getLastAppointmentData = async () => {
   const userId = session?.userId as string;
   const appointments = await Appointment.find(
     { userId: new Types.ObjectId(userId) },
-    "pregnancyWeeks date time status"
+    "pregnancyWeeks date time status type"
   )
     .sort({ createdAt: -1 })
     .lean();

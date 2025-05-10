@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { getNextAppointmentData } from "@/data/appointment";
-import { CONFIRMED_APPOINTMENT, trimesters } from "@/constants/appointment";
+import {
+  CONFIRMED_APPOINTMENT,
+  FIRST_APPOINTMENT,
+  trimesters,
+} from "@/constants/appointment";
 import { calculateTrimester, getNextAppointmentWeek } from "@/utils";
 import { NextAppointmentButton } from "@/components/Buttons";
 
@@ -12,6 +16,7 @@ const NextAppointment = async () => {
     date: "",
     time: "",
     status: "",
+    type: "",
     pregnancyWeeks: 0,
   };
 
@@ -19,14 +24,26 @@ const NextAppointment = async () => {
     ? { ...appointment, _id: appointment._id.toString() }
     : appointmentDefault;
 
-  const { date, time, status, pregnancyWeeks } = appointmentData;
+  const { date, time, status, pregnancyWeeks, type } = appointmentData;
   const isCofirmed = status === CONFIRMED_APPOINTMENT;
+  let nextAppointmentStr = "";
   const nextPregnancyWeeks = isCofirmed
     ? pregnancyWeeks
     : getNextAppointmentWeek(pregnancyWeeks);
-  const trimester = calculateTrimester(nextPregnancyWeeks);
-  const trimesterStr = trimesters[trimester];
-  const dateTime = isCofirmed ? `${date} ${time}` : "To be Confirmed";
+  
+  if (type === FIRST_APPOINTMENT) nextAppointmentStr = "First Appointment";
+  else {
+    const trimester = calculateTrimester(nextPregnancyWeeks);
+    const trimesterStr = trimesters[trimester];
+    nextAppointmentStr = `Week ${nextPregnancyWeeks} - ${trimesterStr} Trimester`;
+  }
+  
+  const dateStr = date.toLocaleString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+  const dateTime = isCofirmed ? `${dateStr} ${time}` : "To be Confirmed";
 
   return (
     <div className="flex flex-col gap-y-4">
@@ -36,7 +53,7 @@ const NextAppointment = async () => {
       <div className="shadow-xl relative w-full h-[168px] md:h-[172px] bg-pinklet-100 rounded-2xl px-4 py-5 md:py-4 overflow-hidden">
         <div className="flex flex-col h-full w-4/5 md:gap-2 gap-3">
           <h2 className=" font-sans font-bold text-turquoise-900 tracking-wide">
-            Week {nextPregnancyWeeks} - {trimesterStr} Trimester
+            {nextAppointmentStr}
           </h2>
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">

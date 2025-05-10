@@ -1,22 +1,30 @@
 import Image from "next/image";
 import { calculateTrimester } from "@/utils";
-import { trimesters } from "@/constants/appointment";
+import { FIRST_APPOINTMENT, trimesters } from "@/constants/appointment";
 import { NextAppointmentButton } from "@/components/Buttons";
 import Link from "next/link";
 
 const NextAppointment = async ({
   appointmentId,
   dateTime,
+  type,
   nextPregnancyWeeks,
   isCofirmed,
 }: {
   appointmentId: string;
   dateTime: string;
+  type: string;
   nextPregnancyWeeks: number;
   isCofirmed: boolean;
 }) => {
-  const trimester = calculateTrimester(nextPregnancyWeeks);
-  const trimesterStr = trimesters[trimester];
+  let nextAppointmentStr = "";
+
+  if (type === FIRST_APPOINTMENT) nextAppointmentStr = "First Appointment";
+  else {
+    const trimester = calculateTrimester(nextPregnancyWeeks);
+    const trimesterStr = trimesters[trimester];
+    nextAppointmentStr = `Week ${nextPregnancyWeeks} - ${trimesterStr} Trimester`;
+  }
 
   return (
     <div className="flex flex-col gap-y-4">
@@ -26,7 +34,7 @@ const NextAppointment = async ({
       <div className="shadow-xl relative w-full h-[168px] md:h-[172px] bg-pinklet-100 rounded-2xl px-4 py-5 md:py-4 overflow-hidden">
         <div className="flex flex-col h-full w-4/5 md:gap-2 gap-3">
           <h2 className=" font-sans font-bold text-turquoise-900 tracking-wide">
-            Week {nextPregnancyWeeks} - {trimesterStr} Trimester
+            {nextAppointmentStr}
           </h2>
           <div className="flex flex-col gap-1">
             <div className="flex gap-3 items-center">
@@ -52,12 +60,6 @@ const NextAppointment = async ({
               isCofirmed={isCofirmed}
               from="home"
             />
-            <Link
-              className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[140px] h-[30px]"
-              href="/confirmed-booking?book=true&from=home"
-            >
-              <p className="text-center w-full text-sm">More Details</p>
-            </Link>
           </div>
         </div>
         <div className="absolute -bottom-10 md:-bottom-8 -right-3">
