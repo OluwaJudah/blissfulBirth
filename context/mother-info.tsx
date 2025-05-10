@@ -15,6 +15,7 @@ const motherInfoData = {
   dateOfBirth: "",
   contactNumber: "",
   email: "",
+  status: "",
   countryOfOrigin: "",
   occupation: "",
 };

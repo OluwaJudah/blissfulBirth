@@ -39,7 +39,7 @@ const Body = ({
     try {
       await createAppointment(
         {
-          date: selectedDateSlot,
+          date: new Date(selectedDateSlot),
           time: selectedTimeSlot,
           status: CONFIRMED_APPOINTMENT,
           note,

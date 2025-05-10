@@ -31,7 +31,7 @@ const Body = ({ pregnancyWeeks }: { pregnancyWeeks: number }) => {
     try {
       await createAppointment(
         {
-          date: selectedSlot,
+          date: new Date(selectedSlot),
           time,
           status: CONFIRMED_APPOINTMENT,
           note,
