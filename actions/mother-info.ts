@@ -15,6 +15,7 @@ import BirthCompanion from "@/models/birth-companion";
 import BabyInfo from "@/models/baby-info";
 import MedicalHistory from "@/models/medical-history";
 import { Types } from "mongoose";
+import { PENDING_PATIENT } from "@/constants/appointment";
 
 export async function createMotherInfo(
   motherInfo: IMotherInfo,
@@ -65,7 +66,7 @@ export async function createMotherInfo(
     throw new Error("Error:" + error);
   }
 
-  redirect("/first-appointment");
+  redirect("/new-intake");
 }
 
 export const createMotherInfoData = async (
@@ -84,6 +85,7 @@ export const createMotherInfoData = async (
   try {
     await MotherInfo.create({
       ...motherInfo,
+      status: PENDING_PATIENT,
       dateOfBirth: new Date(motherInfo.dateOfBirth),
       lastMenstrualDate: new Date(motherInfo.lastMenstrualDate),
       userId: new Types.ObjectId(userId),

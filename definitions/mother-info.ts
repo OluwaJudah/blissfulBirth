@@ -156,6 +156,7 @@ export type IBirthCompanion = {
 
 export type IMotherInfo = IBirthCompanion & {
   lastMenstrualDate: Date;
+  status: string;
 };
 
 export type IBabyInfo = {
