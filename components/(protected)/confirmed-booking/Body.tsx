@@ -20,6 +20,11 @@ const Body = ({
   book: string;
 }) => {
   const { date, time, pregnancyWeeks, note } = appointment;
+  const dateFormatted = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
   const url = from === "home" ? "/home" : "/appointments";
@@ -43,7 +48,9 @@ const Body = ({
             <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
               <Calendar1 size={20} strokeWidth={3} />
             </div>
-            <p className="font-mono font-bold text-turquoise-900">{date}</p>
+            <p className="font-mono font-bold text-turquoise-900">
+              {dateFormatted}
+            </p>
           </div>
         </div>
         <div className="border border-t-turquoise-100 my-3"></div>
