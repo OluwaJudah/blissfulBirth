@@ -1,9 +1,14 @@
 "use client";
 import { logout } from "@/actions/auth";
-import { ArrowLeft, ChevronRight, LogInIcon, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronRight,
+  LoaderCircle,
+  LogInIcon,
+  X,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import React from "react";
 
 export const SubmitButton = ({
   name,
@@ -13,14 +18,23 @@ export const SubmitButton = ({
   isPending?: boolean;
 }) => {
   return (
-    <button
-      type="submit"
-      className={`${
-        isPending ? "bg-gray-300" : "bg-turquoise-500 hover:bg-turquoise-700"
-      } text-white rounded-full w-[148px] h-[33px]`}
-    >
-      {name}
-    </button>
+    <>
+      {isPending ? (
+        <button
+          type="button"
+          className="flex gap-2 justify-center items-center bg-turquoise-300 text-white rounded-full w-[148px] h-[33px]"
+        >
+          <LoaderCircle className="animate-spin" />
+        </button>
+      ) : (
+        <button
+          type="submit"
+          className="bg-turquoise-500 hover:bg-turquoise-700 text-white rounded-full w-[148px] h-[33px]"
+        >
+          {name}
+        </button>
+      )}
+    </>
   );
 };
 
@@ -241,7 +255,7 @@ export const NextAppointmentButton = ({
   ) : (
     <Link
       className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
-      href={`/confirm-appointment?appointmentWeek=${nextPregnancyWeeks}${
+      href={`/confirm-appointment?book=true&appointmentWeek=${nextPregnancyWeeks}${
         from ? `&from=${from}` : ""
       }`}
     >

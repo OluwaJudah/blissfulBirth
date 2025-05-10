@@ -11,7 +11,6 @@ const MyBaby = async () => {
   const appointments = await getAppointments();
   const lastAppointment = await getNextAppointmentData();
   const pregnancyWeeks = lastAppointment?.pregnancyWeeks || 0;
-  console.log({ appointments });
 
   return (
     <div className="flex flex-col gap-y-4">
