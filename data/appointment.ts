@@ -1,5 +1,5 @@
 "use server";
-import { COMPLETED_APPOINTMENT } from "@/constants/appointment";
+import { APPOINTMENT, COMPLETED_APPOINTMENT } from "@/constants/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
@@ -68,7 +68,7 @@ export const getAppointments = async (fields = "") => {
   const userId = session?.userId as string;
   const data = await Appointment.aggregate([
     {
-      $match: { userId: new Types.ObjectId(userId) }, // Filter by specific userId
+      $match: { userId: new Types.ObjectId(userId), type: APPOINTMENT }, // Filter by specific userId
     },
     {
       $lookup: {
