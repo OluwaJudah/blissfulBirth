@@ -8,22 +8,25 @@ const MommyReport = async ({ id }: { id: string }) => {
   if (!motherReport) return null;
 
   const {
-    motherWeight,
-    motherUrine,
-    motherPalpation,
     motherBloodPressure,
     motherFh,
+    motherGlucose,
+    motherLeucosite,
     motherNote,
+    motherPalpation,
+    motherProtein,
+    motherPulse,
+    motherWeight,
   } = motherReport;
 
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex space-x-8">
-        <BlockData title="Weight" data={motherWeight + " kg"} />
-        <BlockData title="Pulse" data="73 bpm" />
+        <BlockData title="Weight" data={motherWeight + ""} measurement="kg" />
+        <BlockData title="Pulse" data={motherPulse + ""} measurement="bpm" />
       </div>
       <div className="flex flex-col space-y-4">
-        <FullWidthData title="Blood Pressurre" data="120/80" />
+        <FullWidthData title="Blood Pressurre" data={motherBloodPressure} />
         <div className="flex flex-col gap-3 p-6 bg-turquoise-200 rounded-3xl">
           <div className="font-sans font-bold text-black text-lg tracking-tight leading-none">
             Urine
@@ -33,7 +36,7 @@ const MommyReport = async ({ id }: { id: string }) => {
               Leucosite (L)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              Clear
+              {motherLeucosite}
             </p>
           </div>
           <div className="flex justify-between">
@@ -41,7 +44,7 @@ const MommyReport = async ({ id }: { id: string }) => {
               Protein (P)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              Trace
+              {motherProtein}
             </p>
           </div>
           <div className="flex justify-between">
@@ -49,13 +52,13 @@ const MommyReport = async ({ id }: { id: string }) => {
               Glucose (G)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              +1
+              {motherGlucose}
             </p>
           </div>
         </div>
         <FullWidthData title="Palpation" data={motherPalpation + " cm"} />
         <FullWidthData title="FH" data={motherFh + ""} />
-        <Notes />
+        <Notes note={motherNote} />
       </div>
     </div>
   );

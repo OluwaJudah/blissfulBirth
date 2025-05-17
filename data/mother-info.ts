@@ -5,7 +5,7 @@ import dbConnect from "@/lib/db";
 import MotherInfo from "@/models/mother-info";
 import { Types } from "mongoose";
 
-export const getMotherInfoData = async (fields: string) => {
+export const getMotherInfoData = async (fields = "") => {
   await dbConnect();
 
   const session = await verifySession();
@@ -13,8 +13,9 @@ export const getMotherInfoData = async (fields: string) => {
 
   const userId = session?.userId as string;
 
-  return await MotherInfo.findOne(
+  return (await MotherInfo.findOne(
     { userId: new Types.ObjectId(userId) },
-    fields
-  );
+    fields,
+    { __v: 0, createdAt: 0, updatedAt: 0 }
+  )) as any;
 };

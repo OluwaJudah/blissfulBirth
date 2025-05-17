@@ -40,8 +40,9 @@ const MyReport = async ({
               <p className="font-sans font-medium text-turquoise-600 text-base">
                 Weight
               </p>
-              <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                {motherWeight}kg
+              <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
+                <p>{motherWeight}</p>
+                <p>kg</p>
               </span>
             </div>
           </div>

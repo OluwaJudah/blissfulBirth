@@ -16,7 +16,7 @@ const BabyReport = async ({
   const babyReport = await getBabyReport(appointmentId);
   if (!babyReport) return null;
 
-  const { babyHeight, babyWeight } = babyReport;
+  const { babyHeight, babyHeartRate } = babyReport;
 
   return (
     <div className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]">
@@ -28,21 +28,23 @@ const BabyReport = async ({
                 Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between px-2">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Heart Rate
                 </p>
-                <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  {babyHeight}cm
+                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
+                  <p>{babyHeartRate}</p>
+                  <p>bpm</p>
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Height
                 </p>
-                <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  {babyWeight}g
+                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
+                  <p>{babyHeight}</p>
+                  <p>cm</p>
                 </span>
               </div>
             </div>

@@ -19,9 +19,12 @@ export type IBabyReport = {
 export type IMotherReport = {
   _id?: string;
   motherWeight: number;
-  motherUrine: number;
+  motherBloodPressure: string;
+  motherPulse: number;
+  motherLeucosite: string;
+  motherGlucose: string;
+  motherProtein: string;
   motherPalpation: number;
-  motherBloodPressure: number;
   motherFh: number;
   motherNote: string;
 };

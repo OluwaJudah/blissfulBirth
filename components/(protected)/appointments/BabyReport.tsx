@@ -8,11 +8,15 @@ const BabyReport = ({
   babyReport,
 }: {
   pregnancyWeeks: number;
-  babyReport: { appointmentId: string; babyHeight: number; babyWeight: number };
+  babyReport: {
+    appointmentId: string;
+    babyHeight: number;
+    babyHeartRate: number;
+  };
 }) => {
   const trimester = calculateTrimester(pregnancyWeeks);
   const trimesterStr = trimesters[trimester];
-  const { appointmentId, babyHeight, babyWeight } = babyReport;
+  const { appointmentId, babyHeight, babyHeartRate } = babyReport;
 
   return (
     <div className="embla__slide__1 h-[210px] md:w-[80px] w-[90px]">
@@ -21,24 +25,26 @@ const BabyReport = ({
           <div className="flex flex-col h-full w-4/6 gap-3 float-right">
             <div className="text-center">
               <h2 className="mb-0 mx-auto font-sans font-bold text-turquoise-900 tracking-tight">
-              Week {pregnancyWeeks} - {trimesterStr} Trimester
+                Week {pregnancyWeeks} - {trimesterStr} Trimester
               </h2>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between px-2">
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Heart Rate
                 </p>
-                <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  {babyHeight}cm
+                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
+                  <p>{babyHeartRate}</p>
+                  <p>bpm</p>
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Height
                 </p>
-                <span className="font-mono font-bold text-black text-2xl tracking-tight">
-                  {babyWeight}g
+                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
+                  <p>{babyHeight}</p>
+                  <p>cm</p>
                 </span>
               </div>
             </div>

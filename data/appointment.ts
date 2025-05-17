@@ -1,5 +1,10 @@
 "use server";
-import { APPOINTMENT, COMPLETED_APPOINTMENT } from "@/constants/appointment";
+import {
+  APPOINTMENT,
+  COMPLETED_APPOINTMENT,
+  CONFIRMED_APPOINTMENT,
+  PENDING_APPOINTMENT,
+} from "@/constants/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import Appointment from "@/models/appointment";
@@ -23,15 +28,18 @@ export const getNextAppointmentData = async (fields = "") => {
   if (!session) return null;
 
   const userId = session?.userId as string;
-  const appointment = await Appointment.find(
-    { userId: new Types.ObjectId(userId) },
+  const appointments = await Appointment.find(
+    {
+      userId: new Types.ObjectId(userId),
+      status: { $in: [CONFIRMED_APPOINTMENT, PENDING_APPOINTMENT] },
+    },
     "pregnancyWeeks date time status type"
   )
-    .sort({ createdAt: -1 })
+    .sort({ date: 1 })
     .limit(1)
     .lean();
 
-  return appointment[0];
+  return appointments[0];
 };
 
 export const getLastAppointmentData = async () => {
@@ -42,21 +50,17 @@ export const getLastAppointmentData = async () => {
 
   const userId = session?.userId as string;
   const appointments = await Appointment.find(
-    { userId: new Types.ObjectId(userId) },
+    {
+      userId: new Types.ObjectId(userId),
+      status: COMPLETED_APPOINTMENT,
+      type: APPOINTMENT,
+    },
     "pregnancyWeeks date time status type"
   )
-    .sort({ createdAt: -1 })
+    .sort({ date: -1 })
     .lean();
 
-  if (appointments[0] && appointments[0].status === COMPLETED_APPOINTMENT)
-    return appointments[0];
-  if (
-    appointments.length > 1 &&
-    appointments[1].status === COMPLETED_APPOINTMENT
-  )
-    return appointments[1];
-
-  return null;
+  return appointments[0] ? appointments[0] : null;
 };
 
 export const getAppointments = async (fields = "") => {
@@ -84,24 +88,23 @@ export const getAppointments = async (fields = "") => {
         preserveNullAndEmptyArrays: true,
       },
     },
+    {
+      $project: {
+        appointmentId: "$_id",
+        status: "$status",
+        pregnancyWeeks: "$pregnancyWeeks",
+        babyHeight: "$babyreports.babyHeight",
+        babyHeartRate: "$babyreports.babyHeartRate",
+      },
+    },
   ]);
 
-  return data.reduce(
-    (acc: any, { _id, babyreports, status, pregnancyWeeks }) => {
-      if (babyreports) {
-        const { babyHeight, babyWeight } = babyreports;
-        acc[pregnancyWeeks] = {
-          appointmentId: _id.toString(),
-          babyHeight,
-          babyWeight,
-          status,
-        };
-        return acc;
-      }
-      return {};
-    },
-    {}
-  );
+  const result: any = {};
+  data.forEach((a) => {
+    result[a.pregnancyWeeks] = a;
+  });
+
+  return result;
 };
 
 export const getBabyReports = async (appointmentIds: string[], fields = "") => {
@@ -136,8 +139,32 @@ export const getMotherReport = async (appointmentId: string) => {
   const session = await verifySession();
   if (!session) return null;
 
-  return await MotherReport.findOne(
+  const motherReport = (await MotherReport.findOne(
     { appointmentId: new Types.ObjectId(appointmentId) },
     { _id: 0, createdAt: 0, updatedAt: 0, __v: 0, appointmentId: 0 }
-  ).lean();
+  )) as any;
+
+  const {
+    motherBloodPressure,
+    motherFh,
+    motherGlucose,
+    motherLeucosite,
+    motherNote,
+    motherPalpation,
+    motherProtein,
+    motherPulse,
+    motherWeight,
+  } = motherReport;
+
+  return {
+    motherBloodPressure,
+    motherFh,
+    motherGlucose,
+    motherLeucosite,
+    motherNote,
+    motherPalpation,
+    motherProtein,
+    motherPulse,
+    motherWeight,
+  };
 };

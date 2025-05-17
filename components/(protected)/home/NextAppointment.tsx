@@ -2,7 +2,6 @@ import Image from "next/image";
 import { calculateTrimester } from "@/utils";
 import { FIRST_APPOINTMENT, trimesters } from "@/constants/appointment";
 import { NextAppointmentButton } from "@/components/Buttons";
-import Link from "next/link";
 
 const NextAppointment = async ({
   appointmentId,
