@@ -2,8 +2,9 @@ export const FIRST_APPOINTMENT = "first_appointment";
 export const APPOINTMENT = "appointment";
 export const CONFIRMED_APPOINTMENT = "confirmed";
 export const COMPLETED_APPOINTMENT = "completed";
+export const PENDING_APPOINTMENT = "pending";
 export const PENDING_PATIENT = "pending";
-export const firstAppointmentTimeSlots = ["9:00 AM", "11:00 AM", "02:00 PM"];
+export const firstAppointmentTimeSlots = ["14:00", "11:00", "9:00"];
 export const firstAppointmentTrimester = ["3rd", "2nd", "1st"];
 export const appointmentWeeks = [
   8, 13, 18, 21, 24, 28, 30, 32, 34, 36, 37, 38, 39, 40,
