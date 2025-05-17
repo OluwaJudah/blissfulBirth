@@ -255,7 +255,7 @@ export const NextAppointmentButton = ({
   ) : (
     <Link
       className="flex items-center mx-auto bg-pinklet-500 hover:bg-pinklet-700 text-white rounded-2xl w-[180px] h-[30px]"
-      href={`/confirm-appointment?book=true&appointmentWeek=${nextPregnancyWeeks}${
+      href={`/confirmed-booking?book=book&bookingId=${id}${
         from ? `&from=${from}` : ""
       }`}
     >
