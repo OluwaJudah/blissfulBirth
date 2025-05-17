@@ -83,7 +83,7 @@ export const profileInfos = [
   },
   {
     name: "Blood Test",
-    url: "/profile/details?type=medical-history",
+    url: "/profile/details?type=blood-result",
     image: "/medical_history.png",
   },
   {
@@ -117,6 +117,11 @@ export const formTitles = {
   "payment-history": {
     name: "Payment History",
     image: "/payment_history.png",
+    skipUrl: "#",
+  },
+  "blood-result": {
+    name: "Blood Result",
+    image: "/medical_history.png",
     skipUrl: "#",
   },
 };
