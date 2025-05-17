@@ -1,15 +1,26 @@
 "use client";
+import { updateAppointment } from "@/actions/appointment";
 import { LoaderCircle, Pen } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const NotesAndBooking = ({ from }: { from?: string }) => {
+const NotesAndBooking = ({
+  bookingId,
+  from,
+}: {
+  bookingId: string;
+  from?: string;
+}) => {
   const [note, setNote] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const router = useRouter();
-  const submit = () => {
+  const submit = async () => {
     setIsLoading(true);
-    router.push(`/confirmed-booking${from ? "?from=home" : ""}`);
+    await updateAppointment(bookingId, note);
+    router.push(
+      `/confirmed-booking?bookingId=${bookingId}${from ? "&from=home" : ""}`
+    );
   };
 
   return (
@@ -23,7 +34,7 @@ const NotesAndBooking = ({ from }: { from?: string }) => {
         </div>
         <div className="w-full">
           <textarea
-            onChange={() => setNote("")}
+            onChange={(e) => setNote(e.target.value)}
             className="w-full h-[110px] rounded-2xl border border-turquoise-200 focus:border-turquoise-400 focus:ring-transparent focus:inset-ring-transparent"
             name=""
             id=""

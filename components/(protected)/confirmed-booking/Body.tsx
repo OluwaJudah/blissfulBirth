@@ -12,13 +12,17 @@ import Note from "./Note";
 
 const Body = ({
   appointment,
+  bookingId,
   from,
   book,
 }: {
   appointment: IAppointment;
+  bookingId: string;
   from: string;
-  book: string;
+  book?: string;
 }) => {
+  if (!appointment) return <></>;
+
   const { date, time, pregnancyWeeks, note } = appointment;
   const dateFormatted = date.toLocaleDateString("en-GB", {
     day: "2-digit",
@@ -56,7 +60,11 @@ const Body = ({
         <div className="border border-t-turquoise-100 my-3"></div>
         <TimeSlot time={time} />
         <Location />
-        {book ? <NotesAndBooking from={from} /> : <NoteBackHome from={from} />}
+        {book ? (
+          <NotesAndBooking bookingId={bookingId} from={from} />
+        ) : (
+          <NoteBackHome note={note} from={from} />
+        )}
       </div>
     </>
   );

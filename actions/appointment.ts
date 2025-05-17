@@ -1,4 +1,5 @@
 "use server";
+import { CONFIRMED_APPOINTMENT } from "@/constants/appointment";
 import { IAppointment } from "@/definitions/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
@@ -31,4 +32,17 @@ export const createAppointment = async (
       from !== "" ? `&from=${from}` : ""
     }`
   );
+};
+
+export const updateAppointment = async (id: string, note = "") => {
+  await dbConnect();
+  const objectId = new Types.ObjectId(id);
+  try {
+    await Appointment.findByIdAndUpdate(objectId, {
+      status: CONFIRMED_APPOINTMENT,
+      note,
+    });
+  } catch (err) {
+    throw Error(`Error: Failed to update appointment and ${err}`);
+  }
 };

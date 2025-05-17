@@ -1,7 +1,7 @@
 import { Home, Pen } from "lucide-react";
 import Link from "next/link";
 
-const NoteBackHome = ({ from }: { from?: string }) => {
+const NoteBackHome = ({ from, note }: { from?: string; note?: string }) => {
   return (
     <>
       <div className="flex flex-col gap-3 px-7">
@@ -13,9 +13,7 @@ const NoteBackHome = ({ from }: { from?: string }) => {
         </div>
         <div className="w-full">
           <p className="font-sans font-medium text-turquoise-950 text-base">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer...
+            {note === "" ? "No Note available" : note}
           </p>
         </div>
       </div>{" "}
