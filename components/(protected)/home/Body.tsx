@@ -5,7 +5,7 @@ import DueDate from "./DueDate";
 import { getNextAppointmentData } from "@/data/appointment";
 import { CONFIRMED_APPOINTMENT } from "@/constants/appointment";
 
-const Body = async ({ dueDate }: { dueDate: string }) => {
+const Body = async () => {
   const appointment = await getNextAppointmentData();
 
   const appointmentDefault = {
@@ -43,7 +43,7 @@ const Body = async ({ dueDate }: { dueDate: string }) => {
         <MyBaby pregnancyWeeks={pregnancyWeeks} />
         <MyBody pregnancyWeeks={pregnancyWeeks} />
       </div>
-      <DueDate dueDate={dueDate} />
+      <DueDate />
     </div>
   );
 };

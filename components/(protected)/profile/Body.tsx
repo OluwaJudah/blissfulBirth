@@ -5,18 +5,16 @@ import { profileInfos } from "@/data";
 
 const Body = ({
   username,
-  dueDate,
   pregnancyWeeks,
 }: {
   username: string;
-  dueDate: string;
   pregnancyWeeks: number;
 }) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="px-[20px] flex flex-col gap-3">
         <ProfilePicture username={username} pregnancyWeeks={pregnancyWeeks} />
-        <DueDate dueDate={dueDate} />
+        <DueDate />
       </div>
 
       <div className="px-[20px] flex flex-col gap-3">
