@@ -1,8 +1,10 @@
-import React from "react";
+import { getMotherInfoData } from "@/data/mother-info";
 import Image from "next/image";
-import Link from "next/link";
 
-const DueDate = ({ dueDate }: { dueDate: string }) => {
+const DueDate = async () => {
+  const motherInfo = await getMotherInfoData("edd");
+  const edd = motherInfo.edd ? motherInfo.edd : "";
+
   return (
     <div className="w-full border border-turquoise-500 rounded-2xl p-4">
       <div className="flex items-center justify-between">
@@ -17,9 +19,15 @@ const DueDate = ({ dueDate }: { dueDate: string }) => {
             Due date:
           </p>
         </div>
-        <span className="font-mono font-bold text-2xl md:text-xl text-turquoise-900 tracking-tight">
-          19 Oct 2025
-        </span>
+        {edd ? (
+          <span className="font-mono font-bold text-2xl md:text-xl text-turquoise-900 tracking-tight">
+            {edd}
+          </span>
+        ) : (
+          <span className="font-mono text-xl text-turquoise-600 tracking-tight">
+            Not Available
+          </span>
+        )}
       </div>
     </div>
   );

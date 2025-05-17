@@ -16,6 +16,5 @@ export const getMotherInfoData = async (fields = "") => {
   return (await MotherInfo.findOne(
     { userId: new Types.ObjectId(userId) },
     fields,
-    { __v: 0, createdAt: 0, updatedAt: 0 }
   )) as any;
 };
