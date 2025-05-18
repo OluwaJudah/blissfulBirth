@@ -1,5 +1,6 @@
 import BabyInfoForm from "@/components/(protected)/profile/details/BabyInfoForm";
 import BirthCompanionInfoForm from "@/components/(protected)/profile/details/BirthCompanionInfoForm";
+import BloodResult from "@/components/(protected)/profile/details/BloodResult";
 import Header from "@/components/(protected)/profile/details/Header";
 import MedicalHistoryForm from "@/components/(protected)/profile/details/MedicalHistoryForm";
 import MotherInfoForm from "@/components/(protected)/profile/details/MotherInfoForm";
@@ -23,6 +24,7 @@ export default async function HomePage({
         {type === "baby-info" && <BabyInfoForm />}
         {type === "medical-history" && <MedicalHistoryForm />}
         {type === "payment-history" && <PaymentHistory />}
+        {type === "blood-result" && <BloodResult />}
       </main>
     </div>
   );

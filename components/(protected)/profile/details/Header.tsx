@@ -9,10 +9,6 @@ const Header = ({ type }: { type: keyof typeof formTitles }) => {
     <div style={{ zIndex: 999 }} className="sticky top-0">
       <div className="px-4 flex content-center justify-between py-4 bg-white">
         <div className="flex items-center gap-3">
-          {/*           <div className="flex justify-center items-center bg-turquoise-100 w-[35px] h-[35px] rounded-full">
-            <BackArrowUrlButton url={"profile"} />
-          </div> */}
-
           <Link href="/profile"
             className={`flex justify-center items-center bg-turquoise-200 w-[65px] h-[40px] rounded-full`}
           >
