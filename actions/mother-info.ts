@@ -7,6 +7,8 @@ import {
   IBabyInfo,
   IBirthCompanion,
   IMotherInfo,
+  MedicalHistoryFormState,
+  medicalHistoryFormSchema,
 } from "@/definitions/mother-info";
 import MotherInfo from "@/models/mother-info";
 import dbConnect from "@/lib/db";
@@ -16,6 +18,7 @@ import BabyInfo from "@/models/baby-info";
 import MedicalHistory from "@/models/medical-history";
 import { Types } from "mongoose";
 import { PENDING_PATIENT } from "@/constants/appointment";
+import { revalidatePath } from "next/cache";
 
 export async function createMotherInfo(
   motherInfo: IMotherInfo,
@@ -121,4 +124,64 @@ export const createMotherInfoData = async (
   } catch (error) {
     throw new Error("Error creating MedicalHistory:" + error);
   }
+};
+
+export async function updateMedicalReport(
+  conditions: string,
+  familyHistory: string,
+  tbSymptomsScreen: string,
+  pathname: string,
+  prevState: MedicalHistoryFormState | undefined,
+  formData: FormData
+) {
+  const validatedFields = medicalHistoryFormSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+
+  if (!validatedFields.success) {
+    const state: MedicalHistoryFormState = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Oops, I think there's a mistake with your inputs.",
+    };
+    return state;
+  }
+
+  const { details, allergies, operations, medication } = validatedFields.data;
+
+  try {
+    await updateMedicalHistoryData({
+      details,
+      allergies,
+      operations,
+      medication,
+      conditions,
+      familyHistory,
+      tbSymptomsScreen,
+    });
+  } catch (err) {
+    console.log(`Error: updating medical history and ${err}`);
+    throw Error(`Error: updating medical history and ${err}`);
+  }
+
+  revalidatePath(pathname);
+}
+
+const updateMedicalHistoryData = async (data: IMedicalHistory) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+
+  const medicalHistory = await MedicalHistory.findOneAndUpdate(
+    { userId: new Types.ObjectId(userId) }, // Filter
+    { $set: { ...data } },
+    {
+      new: true, // Return the updated document
+      upsert: true, // Create if it doesn't exist
+      runValidators: true, // Apply schema validations
+    }
+  );
+  return medicalHistory;
 };

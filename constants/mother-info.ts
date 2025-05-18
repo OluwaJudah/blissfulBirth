@@ -226,3 +226,13 @@ export const birthCompanionFormData = [
     bgColour: "bg-turquoise-100",
   },
 ];
+
+export const defaultMedicalHistoryData = {
+  details: "",
+  medication: "",
+  operations: "",
+  allergies: "",
+  conditions: "",
+  familyHistory: "",
+  tbSymptomsScreen: "",
+};
