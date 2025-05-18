@@ -24,6 +24,11 @@ export const formTitles = {
     image: "/payment_history.png",
     skipUrl: "#",
   },
+  "blood-result": {
+    name: "Blood Result",
+    image: "/medical_history.png",
+    skipUrl: "#",
+  },
 };
 
 const today = new Date();

@@ -164,3 +164,16 @@ export type IBabyInfo = {
   fullName: string;
   surname: string;
 };
+
+export type IBloodResult = {
+  id?: string;
+  date: Date;
+  rpr: string;
+  bloodGroup: string;
+  hepatitis: string;
+  rubella: string;
+  hiv: string;
+  glucose: number;
+  hb: number;
+  notes: string;
+};
