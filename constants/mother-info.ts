@@ -236,3 +236,15 @@ export const defaultMedicalHistoryData = {
   familyHistory: "",
   tbSymptomsScreen: "",
 };
+
+export const defaultBloodResultData = {
+  date: "",
+  bloodGroup: "",
+  glucose: 0,
+  hb: 0,
+  hiv: "",
+  hepatitis: "",
+  notes: "",
+  rpr: "",
+  rubella: "",
+};

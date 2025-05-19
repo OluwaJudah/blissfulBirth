@@ -2,22 +2,27 @@ import { getBloodResult } from "@/data/mother-info";
 import BlockData from "./BlockData";
 import FullWidthData from "./FullWidthData";
 import Notes from "./Notes";
+import { defaultBloodResultData } from "@/constants/mother-info";
 
 const BloodResult = async () => {
-  const bloodResult = await getBloodResult(
-    "date bloodGroup glucose hb hiv hepatitis notes rpr rubella"
-  );
+  let bloodResult = defaultBloodResultData;
+  const data = null
 
-  if (!bloodResult) return <></>;
+  if (data) bloodResult = data;
 
   const { date, bloodGroup, glucose, hb, hiv, hepatitis, notes, rpr, rubella } =
     bloodResult;
-  const newDate = new Date(date);
-  const dateStr = newDate.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+  
+  let dateStr = "Not Available";
+  if (date) {
+    const newDate = new Date(date);
+    dateStr = newDate.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
   const notAvailable = "Not Available";
   return (
     <>
@@ -25,11 +30,8 @@ const BloodResult = async () => {
         <div className="bg-turquoise-100 rounded-3xl h-full py-8">
           <div className="flex flex-col px-4 space-y-4">
             <div className="flex space-x-8">
-              <BlockData
-                title="Glucose (mmol/l)"
-                data={glucose || notAvailable}
-              />
-              <BlockData title="Hb (g/dl)" data={hb || notAvailable} />
+              <BlockData title="Glucose (mmol/l)" data={glucose + ""} />
+              <BlockData title="Hb (g/dl)" data={hb + ""} />
             </div>
             <div className="flex flex-col space-y-4">
               <FullWidthData title="Date" data={dateStr || notAvailable} />
