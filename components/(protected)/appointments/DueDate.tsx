@@ -5,6 +5,12 @@ const DueDate = async () => {
   const motherInfo = await getMotherInfoData("edd");
   const edd = motherInfo && motherInfo.edd ? motherInfo.edd : "";
 
+  let eddStr = "N/A";
+  if (edd) {
+    const date = new Date(edd);
+    eddStr = date.toDateString();
+  }
+
   return (
     <div className="w-full border border-turquoise-500 rounded-2xl p-4">
       <div className="flex items-center justify-between">
@@ -25,7 +31,7 @@ const DueDate = async () => {
           </span>
         ) : (
           <span className="font-mono text-xl text-turquoise-600 tracking-tight">
-            Not Available
+            {eddStr}
           </span>
         )}
       </div>
