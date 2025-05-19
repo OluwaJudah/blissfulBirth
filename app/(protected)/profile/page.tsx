@@ -15,7 +15,7 @@ const ProfilePage = async () => {
 
   return (
     <div className="flex h-screen items-center ">
-      <main className="pb-[40px] md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-hidden md:overflow-y-scroll">
+      <main className="pb-[40px] md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-y-scroll">
         <Header title={title} />
         <Body username={username} pregnancyWeeks={pregnancyWeeks} />
       </main>
