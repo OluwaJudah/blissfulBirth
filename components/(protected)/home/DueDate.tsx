@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const DueDate = async () => {
   const motherInfo = await getMotherInfoData("edd");
-  const edd = motherInfo.edd ? motherInfo.edd : "";
+  const edd = motherInfo && motherInfo.edd ? motherInfo.edd : "";
 
   return (
     <div className="w-full border border-turquoise-500 rounded-2xl p-4">
