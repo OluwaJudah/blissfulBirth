@@ -29,7 +29,7 @@ const DueDate = async () => {
             Due date:
           </p>
         </div>
-        <span className="font-mono text-xl text-turquoise-600 tracking-tight">
+        <span className="font-mono font-bold text-2xl md:text-xl text-turquoise-900 tracking-tight">
           {eddStr}
         </span>
       </div>
