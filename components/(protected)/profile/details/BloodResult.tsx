@@ -6,13 +6,14 @@ import { defaultBloodResultData } from "@/constants/mother-info";
 
 const BloodResult = async () => {
   let bloodResult = defaultBloodResultData;
-  const data = null
+  const data = await getBloodResult(
+    "date bloodGroup glucose hb hiv hepatitis notes rpr rubella"
+  );
 
   if (data) bloodResult = data;
 
   const { date, bloodGroup, glucose, hb, hiv, hepatitis, notes, rpr, rubella } =
     bloodResult;
-  
   let dateStr = "Not Available";
   if (date) {
     const newDate = new Date(date);
