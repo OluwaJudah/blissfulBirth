@@ -5,7 +5,7 @@ const DueDate = async () => {
   const motherInfo = await getMotherInfoData("edd");
   const edd = motherInfo && motherInfo.edd ? motherInfo.edd : "";
 
-  let eddStr = "N/A";
+  let eddStr = "Not Available";
   if (edd) {
     const date = new Date(edd);
     eddStr = date.toLocaleDateString("en-GB", {
