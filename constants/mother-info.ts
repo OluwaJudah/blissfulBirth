@@ -26,7 +26,7 @@ export const formTitles = {
   },
   "blood-result": {
     name: "Blood Result",
-    image: "/medical_history.png",
+    image: "/blood-sample.png",
     skipUrl: "#",
   },
 };

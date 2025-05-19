@@ -82,9 +82,9 @@ export const profileInfos = [
     image: "/medical_history.png",
   },
   {
-    name: "Blood Test",
+    name: "Blood Result",
     url: "/profile/details?type=blood-result",
-    image: "/medical_history.png",
+    image: "/blood-sample.png",
   },
   {
     name: "Payment History",
