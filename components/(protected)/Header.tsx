@@ -53,7 +53,7 @@ const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
   return (
     <div style={{ zIndex: 999 }} className="pb-[10px] sticky top-0">
       <div
-        className={`relative flex content-center justify-between bg-turquoise-50 ${
+        className={`relative flex content-center justify-between bg-white ${
           imgUrl ? "py-3" : "py-5"
         } px-[20px]`}
       >
