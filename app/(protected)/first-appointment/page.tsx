@@ -1,17 +1,8 @@
 import Body from "@/components/(protected)/first-appointment/Body";
 import Header from "@/components/(protected)/first-appointment/Header";
-import { getMotherInfoData } from "@/data/mother-info";
-import { calculatePregnancyWeeks } from "@/utils";
 
 export default async function HomePage() {
-  const date = await getMotherInfoData("lastMenstrualDate createdAt");
   let pregnancyWeeks = 0;
-  if (date) {
-    const { lastMenstrualDate, createdAt } = date;
-    if (lastMenstrualDate && createdAt) {
-      pregnancyWeeks = calculatePregnancyWeeks(lastMenstrualDate, createdAt);
-    }
-  }
 
   return (
     <div className="flex items-center">
