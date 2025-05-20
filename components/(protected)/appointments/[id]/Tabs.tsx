@@ -42,7 +42,7 @@ const Tabs = () => {
           >
             <div className="flex items-center">
               <Image src={t.icon} height={100} width={45} alt="Baby 2" />
-              <span>{t.name}</span>
+              <span className="text-white">{t.name}</span>
             </div>
           </Link>
         ))}
