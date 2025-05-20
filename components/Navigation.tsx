@@ -52,10 +52,10 @@ const MenuItem = ({ item }: { item: Item }) => {
             >
               <item.Icon className="text-white" size={23} />
             </div>
-            <p className="text-torquoise-900">{item.name}</p>
+            <p className="text-turquoise-900">{item.name}</p>
           </div>
           <div>
-            <ChevronRight className="text-torquoise-900" />
+            <ChevronRight className="text-turquoise-900" />
           </div>
         </Link>
       )}

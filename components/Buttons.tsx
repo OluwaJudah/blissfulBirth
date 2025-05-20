@@ -185,7 +185,7 @@ export const ConditionCancelButton = ({
       className="flex flex-row gap-2 items-center bg-pinklet-500 shadow-md hover:bg-pinklet-600 text-white rounded-full px-3 h-[33px]"
     >
       <span>{name}</span>
-      <X className="text-torquoise-900" size={23} strokeWidth={2} />
+      <X className="text-turquoise-900" size={23} strokeWidth={2} />
     </button>
   );
 };
@@ -201,10 +201,10 @@ export const LogOutButton = ({ item }: { item: Item }) => {
         >
           <LogInIcon className="text-white" size={23} />
         </div>
-        <p className="text-torquoise-900">{item.name}</p>
+        <p className="text-turquoise-900">{item.name}</p>
       </div>
       <div>
-        <ChevronRight className="text-torquoise-900" />
+        <ChevronRight className="text-turquoise-900" />
       </div>
     </div>
   );

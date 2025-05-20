@@ -30,7 +30,7 @@ const NotesAndBooking = ({
           <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
             <Pen className="text-white" size={20} strokeWidth={3} />
           </div>
-          <p className="font-mono font-bold text-torquoise-900">Notes</p>
+          <p className="font-mono font-bold text-turquoise-900">Notes</p>
         </div>
         <div className="w-full">
           <textarea

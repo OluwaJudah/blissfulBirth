@@ -62,7 +62,7 @@ const Input = ({
 
         <input
           placeholder={placeholder}
-          className={`w-full border-none focus:ring-transparent text-torquoise-900 ${
+          className={`w-full border-none focus:ring-transparent text-turquoise-900 ${
             isPending ? disabledBgColour : bgColour
           } focus:inset-ring-transparent`}
           type={type ? type : "text"}

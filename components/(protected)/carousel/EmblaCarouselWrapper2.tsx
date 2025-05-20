@@ -30,7 +30,7 @@ const EmblaCarouselWrapper = ({
             const selected =
               index === selectedIndex
                 ? "bg-pinklet-500 text-white"
-                : "border border-pinklet-400 text-torquoise-900";
+                : "border border-pinklet-400 text-turquoise-900";
             const completed =
               Number(pregnancyWeeks[index]) <= lastPregnancyWeeks
                 ? "bg-pinklet-400 text-white border-none"
