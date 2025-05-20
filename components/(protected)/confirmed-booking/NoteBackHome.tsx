@@ -9,7 +9,7 @@ const NoteBackHome = ({ from, note }: { from?: string; note?: string }) => {
           <div className="flex justify-center items-center bg-pinklet-200 w-[40px] h-[40px] rounded-full">
             <Pen size={20} strokeWidth={3} />
           </div>
-          <p className="font-mono font-bold">Notes</p>
+          <p className="font-mono font-bold text-turquoise-900">Notes</p>
         </div>
         <div className="w-full">
           <p className="font-sans font-medium text-turquoise-950 text-base">
