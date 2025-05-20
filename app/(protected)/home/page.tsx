@@ -5,8 +5,8 @@ import { getMotherInfoData } from "@/data/mother-info";
 export default async function HomePage() {
   const imgUrl = "/user_1.svg";
   const motherInfo = await getMotherInfoData("fullName lastMenstrualDate");
-
-  const title = `Hi ${motherInfo?.fullName}`;
+  const name = motherInfo?.fullName ? motherInfo?.fullName : "";
+  const title = `Hi ${name}`;
 
   return (
     <div className="flex h-screen items-center">
