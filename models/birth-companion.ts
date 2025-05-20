@@ -1,7 +1,7 @@
 import type { IBirthCompanion } from "@/definitions/mother-info";
 import mongoose, { Schema, Document, Model, Types } from "mongoose";
 
-interface BirthCompanion extends Document, IBirthCompanion {
+interface BirthCompanion extends Document, Omit<IBirthCompanion, "id"> {
   userId: Types.ObjectId;
 }
 
