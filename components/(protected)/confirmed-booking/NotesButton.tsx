@@ -28,9 +28,9 @@ const NotesAndBooking = ({
       <div className="flex flex-col gap-3 px-7">
         <div className="flex items-center gap-2">
           <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
-            <Pen size={20} strokeWidth={3} />
+            <Pen className="text-white" size={20} strokeWidth={3} />
           </div>
-          <p className="font-mono font-bold">Notes</p>
+          <p className="font-mono font-bold text-torquoise-900">Notes</p>
         </div>
         <div className="w-full">
           <textarea

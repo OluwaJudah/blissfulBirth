@@ -29,7 +29,11 @@ const DueDate = async () => {
             Due date:
           </p>
         </div>
-        <span className="font-mono font-bold text-2xl md:text-xl text-turquoise-900 tracking-tight">
+        <span
+          className={`font-mono font-bold ${
+            eddStr === "Not Available" ? "text-xl" : "text-2xl"
+          } text-turquoise-900 tracking-tight`}
+        >
           {eddStr}
         </span>
       </div>

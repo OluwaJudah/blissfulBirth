@@ -50,12 +50,12 @@ const MenuItem = ({ item }: { item: Item }) => {
             <div
               className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
             >
-              <item.Icon size={23} />
+              <item.Icon classname="text-white" size={23} />
             </div>
-            <p>{item.name}</p>
+            <p className="text-torquoise-900">{item.name}</p>
           </div>
           <div>
-            <ChevronRight />
+            <ChevronRight className="text-torquoise-900" />
           </div>
         </Link>
       )}
