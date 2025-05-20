@@ -1,5 +1,21 @@
 import { z } from "zod";
 
+export type MotherInfoFormState = {
+  errors?: {
+    fullName?: string[];
+    surname?: string[];
+    maidenName?: string[];
+    idPassportNo?: string[];
+    dateOfBirth?: string[];
+    lastMenstrualDate?: string[];
+    contactNumber?: string[];
+    email?: string[];
+    countryOfOrigin?: string[];
+    occupation?: string[];
+  };
+  message?: string | null;
+};
+
 export const motherInfoFormSchema = z
   .object({
     fullName: z.string().min(2, { message: "Full Name is required." }).trim(),
@@ -143,6 +159,7 @@ export type IMedicalHistory = {
 };
 
 export type IBirthCompanion = {
+  id?: string;
   fullName: string;
   surname: string;
   maidenName: string;

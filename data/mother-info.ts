@@ -1,5 +1,4 @@
 "use server";
-
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import BloodResult from "@/models/blood-result";
@@ -15,10 +14,38 @@ export const getMotherInfoData = async (fields = "") => {
 
   const userId = session?.userId as string;
 
-  return (await MotherInfo.findOne(
+  const motherInfo = (await MotherInfo.findOne(
     { userId: new Types.ObjectId(userId) },
     fields
   )) as any;
+
+  const {
+    _id,
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  } = motherInfo;
+
+  return {
+    id: _id.toString(),
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  };
 };
 
 export const getBloodResult = async (fields = "") => {

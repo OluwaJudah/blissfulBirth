@@ -9,6 +9,8 @@ import {
   IMotherInfo,
   MedicalHistoryFormState,
   medicalHistoryFormSchema,
+  MotherInfoFormState,
+  motherInfoFormSchema,
 } from "@/definitions/mother-info";
 import MotherInfo from "@/models/mother-info";
 import dbConnect from "@/lib/db";
@@ -185,3 +187,89 @@ const updateMedicalHistoryData = async (data: IMedicalHistory) => {
   );
   return medicalHistory;
 };
+
+const updateMotherInfoData = async (motherInfo: any) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+  const {
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  } = motherInfo;
+
+  try {
+    await MotherInfo.findOneAndUpdate(
+      { userId: new Types.ObjectId(userId) },
+      {
+        fullName,
+        surname,
+        maidenName,
+        idPassportNo,
+        dateOfBirth,
+        lastMenstrualDate,
+        contactNumber,
+        email,
+        countryOfOrigin,
+        occupation,
+      }
+    );
+  } catch (error) {
+    throw new Error("Error: updating Mother info and " + error);
+  }
+};
+
+export async function updateMotherInfo(
+  pathname: string,
+  prevState: MotherInfoFormState | undefined,
+  formData: FormData
+) {
+  const validatedFields = motherInfoFormSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+
+  if (!validatedFields.success) {
+    const state: MotherInfoFormState = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Oops, I think there's a mistake with your inputs.",
+    };
+    return state;
+  }
+  const {
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  } = validatedFields.data;
+
+  await updateMotherInfoData({
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  });
+
+  revalidatePath(pathname);
+}
