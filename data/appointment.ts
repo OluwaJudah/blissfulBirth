@@ -18,7 +18,10 @@ export const getAppointment = async (id: string) => {
   const session = await verifySession();
   if (!session) return null;
 
-  return await Appointment.findById(id, "date time status note pregnancyWeeks");
+  return await Appointment.findById(
+    id,
+    "date time status type note pregnancyWeeks"
+  );
 };
 
 export const getNextAppointmentData = async (fields = "") => {
