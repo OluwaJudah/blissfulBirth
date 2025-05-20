@@ -11,6 +11,8 @@ import {
   medicalHistoryFormSchema,
   MotherInfoFormState,
   motherInfoFormSchema,
+  BirthCompanionFormState,
+  birthCompanionSchema,
 } from "@/definitions/mother-info";
 import MotherInfo from "@/models/mother-info";
 import dbConnect from "@/lib/db";
@@ -265,6 +267,90 @@ export async function updateMotherInfo(
     idPassportNo,
     dateOfBirth,
     lastMenstrualDate,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  });
+
+  revalidatePath(pathname);
+}
+
+const updateBirthCompanionInfoData = async (
+  birthCompanion: IBirthCompanion
+) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+  const {
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  } = birthCompanion;
+
+  try {
+    await BirthCompanion.findOneAndUpdate(
+      { userId: new Types.ObjectId(userId) },
+      {
+        fullName,
+        surname,
+        maidenName,
+        idPassportNo,
+        dateOfBirth,
+        contactNumber,
+        email,
+        countryOfOrigin,
+        occupation,
+      }
+    );
+  } catch (error) {
+    throw new Error("Error: updating Mother info and " + error);
+  }
+};
+
+export async function updateBirthCompanionInfo(
+  pathname: string,
+  prevState: BirthCompanionFormState | undefined,
+  formData: FormData
+) {
+  const validatedFields = birthCompanionSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+
+  if (!validatedFields.success) {
+    const state: BirthCompanionFormState = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Oops, I think there's a mistake with your inputs.",
+    };
+    return state;
+  }
+  const {
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth,
+    contactNumber,
+    email,
+    countryOfOrigin,
+    occupation,
+  } = validatedFields.data;
+
+  await updateBirthCompanionInfoData({
+    fullName,
+    surname,
+    maidenName,
+    idPassportNo,
+    dateOfBirth: new Date(dateOfBirth),
     contactNumber,
     email,
     countryOfOrigin,

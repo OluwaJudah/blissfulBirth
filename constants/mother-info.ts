@@ -117,6 +117,72 @@ export const motherInputFormData = [
   },
 ];
 
+export const birthCompanionInputFormData = [
+  {
+    name: "fullName",
+    label: "Full Name",
+    placeholder: "E.g John",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+  {
+    name: "surname",
+    label: "Surname",
+    placeholder: "E.g Doe",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+  {
+    name: "maidenName",
+    label: "Maiden Name",
+    placeholder: "E.g Doe",
+    bgColour: "bg-turquoise-100",
+  },
+  {
+    name: "idPassportNo",
+    label: "ID / Passport",
+    placeholder: "E.g 93023234000 / D2341SDFASDF",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+  {
+    name: "dateOfBirth",
+    label: "Date of Birth",
+    type: "date",
+    bgColour: "bg-turquoise-100",
+    max: formatDate(sixteenYearsAgo),
+    isRequired: true,
+  },
+  {
+    name: "contactNumber",
+    label: "Contact Number",
+    placeholder: "E.g 0677123123123",
+    bgColour: "bg-turquoise-100",
+    isPhoneNumber: true,
+    isRequired: true,
+  },
+  {
+    name: "email",
+    label: "Email Address",
+    type: "email",
+    placeholder: "E.g john@doe.com",
+    bgColour: "bg-turquoise-100",
+  },
+  {
+    name: "countryOfOrigin",
+    label: "Country of Origin",
+    placeholder: "E.g South Africa",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+  {
+    name: "occupation",
+    label: "Day Job / Occupation",
+    placeholder: "E.g Nurse",
+    bgColour: "bg-turquoise-100",
+  },
+];
+
 export const babyInfoFormData = [
   {
     name: "fullName",
