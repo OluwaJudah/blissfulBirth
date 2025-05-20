@@ -30,6 +30,13 @@ export type BirthCompanionFormState = {
   };
   message?: string | null;
 };
+export type BabyInfoFormState = {
+  errors?: {
+    fullName?: string[];
+    surname?: string[];
+  };
+  message?: string | null;
+};
 
 export const motherInfoFormSchema = z
   .object({

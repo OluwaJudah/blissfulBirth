@@ -13,6 +13,8 @@ import {
   motherInfoFormSchema,
   BirthCompanionFormState,
   birthCompanionSchema,
+  BabyInfoFormState,
+  babyInfoSchema,
 } from "@/definitions/mother-info";
 import MotherInfo from "@/models/mother-info";
 import dbConnect from "@/lib/db";
@@ -355,6 +357,54 @@ export async function updateBirthCompanionInfo(
     email,
     countryOfOrigin,
     occupation,
+  });
+
+  revalidatePath(pathname);
+}
+
+const updateBabyInfoFormData = async (birthCompanion: IBabyInfo) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+  const { fullName, surname } = birthCompanion;
+
+  try {
+    await BabyInfo.findOneAndUpdate(
+      { motherId: new Types.ObjectId(userId) },
+      {
+        fullName,
+        surname,
+      }
+    );
+  } catch (error) {
+    throw new Error("Error: updating Mother info and " + error);
+  }
+};
+
+export async function updateBabyInfoForm(
+  pathname: string,
+  prevState: BabyInfoFormState | undefined,
+  formData: FormData
+) {
+  const validatedFields = babyInfoSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+
+  if (!validatedFields.success) {
+    const state: BabyInfoFormState = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Oops, I think there's a mistake with your inputs.",
+    };
+    return state;
+  }
+  const { fullName, surname } = validatedFields.data;
+
+  await updateBabyInfoFormData({
+    fullName,
+    surname,
   });
 
   revalidatePath(pathname);

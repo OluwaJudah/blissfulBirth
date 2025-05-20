@@ -117,6 +117,23 @@ export const motherInputFormData = [
   },
 ];
 
+export const babyInputFormData = [
+  {
+    name: "fullName",
+    label: "Full Name",
+    placeholder: "E.g John",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+  {
+    name: "surname",
+    label: "Surname",
+    placeholder: "E.g Doe",
+    bgColour: "bg-turquoise-100",
+    isRequired: true,
+  },
+];
+
 export const birthCompanionInputFormData = [
   {
     name: "fullName",

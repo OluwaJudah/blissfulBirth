@@ -1,6 +1,7 @@
 "use server";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
+import BabyInfo from "@/models/baby-info";
 import BirthCompanion from "@/models/birth-companion";
 import BloodResult from "@/models/blood-result";
 import MedicalHistory from "@/models/medical-history";
@@ -86,6 +87,28 @@ export const getBirthCompanionInfo = async (fields = "") => {
     email,
     countryOfOrigin,
     occupation,
+  };
+};
+
+export const getBabyInfo = async (fields = "") => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+
+  const birthCompanionInfo = (await BabyInfo.findOne(
+    { motherId: new Types.ObjectId(userId) },
+    fields
+  )) as any;
+
+  const { _id, fullName, surname } = birthCompanionInfo;
+
+  return {
+    id: _id.toString(),
+    fullName,
+    surname,
   };
 };
 

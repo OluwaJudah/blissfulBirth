@@ -1,11 +1,9 @@
-import BabyInfoForm from "@/components/(protected)/profile/details/BabyInfoForm";
+import BabyInfo from "@/components/(protected)/profile/details/BabyInfo";
 import BirthCompanionInfo from "@/components/(protected)/profile/details/BirthCompanionInfo";
-import BirthCompanionInfoForm from "@/components/(protected)/profile/details/BirthCompanionInfoForm";
 import BloodResult from "@/components/(protected)/profile/details/BloodResult";
 import Header from "@/components/(protected)/profile/details/Header";
 import MedicalHistory from "@/components/(protected)/profile/details/MedicalHistory";
 import MotherInfo from "@/components/(protected)/profile/details/MotherInfo";
-import MotherInfoForm from "@/components/(protected)/profile/details/MotherInfoForm";
 import PaymentHistory from "@/components/(protected)/profile/details/PaymentHistory";
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -23,7 +21,7 @@ export default async function HomePage({
         <Header type={type as any} />
         {type === "mother-info" && <MotherInfo />}
         {type === "birth-companion" && <BirthCompanionInfo />}
-        {type === "baby-info" && <BabyInfoForm />}
+        {type === "baby-info" && <BabyInfo />}
         {type === "medical-history" && <MedicalHistory />}
         {type === "payment-history" && <PaymentHistory />}
         {type === "blood-result" && <BloodResult />}
