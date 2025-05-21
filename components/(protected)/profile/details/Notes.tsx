@@ -16,14 +16,20 @@ const Notes = ({ note }: { note: string }) => {
           Notes
         </p>
         {isOpen ? (
-          <ChevronDown size={24} strokeWidth={4} />
+          <ChevronDown
+            className="text-turquoise-900"
+            size={24}
+            strokeWidth={4}
+          />
         ) : (
-          <ChevronUp size={24} strokeWidth={4} />
+          <ChevronUp className="text-turquoise-900" size={24} strokeWidth={4} />
         )}
       </div>
       {isOpen && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <p>{note ? note : "No Note available"}</p>
+          <p className="text-turquoise-900">
+            {note ? note : "No Note available"}
+          </p>
         </motion.div>
       )}
     </div>
