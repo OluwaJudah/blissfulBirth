@@ -12,16 +12,8 @@ const BabyReport = async ({ id }: { id: string }) => {
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex space-x-8">
-        <BlockData
-          title="SFH (Height)"
-          data={babyHeight + ""}
-          measurement="cm"
-        />
-        <BlockData
-          title="FHR (Heart Rate)"
-          data={babyHeartRate + ""}
-          measurement="bpm"
-        />
+        <BlockData title="Height (cm)" data={babyHeight + ""} />
+        <BlockData title="Heart Rate (bpm)" data={babyHeartRate + ""} />
       </div>
       <div className="flex flex-col space-y-4">
         <FullWidthData title="Presentation" data="Vertex" />

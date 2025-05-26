@@ -42,7 +42,6 @@ const MyReport = async ({
               </p>
               <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
                 <p>{motherWeight}</p>
-                <p>kg</p>
               </span>
             </div>
           </div>

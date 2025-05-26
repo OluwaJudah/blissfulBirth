@@ -1,11 +1,9 @@
 const BlockData = ({
   title,
   data,
-  measurement,
 }: {
   title: string;
   data: string;
-  measurement?: string;
 }) => {
   return (
     <div className="basis-1/2 h-[138px] rounded-3xl bg-turquoise-200 flex items-center justify-center">
@@ -13,9 +11,8 @@ const BlockData = ({
         <p className="font-sans text-black text-base tracking-tight leading-none">
           {title}
         </p>
-        <span className="flex gap-1 font-mono font-bold text-black text-3xl tracking-tight leading-none">
+        <span className="w-[] flex gap-1 font-mono font-bold text-black text-3xl tracking-tight leading-none">
           {data && <p>{data}</p>}
-          {measurement && <p>{measurement}</p>}
         </span>
       </div>
     </div>

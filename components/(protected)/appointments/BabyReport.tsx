@@ -35,7 +35,6 @@ const BabyReport = ({
                 </p>
                 <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
                   <p>{babyHeartRate}</p>
-                  <p>bpm</p>
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
@@ -44,7 +43,6 @@ const BabyReport = ({
                 </p>
                 <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
                   <p>{babyHeight}</p>
-                  <p>cm</p>
                 </span>
               </div>
             </div>

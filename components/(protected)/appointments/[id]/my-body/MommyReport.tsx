@@ -20,8 +20,8 @@ const MommyReport = async ({ id }: { id: string }) => {
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex space-x-8">
-        <BlockData title="Weight" data={motherWeight + ""} measurement="kg" />
-        <BlockData title="Pulse" data={motherPulse + ""} measurement="bpm" />
+        <BlockData title="Weight (kg)" data={motherWeight + ""} />
+        <BlockData title="Pulse (bpm)" data={motherPulse + ""} />
       </div>
       <div className="flex flex-col space-y-4">
         <FullWidthData title="Blood Pressurre" data={motherBloodPressure} />
