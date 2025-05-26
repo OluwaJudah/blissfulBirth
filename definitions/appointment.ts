@@ -24,7 +24,5 @@ export type IMotherReport = {
   motherLeucosite: string;
   motherGlucose: string;
   motherProtein: string;
-  motherPalpation: number;
-  motherFh: number;
   motherNote: string;
 };

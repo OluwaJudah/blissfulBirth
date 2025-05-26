@@ -58,7 +58,7 @@ const Input = ({
           />
         )}
 
-        {isPhoneNumber && <div>+27</div>}
+        {isPhoneNumber && <div className="text-turquoise-900">+27</div>}
 
         <input
           placeholder={placeholder}

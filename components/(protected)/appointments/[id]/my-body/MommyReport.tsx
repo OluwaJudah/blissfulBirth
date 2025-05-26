@@ -9,11 +9,9 @@ const MommyReport = async ({ id }: { id: string }) => {
 
   const {
     motherBloodPressure,
-    motherFh,
     motherGlucose,
     motherLeucosite,
     motherNote,
-    motherPalpation,
     motherProtein,
     motherPulse,
     motherWeight,
@@ -56,8 +54,6 @@ const MommyReport = async ({ id }: { id: string }) => {
             </p>
           </div>
         </div>
-        <FullWidthData title="Palpation" data={motherPalpation + " cm"} />
-        <FullWidthData title="FH" data={motherFh + ""} />
         <Notes note={motherNote} />
       </div>
     </div>
