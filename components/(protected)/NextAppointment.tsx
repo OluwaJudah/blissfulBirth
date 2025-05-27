@@ -9,12 +9,14 @@ const NextAppointment = async ({
   type,
   nextPregnancyWeeks,
   isCofirmed,
+  from,
 }: {
   appointmentId: string;
   dateTime: string;
   type: string;
   nextPregnancyWeeks: number;
   isCofirmed: boolean;
+  from?: string;
 }) => {
   let nextAppointmentStr = "";
 
@@ -56,7 +58,7 @@ const NextAppointment = async ({
             <NextAppointmentButton
               id={appointmentId}
               isCofirmed={isCofirmed}
-              from="home"
+              from={from ? from : ""}
             />
           </div>
         </div>

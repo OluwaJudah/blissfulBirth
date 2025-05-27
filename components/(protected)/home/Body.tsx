@@ -38,6 +38,7 @@ const Body = async () => {
         dateTime={dateTime}
         type={type}
         isCofirmed={isCofirmed}
+        from="home"
       />
       <div className="flex flex-col gap-[15px]">
         <MyBaby pregnancyWeeks={pregnancyWeeks} />
