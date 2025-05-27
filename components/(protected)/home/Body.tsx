@@ -1,9 +1,9 @@
-import NextAppointment from "./NextAppointment";
 import MyBaby from "./MyBaby";
 import MyBody from "./MyBody";
 import DueDate from "./DueDate";
 import { getNextAppointmentData } from "@/data/appointment";
 import { CONFIRMED_APPOINTMENT } from "@/constants/appointment";
+import NextAppointment from "../NextAppointment";
 
 const Body = async () => {
   const appointment = await getNextAppointmentData();
