@@ -237,12 +237,10 @@ export const DateSlotButton = ({
 export const NextAppointmentButton = ({
   id,
   from,
-  nextPregnancyWeeks,
   isCofirmed,
 }: {
   id: string;
   from?: string;
-  nextPregnancyWeeks: number;
   isCofirmed: boolean;
 }) => {
   return isCofirmed ? (
