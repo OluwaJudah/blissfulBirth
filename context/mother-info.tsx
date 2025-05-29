@@ -18,6 +18,7 @@ const motherInfoData = {
   status: "",
   countryOfOrigin: "",
   occupation: "",
+  isExisting: false,
 };
 
 const babyInfoData = {
@@ -47,6 +48,8 @@ export const MotherInfoFormContext = createContext<any>({
   setBabyInfo: () => null,
   medicalHistory: medicalHistoryData,
   setMedicalHistory: () => null,
+  isExisting: false,
+  setIsExisting: () => null,
 });
 
 export function MotherInfoFormContextProvider({
@@ -54,7 +57,7 @@ export function MotherInfoFormContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [motherInfo, setMotherInfo] = useState<IMotherInfo>({
+  const [motherInfo, setMotherInfo] = useState<any>({
     ...motherInfoData,
     dateOfBirth: new Date(),
     lastMenstrualDate: new Date(),
@@ -66,6 +69,7 @@ export function MotherInfoFormContextProvider({
   const [babyInfo, setBabyInfo] = useState<IBabyInfo>(babyInfoData);
   const [medicalHistory, setMedicalHistory] =
     useState<ICreateMotherInfo>(medicalHistoryData);
+  const [isExisting, setIsExisting] = useState(false);
 
   // adding this code 👇🏽
   return (
@@ -79,6 +83,8 @@ export function MotherInfoFormContextProvider({
         setBabyInfo,
         medicalHistory,
         setMedicalHistory,
+        isExisting,
+        setIsExisting,
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-const Welcome = () => {
+const Welcome = async ({ isExisting }: { isExisting: string }) => {
   return (
     <div className="flex h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg-turquoise-50 h-full md:h-[850px] border md:border-gray-400/2 w-[400px] md:w-[370px] mx-auto md:p-6 md:overflow-scroll">
@@ -30,7 +30,9 @@ const Welcome = () => {
         >
           <Link
             className="flex items-center mx-auto justify-center gap-1 bg-turquoise-800 hover:bg-turquoise-700 text-white rounded-2xl w-[158px] h-[43px]"
-            href="/register/details/mother-info"
+            href={`/register/details/mother-info${
+              isExisting ? `?isExisting=${isExisting}` : ""
+            }`}
           >
             <p className="text-center">Next</p>
             <ChevronRight color="#fff" />

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import RegisterForm from "./RegisterForm";
+import RegisterExistingForm from "./RegisterExistingForm";
 
-const Register = () => {
+const Register = ({ id }: { id: string }) => {
   return (
     <div className="flex h-[98vh] md:h-screen items-center ">
       <main className="relative md:rounded-3xl md:shadow-2xl bg- bg-gradient-to-r from-turquoise-100 to-turquoise-50 h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto md:p-6 md:overflow-hidden">
@@ -24,7 +25,7 @@ const Register = () => {
             <h3 className="font-mono leading-none mb-4 text-xl text-turquoise-900 font-medium">
               Sign Up
             </h3>
-            <RegisterForm />
+            {id ? <RegisterExistingForm id={id} /> : <RegisterForm />}
           </div>
         </div>
       </main>

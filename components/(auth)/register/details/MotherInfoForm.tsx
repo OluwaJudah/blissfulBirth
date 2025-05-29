@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
-const MotherInfo = () => {
+const MotherInfo = ({ isExistingParam }: { isExistingParam: string }) => {
   const context = useContext(MotherInfoFormContext);
 
   if (!context) {
@@ -21,7 +21,7 @@ const MotherInfo = () => {
     );
   }
 
-  const { motherInfo, setMotherInfo } = context;
+  const { motherInfo, setMotherInfo, setIsExisting } = context;
   const router = useRouter();
   const {
     register,
@@ -33,7 +33,9 @@ const MotherInfo = () => {
   });
 
   const onSubmit = (values: MotherInfoForm) => {
+    if (isExistingParam) setIsExisting(true);
     setMotherInfo(values);
+
     router.push("/register/details/birth-companion");
   };
 

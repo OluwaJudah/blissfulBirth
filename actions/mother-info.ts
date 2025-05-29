@@ -30,6 +30,7 @@ export async function createMotherInfo(
   motherInfo: IMotherInfo,
   birthCompanion: IBirthCompanion,
   babyInfo: IBabyInfo,
+  isExisting: boolean,
   prevState: CreateMotherInfoFormState | undefined,
   formData: FormData
 ) {
@@ -75,6 +76,7 @@ export async function createMotherInfo(
     throw new Error("Error:" + error);
   }
 
+  if (isExisting) redirect("/home");
   redirect("/new-intake");
 }
 

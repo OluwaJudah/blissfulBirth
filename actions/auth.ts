@@ -8,7 +8,7 @@ import {
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { createSession, deleteSession } from "@/lib/session";
-import { createUser } from "./user";
+import { createUser, updateExistingUser } from "./user";
 import { getUser, isUserExists } from "@/data/user";
 
 export async function regsiterUser(
@@ -51,6 +51,36 @@ export async function regsiterUser(
   }
 
   redirect("/welcome");
+}
+
+export async function regsiterExistingUser(
+  id: string,
+  prevState: RegisterUserState | undefined,
+  formData: FormData
+) {
+  const validatedFields = registerUserformSchema.safeParse(
+    Object.fromEntries(formData)
+  );
+
+  if (!validatedFields.success) {
+    const state: RegisterUserState = {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Oops, I think there's a mistake with your inputs.",
+    };
+    return state;
+  }
+
+  const { username, password } = validatedFields.data;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    await updateExistingUser(id, username, hashedPassword);
+    await createSession(id);
+  } catch (error) {
+    throw new Error("Error creating user:" + error);
+  }
+
+  redirect("/welcome?isExisting=true");
 }
 
 export async function loginUser(

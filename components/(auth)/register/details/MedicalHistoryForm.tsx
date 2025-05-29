@@ -47,7 +47,8 @@ const MedicalHistory = () => {
     errors: {},
   };
 
-  const { motherInfo, birthCompanion, babyInfo, medicalHistory } = context;
+  const { motherInfo, birthCompanion, babyInfo, medicalHistory, isExisting } =
+    context;
 
   const [conditionList, setConditionList] = useState<ConditionType[]>(
     updateSelectablesArray(conditions, medicalHistory.conditions)
@@ -63,9 +64,10 @@ const MedicalHistory = () => {
     null,
     motherInfo,
     birthCompanion,
-    babyInfo
+    babyInfo,
+    isExisting
   );
-  
+
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, isPending] = useActionState(
     createMotherInfoWithExtraData,
