@@ -11,6 +11,7 @@ import Appointment from "@/models/appointment";
 import BabyReport from "@/models/baby-report";
 import MotherReport from "@/models/mother-report";
 import { Types } from "mongoose";
+import { cache } from "react";
 
 export const getAppointment = async (id: string) => {
   await dbConnect();
@@ -124,7 +125,7 @@ export const getBabyReports = async (appointmentIds: string[], fields = "") => {
   ).lean();
 };
 
-export const getBabyReport = async (appointmentId: string) => {
+export const getBabyReport = cache(async (appointmentId: string) => {
   await dbConnect();
 
   const session = await verifySession();
@@ -134,9 +135,9 @@ export const getBabyReport = async (appointmentId: string) => {
     { appointmentId: new Types.ObjectId(appointmentId) },
     "babyHeight babyPosition babyWeight babyHeartRate babyNote"
   ).lean();
-};
+});
 
-export const getMotherReport = async (appointmentId: string) => {
+export const getMotherReport = cache(async (appointmentId: string) => {
   await dbConnect();
 
   const session = await verifySession();
@@ -166,4 +167,4 @@ export const getMotherReport = async (appointmentId: string) => {
     motherPulse,
     motherWeight,
   };
-};
+});

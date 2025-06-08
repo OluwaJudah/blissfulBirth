@@ -1,7 +1,5 @@
 import Body from "@/components/(protected)/confirm-appointment/Body";
 import Header from "@/components/(protected)/confirm-appointment/Header";
-import { getMotherInfoData } from "@/data/mother-info";
-import { calculatePregnancyWeeks } from "@/utils";
 type SearchParams = Promise<{ [key: string]: string }>;
 
 export default async function HomePage({

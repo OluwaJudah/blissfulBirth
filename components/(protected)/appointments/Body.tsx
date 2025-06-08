@@ -3,6 +3,10 @@ import DueDate from "./DueDate";
 import { CONFIRMED_APPOINTMENT } from "@/constants/appointment";
 import { getNextAppointmentData } from "@/data/appointment";
 import NextAppointment from "../NextAppointment";
+import NextAppointmentSkeleton from "../NextAppointmentSkeleton";
+import { Suspense } from "react";
+import DueDateSkeleton from "../home/DueDateSkeleton";
+import MyBabySkeleton from "./MyBabySkeleton";
 
 const Body = async () => {
   const appointment = await getNextAppointmentData();
@@ -31,16 +35,22 @@ const Body = async () => {
 
   return (
     <div className="px-[20px] flex flex-col gap-[30px]">
-      <NextAppointment
-        nextPregnancyWeeks={pregnancyWeeks}
-        appointmentId={appointmentData._id}
-        dateTime={dateTime}
-        type={type}
-        isCofirmed={isCofirmed}
-      />
+      <Suspense fallback={<NextAppointmentSkeleton />}>
+        <NextAppointment
+          nextPregnancyWeeks={pregnancyWeeks}
+          appointmentId={appointmentData._id}
+          dateTime={dateTime}
+          type={type}
+          isCofirmed={isCofirmed}
+        />
+      </Suspense>
       <div className="flex flex-col gap-[10px]">
-        <MyBaby />
-        <DueDate />
+        <Suspense fallback={<MyBabySkeleton />}>
+          <MyBaby />
+        </Suspense>
+        <Suspense fallback={<DueDateSkeleton />}>
+          <DueDate />
+        </Suspense>
       </div>
     </div>
   );

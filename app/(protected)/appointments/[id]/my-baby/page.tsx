@@ -1,5 +1,7 @@
 import BabyReport from "@/components/(protected)/appointments/[id]/my-baby/BabyReport";
+import BabyReportSkeleton from "@/components/(protected)/appointments/[id]/my-baby/BabyReportSkeleton";
 import Fetus from "@/components/(protected)/appointments/[id]/my-baby/Fetus";
+import { Suspense } from "react";
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export default async function Page({
@@ -16,7 +18,9 @@ export default async function Page({
   return (
     <>
       <Fetus pregnancyWeeks={+pregnancyWeeks} />
-      <BabyReport id={id} />
+      <Suspense fallback={<BabyReportSkeleton />}>
+        <BabyReport id={id} />
+      </Suspense>
     </>
   );
 }
