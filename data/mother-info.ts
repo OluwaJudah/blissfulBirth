@@ -1,4 +1,3 @@
-"use server";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
 import BabyInfo from "@/models/baby-info";
