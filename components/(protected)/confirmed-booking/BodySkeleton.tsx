@@ -1,8 +1,3 @@
-import { Calendar1, CalendarCheck } from "lucide-react";
-import Location from "./Location";
-import TimeSlot from "./TimeSlot";
-import NoteBackHome from "./NoteBackHome";
-import NotesAndBooking from "./NotesButton";
 import TimeSlotSkeleton from "./TimeSlotSkeleton";
 import LocationSkeleton from "./LocationSkeleton";
 import NoteBackHomeSkeleton from "./NoteBackHomeSkeleton";
