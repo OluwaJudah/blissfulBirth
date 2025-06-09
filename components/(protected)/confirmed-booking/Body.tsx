@@ -7,7 +7,6 @@ import NotesAndBooking from "./NotesButton";
 import type { IAppointment } from "@/definitions/appointment";
 import { calculateTrimester } from "@/utils";
 import { APPOINTMENT, trimesters } from "@/constants/appointment";
-import Note from "./Note";
 
 const Body = ({
   appointment,
