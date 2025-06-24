@@ -33,16 +33,24 @@ const BabyReport = ({
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Heart Rate
                 </p>
-                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
-                  <p>{babyHeartRate}</p>
+                <span
+                  className={`flex gap-1 font-mono ${
+                    babyHeartRate ? "font-bold" : "font-medium"
+                  } text-black text-2xl tracking-tight`}
+                >
+                  <p>{babyHeartRate || "N/A"}</p>
                 </span>
               </div>
               <div className="flex flex-col gap-1 items-center">
                 <p className="font-sans font-medium text-turquoise-600 text-base">
                   Height
                 </p>
-                <span className="flex gap-1 font-mono font-bold text-black text-2xl tracking-tight">
-                  <p>{babyHeight}</p>
+                <span
+                  className={`flex gap-1 font-mono ${
+                    babyHeight ? "font-bold" : "font-medium"
+                  } text-black text-2xl tracking-tight`}
+                >
+                  <p>{babyHeight || "N/A"}</p>
                 </span>
               </div>
             </div>
