@@ -76,7 +76,7 @@ export const getAppointments = async (fields = "") => {
   const userId = session?.userId as string;
   const data = await Appointment.aggregate([
     {
-      $match: { userId: new Types.ObjectId(userId), type: APPOINTMENT }, // Filter by specific userId
+      $match: { userId: new Types.ObjectId(userId) }, // Filter by specific userId
     },
     {
       $lookup: {
