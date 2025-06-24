@@ -69,9 +69,11 @@ const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
               />
             </div>
           )}
-          <span className="font-mono font-semibold text-turquoise-900 text-lg">
-            {title}
-          </span>
+          <div className="w-[230px] leading-none truncate">
+            <span className="font-mono font-semibold text-turquoise-900 text-lg">
+              {title}
+            </span>
+          </div>
         </div>{" "}
         <div style={{ zIndex }} className="absolute -top-1 -right-1">
           <div

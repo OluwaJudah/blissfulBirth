@@ -34,7 +34,7 @@ const NextAppointment = async ({
       </p>
       <div className="shadow-xl relative w-full h-[168px] md:h-[172px] bg-pinklet-100 rounded-2xl px-4 py-5 md:py-4 overflow-hidden">
         <div className="flex flex-col h-full w-4/5 md:gap-2 gap-3">
-          <h2 className=" font-sans font-bold text-turquoise-900 tracking-wide">
+          <h2 className="font-sans font-bold text-turquoise-900 tracking-wide">
             {nextAppointmentStr}
           </h2>
           <div className="flex flex-col gap-1">
