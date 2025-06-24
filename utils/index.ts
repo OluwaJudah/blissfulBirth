@@ -95,7 +95,7 @@ export const getLastTuesdayFromCurrentOrNextMonth = () => {
   let lastTuesday = getLastTuesday(currentYear, currentMonth);
 
   // If it's before today, move to next month
-  if (lastTuesday > today) {
+  if (lastTuesday.getDate() !== today.getDate() && lastTuesday < today) {
     const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
     const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
     lastTuesday = getLastTuesday(nextYear, nextMonth);
