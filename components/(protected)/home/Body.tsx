@@ -48,9 +48,9 @@ const Body = async () => {
         <MyBaby pregnancyWeeks={pregnancyWeeks} />
         <MyBody pregnancyWeeks={pregnancyWeeks} />
       </div>
-      <Suspense fallback={<DueDateSkeleton />}>
-        <DueDate />
-      </Suspense>
+      {/* <Suspense fallback={<DueDateSkeleton />}> */}
+      <DueDate />
+      {/* </Suspense> */}
     </div>
   );
 };
