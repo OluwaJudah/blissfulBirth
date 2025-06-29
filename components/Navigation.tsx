@@ -48,7 +48,7 @@ const MenuItem = ({ item }: { item: Item }) => {
         >
           <div className="flex items-center gap-3">
             <div
-              className={`flex justify-center items-center bg-${item.bgColor}-100 w-[40px] h-[40px] rounded-full`}
+              className={`flex justify-center items-center bg-${item.bgColor}-300 w-[40px] h-[40px] rounded-full`}
             >
               <item.Icon className="text-white" size={23} />
             </div>
