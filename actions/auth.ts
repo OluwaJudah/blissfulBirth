@@ -123,7 +123,7 @@ export async function loginUser(
     console.error("Error: fetching Something went Wrong:", error);
   }
 
-  redirect("/home");
+  redirect("/home?from=login");
 }
 
 export async function logout() {

@@ -8,7 +8,7 @@ import NextAppointmentSkeleton from "../NextAppointmentSkeleton";
 import { Suspense } from "react";
 import DueDateSkeleton from "./DueDateSkeleton";
 
-const Body = async () => {
+const Body = async ({ from }: { from: string }) => {
   const appointment = await getNextAppointmentData();
 
   const appointmentDefault = {
@@ -48,9 +48,13 @@ const Body = async () => {
         <MyBaby pregnancyWeeks={pregnancyWeeks} />
         <MyBody pregnancyWeeks={pregnancyWeeks} />
       </div>
-      {/* <Suspense fallback={<DueDateSkeleton />}> */}
-      <DueDate />
-      {/* </Suspense> */}
+      {from === "login" ? (
+        <DueDate />
+      ) : (
+        <Suspense fallback={<DueDateSkeleton />}>
+          <DueDate />
+        </Suspense>
+      )}
     </div>
   );
 };
