@@ -57,7 +57,6 @@ export const getLastAppointmentData = async () => {
     {
       userId: new Types.ObjectId(userId),
       status: COMPLETED_APPOINTMENT,
-      type: APPOINTMENT,
     },
     "pregnancyWeeks date time status type"
   )
