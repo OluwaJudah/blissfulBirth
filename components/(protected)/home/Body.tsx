@@ -42,6 +42,7 @@ const Body = async ({ from }: { from: string }) => {
           dateTime={dateTime}
           type={type}
           isCofirmed={isCofirmed}
+          from="home"
         />
       </Suspense>
       <div className="flex flex-col gap-[15px]">
