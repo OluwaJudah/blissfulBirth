@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
 import Image from "next/image";
+import { Eye, EyeOff } from "lucide-react";
 
 const Input = ({
   type,
@@ -8,6 +9,7 @@ const Input = ({
   name,
   placeholder,
   isPhoneNumber,
+  isPassword,
   register,
   iconUrl,
   errors,
@@ -23,6 +25,7 @@ const Input = ({
   name: string;
   placeholder?: string;
   isPhoneNumber?: boolean;
+  isPassword?: boolean;
   register: UseFormRegister<any>;
   iconUrl?: string;
   errors?: any;
@@ -34,6 +37,9 @@ const Input = ({
   max?: string;
 }) => {
   const disabledBgColour = "bg-gray-100";
+  const [isShow, setIsShow] = useState(false);
+  const [typeName, setTypeName] = useState(type);
+
   return (
     <div className="flex flex-col my-3">
       <div className="flex gap-1">
@@ -65,12 +71,31 @@ const Input = ({
           className={`w-full border-none focus:ring-transparent text-black ${
             isPending ? disabledBgColour : bgColour
           } focus:inset-ring-transparent`}
-          type={type ? type : "text"}
+          type={typeName ? typeName : "text"}
           disabled={isPending}
           {...register(name)}
           min={min ? min : ""}
           max={max ? max : ""}
         />
+
+        {isPassword &&
+          (isShow ? (
+            <EyeOff
+              className="text-turquoise-900"
+              onClick={() => {
+                setIsShow(false);
+                setTypeName("password");
+              }}
+            />
+          ) : (
+            <Eye
+              className="text-turquoise-900"
+              onClick={() => {
+                setIsShow(true);
+                setTypeName("text");
+              }}
+            />
+          ))}
       </div>
       {errors && errors[name] && (
         <span className="text-pinklet-500">{errors[name]?.message}</span>

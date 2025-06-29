@@ -221,6 +221,7 @@ export const registerFormData = [
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
     isRequired: true,
+    isPassword: true,
   },
   {
     label: "Confirm Password",
@@ -230,6 +231,7 @@ export const registerFormData = [
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
     isRequired: true,
+    isPassword: true,
   },
 ];
 
@@ -250,5 +252,6 @@ export const loginFormData = [
     iconUrl: "/passwordKey.svg",
     bgColour: "bg-turquoise-50",
     isRequired: true,
+    isPassword: true,
   },
 ];
