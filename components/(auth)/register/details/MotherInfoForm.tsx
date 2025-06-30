@@ -4,6 +4,7 @@ import InputValidated from "@/components/InputValidated";
 import { MotherInfoFormContext } from "@/context/mother-info";
 import { motherInputFormData } from "@/constants/mother-info";
 import {
+  IMotherInfo,
   MotherInfoForm,
   motherInfoFormSchema,
 } from "@/definitions/mother-info";
@@ -12,7 +13,13 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
-const MotherInfo = ({ isExistingParam }: { isExistingParam: string }) => {
+const MotherInfo = ({
+  isExistingParam,
+  motherInfoExisting,
+}: {
+  isExistingParam: string;
+  motherInfoExisting: IMotherInfo;
+}) => {
   const context = useContext(MotherInfoFormContext);
 
   if (!context) {
@@ -29,7 +36,17 @@ const MotherInfo = ({ isExistingParam }: { isExistingParam: string }) => {
     formState: { errors },
   } = useForm<MotherInfoForm>({
     resolver: zodResolver(motherInfoFormSchema),
-    defaultValues: motherInfo,
+    defaultValues: isExistingParam
+      ? {
+          ...motherInfoExisting,
+          dateOfBirth: motherInfoExisting.dateOfBirth
+            .toISOString()
+            .split("T")[0],
+          lastMenstrualDate: motherInfoExisting.lastMenstrualDate
+            .toISOString()
+            .split("T")[0],
+        }
+      : motherInfo,
   });
 
   const onSubmit = (values: MotherInfoForm) => {

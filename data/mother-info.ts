@@ -20,6 +20,8 @@ export const getMotherInfo = async (fields = "") => {
     fields
   )) as any;
 
+  if (!motherInfo) return null;
+
   const {
     _id,
     fullName,
