@@ -29,6 +29,7 @@ const MotherInfo = ({
   }
 
   const { motherInfo, setMotherInfo, setIsExisting } = context;
+  const today = new Date();
   const router = useRouter();
   const {
     register,
@@ -40,11 +41,11 @@ const MotherInfo = ({
       ? {
           ...motherInfoExisting,
           dateOfBirth: motherInfoExisting.dateOfBirth
-            .toISOString()
-            .split("T")[0],
+            ? motherInfoExisting.dateOfBirth.toISOString().split("T")[0]
+            : today.toISOString().split("T")[0],
           lastMenstrualDate: motherInfoExisting.lastMenstrualDate
-            .toISOString()
-            .split("T")[0],
+            ? motherInfoExisting.lastMenstrualDate.toISOString().split("T")[0]
+            : today.toISOString().split("T")[0],
         }
       : motherInfo,
   });
