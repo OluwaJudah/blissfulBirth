@@ -65,20 +65,89 @@ export async function createMotherInfo(
     tbSymptomsScreen,
   };
 
+  if (isExisting) {
+    try {
+      await updateExistingMotherInfoData(
+        motherInfo,
+        birthCompanion,
+        babyInfo,
+        medicalHistory
+      );
+    } catch (error) {
+      throw new Error("Error:" + error);
+    }
+    redirect("/home");
+  } else {
+    try {
+      await createMotherInfoData(
+        motherInfo,
+        birthCompanion,
+        babyInfo,
+        medicalHistory
+      );
+    } catch (error) {
+      throw new Error("Error:" + error);
+    }
+    redirect("/new-intake");
+  }
+}
+
+export const updateExistingMotherInfoData = async (
+  motherInfo: IMotherInfo,
+  birthCompanion: IBirthCompanion,
+  babyInfo: IBabyInfo,
+  medicalHistory: IMedicalHistory
+) => {
+  await dbConnect();
+
+  const session = await verifySession();
+  if (!session) return null;
+
+  const userId = session?.userId as string;
+
   try {
-    await createMotherInfoData(
-      motherInfo,
-      birthCompanion,
-      babyInfo,
-      medicalHistory
+    await MotherInfo.findOneAndUpdate(
+      { userId: new Types.ObjectId(userId) },
+      {
+        ...motherInfo,
+        status: PENDING_PATIENT,
+        dateOfBirth: new Date(motherInfo.dateOfBirth),
+        lastMenstrualDate: new Date(motherInfo.lastMenstrualDate),
+        userId: new Types.ObjectId(userId),
+      }
     );
   } catch (error) {
-    throw new Error("Error:" + error);
+    throw new Error("Error creating MotherInfo:" + error);
   }
 
-  if (isExisting) redirect("/home");
-  redirect("/new-intake");
-}
+  try {
+    await BirthCompanion.create({
+      ...birthCompanion,
+      dateOfBirth: new Date(motherInfo.dateOfBirth),
+      userId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating BirthCompanion:" + error);
+  }
+
+  try {
+    await BabyInfo.create({
+      ...babyInfo,
+      motherId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating BabyInfo:" + error);
+  }
+
+  try {
+    await MedicalHistory.create({
+      ...medicalHistory,
+      userId: new Types.ObjectId(userId),
+    });
+  } catch (error) {
+    throw new Error("Error creating MedicalHistory:" + error);
+  }
+};
 
 export const createMotherInfoData = async (
   motherInfo: IMotherInfo,
