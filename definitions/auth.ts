@@ -4,8 +4,9 @@ export const registerUserformSchema = z
   .object({
     username: z
       .string()
-      .min(6, { message: "Username must be at leaast 6 characters long." })
-      .trim(),
+      .trim()
+      .min(3, "Username must be at least 3 characters")
+      .regex(/^\S+$/, "Username must not contain spaces"),
     password: z
       .string()
       .min(8, { message: "Be at least 8 characters long" })
