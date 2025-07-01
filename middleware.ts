@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 // 1. Specify protected and public routes
 const protectedRoutes = [
-  "/appoontments",
+  "/appointments",
   "/home",
   "/book-appointment",
   "/payment-history",
@@ -15,7 +15,7 @@ const protectedRoutes = [
   "/first-appointment",
 ];
 
-const publicRoutes = ["/login", "/regsiter", "/"];
+const publicRoutes = ["/login", "/register", "/"];
 
 export default async function middleware(req: NextRequest) {
   // 2. Check if the current route is protected or public
