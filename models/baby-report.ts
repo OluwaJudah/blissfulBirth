@@ -13,6 +13,7 @@ const BabyReportSchema = new Schema<BabyReport>(
     babyHeight: { type: Number, required: true },
     babyHeartRate: { type: Number, required: true },
     babyPosition: { type: String },
+    babyPresentation: { type: String },
     babyNote: { type: String },
     appointmentId: {
       type: Schema.Types.ObjectId,

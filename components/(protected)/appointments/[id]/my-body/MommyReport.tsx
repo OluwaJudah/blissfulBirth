@@ -20,11 +20,14 @@ const MommyReport = async ({ id }: { id: string }) => {
   return (
     <div className="flex flex-col px-4 space-y-4">
       <div className="flex space-x-8">
-        <BlockData title="Weight (kg)" data={motherWeight + ""} />
-        <BlockData title="Pulse (bpm)" data={motherPulse + ""} />
+        <BlockData title="Weight (kg)" data={`${motherWeight || "N/A"}` + ""} />
+        <BlockData title="Pulse (bpm)" data={`${motherPulse || "N/A"}` + ""} />
       </div>
       <div className="flex flex-col space-y-4">
-        <FullWidthData title="Blood Pressurre" data={motherBloodPressure} />
+        <FullWidthData
+          title="Blood Pressurre"
+          data={motherBloodPressure || "N/A"}
+        />
         <div className="flex flex-col gap-3 p-6 bg-turquoise-200 rounded-3xl">
           <div className="font-sans font-bold text-black text-lg tracking-tight leading-none">
             Urine
@@ -34,7 +37,7 @@ const MommyReport = async ({ id }: { id: string }) => {
               Leucosite (L)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              {motherLeucosite}
+              {motherLeucosite || "N/A"}
             </p>
           </div>
           <div className="flex justify-between">
@@ -42,7 +45,7 @@ const MommyReport = async ({ id }: { id: string }) => {
               Protein (P)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              {motherProtein}
+              {motherProtein || "N/A"}
             </p>
           </div>
           <div className="flex justify-between">
@@ -50,7 +53,7 @@ const MommyReport = async ({ id }: { id: string }) => {
               Glucose (G)
             </p>
             <p className="font-mono font-bold text-black text-lg tracking-tight leading-none">
-              {motherGlucose}
+              {motherGlucose || "N/A"}
             </p>
           </div>
         </div>

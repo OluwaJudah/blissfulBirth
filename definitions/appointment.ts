@@ -12,6 +12,7 @@ export type IBabyReport = {
   babyWeight: number;
   babyHeight: number;
   babyHeartRate: number;
+  babyPresentation: string;
   babyPosition: string;
   babyNote: string;
 };
