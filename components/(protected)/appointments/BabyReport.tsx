@@ -58,7 +58,7 @@ const BabyReport = ({
           <div className="absolute -top-5 -left-6 md:-top-3 ">
             <Image
               className="mb-4 w-[140px]"
-              src="/baby_1.svg"
+              src="/baby_1.webp"
               height={210}
               width={155}
               alt="Baby 1"

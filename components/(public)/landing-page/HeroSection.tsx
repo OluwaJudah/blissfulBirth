@@ -23,7 +23,7 @@ const HeroSection = () => {
         {" "}
         <Image
           className="mb-4"
-          src="/pregnant_woman_2.png"
+          src="/pregnant_woman_2.webp"
           height={230}
           width={145}
           alt="Pregnant Woman 2"

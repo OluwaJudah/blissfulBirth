@@ -65,7 +65,7 @@ const NextAppointment = async ({
         <div className="absolute -bottom-10 md:-bottom-8 -right-3">
           <Image
             className="mb-4"
-            src="/pregnant_woman_1.png"
+            src="/pregnant_woman_1.webp"
             height={210}
             width={125}
             alt="Pregnant Woman 1"
