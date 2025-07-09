@@ -39,9 +39,7 @@ export default async function middleware(req: NextRequest) {
   }
 
   if (isRegistration && registrationStep) {
-    if (registrationStep === "0") {
-      return NextResponse.redirect(new URL("/welcome", req.nextUrl));
-    } else if (registrationStep === "1") {
+    if (registrationStep === "1") {
       return NextResponse.redirect(new URL("/new-intake", req.nextUrl));
     } else if (registrationStep === "2") {
       return NextResponse.redirect(new URL("/home", req.nextUrl));
