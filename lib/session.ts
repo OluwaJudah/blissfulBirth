@@ -41,5 +41,14 @@ export async function createSession(userId: string) {
 
 export async function deleteSession() {
   const cookieStore = await cookies();
+
+  if (cookieStore.has("registrationStep"))
+    cookieStore.delete("registrationStep");
+
   cookieStore.delete("session");
+}
+
+export async function setCookie(name: string, value: string) {
+  const cookieStore = await cookies();
+  cookieStore.set(name, value);
 }

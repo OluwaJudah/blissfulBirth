@@ -7,7 +7,7 @@ import {
 } from "@/definitions/auth";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import { createSession, deleteSession } from "@/lib/session";
+import { createSession, deleteSession, setCookie } from "@/lib/session";
 import { createUser, updateExistingUser } from "./user";
 import { getUser, isUserExists } from "@/data/user";
 
@@ -46,6 +46,7 @@ export async function regsiterUser(
   try {
     const user = await createUser(username, hashedPassword);
     await createSession(user.id);
+    await setCookie("registrationStep", "0");
   } catch (error) {
     throw new Error("Error creating user:" + error);
   }

@@ -194,7 +194,12 @@ type Item = { name: string; url: string; Icon: any; bgColor: string };
 
 export const LogOutButton = ({ item }: { item: Item }) => {
   return (
-    <div onClick={logout} className="w-full flex items-center justify-between">
+    <div
+      onClick={async () => {
+        await logout();
+      }}
+      className="w-full flex items-center justify-between"
+    >
       <div className="flex items-center gap-3">
         <div
           className={`flex justify-center items-center bg-${item.bgColor}-300 w-[40px] h-[40px] rounded-full`}

@@ -25,6 +25,7 @@ import MedicalHistory from "@/models/medical-history";
 import { Types } from "mongoose";
 import { PENDING_PATIENT } from "@/constants/appointment";
 import { revalidatePath } from "next/cache";
+import { setCookie } from "@/lib/session";
 
 export async function createMotherInfo(
   motherInfo: IMotherInfo,
@@ -76,6 +77,7 @@ export async function createMotherInfo(
     } catch (error) {
       throw new Error("Error:" + error);
     }
+    await setCookie("registrationStep", "1");
     redirect("/home");
   } else {
     try {
@@ -88,6 +90,7 @@ export async function createMotherInfo(
     } catch (error) {
       throw new Error("Error:" + error);
     }
+    await setCookie("registrationStep", "1");
     redirect("/new-intake");
   }
 }

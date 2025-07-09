@@ -1,8 +1,12 @@
 "use server";
-import { CONFIRMED_APPOINTMENT } from "@/constants/appointment";
+import {
+  CONFIRMED_APPOINTMENT,
+  FIRST_APPOINTMENT,
+} from "@/constants/appointment";
 import { IAppointment } from "@/definitions/appointment";
 import { verifySession } from "@/lib/dal";
 import dbConnect from "@/lib/db";
+import { setCookie } from "@/lib/session";
 import Appointment from "@/models/appointment";
 import { Types } from "mongoose";
 import { redirect } from "next/navigation";
@@ -23,6 +27,8 @@ export const createAppointment = async (
       ...appointmentData,
       userId: new Types.ObjectId(userId),
     });
+    if (appointmentData.type === FIRST_APPOINTMENT)
+      await setCookie("registrationStep", "2");
   } catch (error) {
     throw new Error("Error creating Appointment:" + error);
   }

@@ -25,15 +25,27 @@ export default async function middleware(req: NextRequest) {
     protectedRoutes.some(
       (str) => path.startsWith(str) || path.startsWith("/" + str)
     );
+  const isRegistration = path.includes("details") || path.includes("welcome");
   const isPublicRoute = publicRoutes.includes(path);
 
   // 3. Decrypt the session from the cookie
   const cookie = (await cookies()).get("session")?.value;
+  const registrationStep = (await cookies()).get("registrationStep")?.value;
   const session = await decrypt(cookie);
 
   // 4. Redirect to /login if the user is not authenticated
   if (isProtectedRoute && !session?.userId) {
     return NextResponse.redirect(new URL("/login", req.nextUrl));
+  }
+
+  if (isRegistration && registrationStep) {
+    if (registrationStep === "0") {
+      return NextResponse.redirect(new URL("/welcome", req.nextUrl));
+    } else if (registrationStep === "1") {
+      return NextResponse.redirect(new URL("/new-intake", req.nextUrl));
+    } else if (registrationStep === "2") {
+      return NextResponse.redirect(new URL("/home", req.nextUrl));
+    }
   }
 
   // 5. Redirect to /dashboard if the user is authenticated
