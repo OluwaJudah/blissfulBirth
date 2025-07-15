@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Blissful Birth",
-    short_name: "Blissful Birth",
+    name: "Blissful Birthing",
+    short_name: "Blissful Birthing",
     description: "Experience birthing blissfully",
     start_url: "/",
     display: "standalone",
