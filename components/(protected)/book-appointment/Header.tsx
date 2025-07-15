@@ -1,4 +1,4 @@
-import { BackArrowUrlButton, BackButtonWrapper } from "@/components/Buttons";
+import { BackButtonWrapper } from "@/components/Buttons";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 

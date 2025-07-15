@@ -82,11 +82,16 @@ export const BackButtonWrapper = ({
   children: React.ReactNode;
 }) => {
   const router = useRouter();
+  const routerPush = () => {
+    if (url) router.push(url);
+    else router.back();
+  };
+
   return (
     <button
+      onPointerDown={routerPush}
       onClick={() => {
-        if (url) router.push(url);
-        else router.back();
+        if (!window.PointerEvent) routerPush();
       }}
       className={`flex justify-center items-center bg-turquoise-200 w-[65px] h-[40px] rounded-full`}
     >
@@ -145,12 +150,16 @@ export const BackArrowButton = () => {
 
 export const BackArrowUrlButton = ({ url }: { url: string }) => {
   const router = useRouter();
+  const routerPush = () => router.push(url);
   return (
     <ArrowLeft
       className="text-pinklet-500"
       size={22}
       strokeWidth={3}
-      onClick={() => router.push(url)}
+      onPointerDown={routerPush}
+      onClick={() => {
+        if (!window.PointerEvent) routerPush();
+      }}
     />
   );
 };

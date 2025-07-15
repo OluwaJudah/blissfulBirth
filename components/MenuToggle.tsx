@@ -26,7 +26,10 @@ export const MenuToggle = ({ toggle }: { toggle: () => void }) => (
   <button
     className="flex items-center justify-center w-full h-full rounded-full bg-transparent outline-none border-none"
     style={toggleContainer}
-    onClick={toggle}
+    onClick={() => {
+      if (!window.PointerEvent) toggle();
+    }}
+    onPointerDown={toggle}
   >
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
