@@ -2,6 +2,7 @@ import { ChevronRight, Home } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { LogOutButton } from "./Buttons";
+import InstallButton from "./InstallButton";
 
 const navVariants = {
   open: {
@@ -71,5 +72,6 @@ export const Navigation = ({ navList }: { navList: Item[] }) => (
     {navList.map((item) => (
       <MenuItem item={item} key={item.name} />
     ))}
+    <InstallButton />
   </motion.ul>
 );
