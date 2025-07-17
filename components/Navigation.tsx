@@ -72,6 +72,6 @@ export const Navigation = ({ navList }: { navList: Item[] }) => (
     {navList.map((item) => (
       <MenuItem item={item} key={item.name} />
     ))}
-    <InstallButton />
+    {/* <InstallButton /> */}
   </motion.ul>
 );
