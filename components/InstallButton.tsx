@@ -51,7 +51,7 @@ export default function InstallButton() {
 
   return (
     <>
-      {
+      {showButton && (
         <motion.div
           className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
           variants={itemVariants}
@@ -68,7 +68,7 @@ export default function InstallButton() {
             Install App
           </button>
         </motion.div>
-      }
+      )}
     </>
   );
 }
