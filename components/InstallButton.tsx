@@ -23,8 +23,19 @@ const itemVariants = {
 export default function InstallButton() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showButton, setShowButton] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
+    const isIOS = /iphone|ipad|ipod/.test(
+      window.navigator.userAgent.toLowerCase()
+    );
+    const isInStandaloneMode =
+      "standalone" in window.navigator && (window.navigator as any).standalone;
+
+    if (isIOS && !isInStandaloneMode) {
+      setShowPrompt(true);
+    }
+
     const handleBeforeInstallPrompt = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -68,6 +79,13 @@ export default function InstallButton() {
             Install App
           </button>
         </motion.div>
+      )}
+
+      {showPrompt && (
+        <div className="p-4 bg-yellow-100 text-center text-sm">
+          Tap <strong>Share</strong> then <strong>“Add to Home Screen”</strong>{" "}
+          to install this app.
+        </div>
       )}
     </>
   );
