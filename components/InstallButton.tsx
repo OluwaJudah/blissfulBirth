@@ -51,13 +51,20 @@ export default function InstallButton() {
   }, []);
 
   const handleInstall = () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        setDeferredPrompt(null);
-        setShowButton(false);
-      });
-    }
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult: any) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the A2HS prompt");
+      } else {
+        console.log("User dismissed the A2HS prompt");
+      }
+
+      setDeferredPrompt(null);
+      setShowButton(false);
+    });
   };
 
   return (
@@ -83,8 +90,8 @@ export default function InstallButton() {
 
       {showPrompt && (
         <div className="p-4 bg-yellow-100 text-center text-sm">
-          Tap <strong>Share</strong> then <strong>“Add to Home Screen”</strong>{" "}
-          to install this app.
+          Tap <strong>Share</strong> then{" "}
+          <strong>“Add to Home Screen”</strong> to install this app.
         </div>
       )}
     </>
