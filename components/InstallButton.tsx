@@ -37,6 +37,7 @@ export default function InstallButton() {
     }
 
     const handleBeforeInstallPrompt = (e: any) => {
+      alert("beforeinstallprompt fired!");
       e.preventDefault();
       setDeferredPrompt(e);
       setShowButton(true);
