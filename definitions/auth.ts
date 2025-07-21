@@ -51,9 +51,9 @@ export const loginUserformSchema = z.object({
     .regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
     .regex(/[a-z]/, { message: "Contain at least one lowercase letter." })
     .regex(/[0-9]/, { message: "Contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Contain at least one special character.",
-    })
+    // .regex(/[^a-zA-Z0-9]/, {
+    //   message: "Contain at least one special character.",
+    // })
     .trim(),
 });
 
