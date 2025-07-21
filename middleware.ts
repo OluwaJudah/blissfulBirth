@@ -25,7 +25,7 @@ export default async function middleware(req: NextRequest) {
     protectedRoutes.some(
       (str) => path.startsWith(str) || path.startsWith("/" + str)
     );
-  const isRegistration = path.includes("details") || path.includes("welcome");
+  const isRegistration = path.includes("/register/details") || path.includes("welcome");
   const isPublicRoute = publicRoutes.includes(path);
 
   // 3. Decrypt the session from the cookie
