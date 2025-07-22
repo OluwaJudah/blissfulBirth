@@ -51,8 +51,9 @@ export default function InstallButton() {
   }, []);
 
   const handleInstall = () => {
+    alert("Button clicks");
     if (!deferredPrompt) return;
-
+    alert("deferredPrompt clicks");
     deferredPrompt.prompt();
 
     deferredPrompt.userChoice.then((choiceResult: any) => {
@@ -90,8 +91,8 @@ export default function InstallButton() {
 
       {showPrompt && (
         <div className="p-4 bg-yellow-100 text-center text-sm">
-          Tap <strong>Share</strong> then{" "}
-          <strong>“Add to Home Screen”</strong> to install this app.
+          Tap <strong>Share</strong> then <strong>“Add to Home Screen”</strong>{" "}
+          to install this app.
         </div>
       )}
     </>
