@@ -70,24 +70,22 @@ export default function InstallButton() {
 
   return (
     <>
-      {!showButton && (
-        <motion.div
-          className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
-          variants={itemVariants}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+      <motion.div
+        className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
+        variants={itemVariants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <button
+          onPointerDown={handleInstall}
+          onClick={() => {
+            if (!window.PointerEvent) handleInstall();
+          }}
+          className="bg-pinklet-400 hover:bg-pinklet-200 text-white shadow-md rounded-full w-[110px] h-[33px]"
         >
-          <button
-            onPointerDown={handleInstall}
-            onClick={() => {
-              if (!window.PointerEvent) handleInstall();
-            }}
-            className="bg-pinklet-400 hover:bg-pinklet-200 text-white shadow-md rounded-full w-[110px] h-[33px]"
-          >
-            Install App
-          </button>
-        </motion.div>
-      )}
+          Install App
+        </button>
+      </motion.div>
 
       {showPrompt && (
         <div className="p-4 bg-yellow-100 text-center text-sm">
