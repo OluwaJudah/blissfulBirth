@@ -51,9 +51,8 @@ export default function InstallButton() {
   }, []);
 
   const handleInstall = () => {
-    alert("Button clicks");
     if (!deferredPrompt) return;
-    alert("deferredPrompt clicks");
+
     deferredPrompt.prompt();
 
     deferredPrompt.userChoice.then((choiceResult: any) => {
@@ -70,27 +69,29 @@ export default function InstallButton() {
 
   return (
     <>
-      <motion.div
-        className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
-        variants={itemVariants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <button
-          onPointerDown={handleInstall}
-          onClick={() => {
-            if (!window.PointerEvent) handleInstall();
-          }}
-          className="bg-pinklet-400 hover:bg-pinklet-200 text-white shadow-md rounded-full w-[110px] h-[33px]"
+      {showButton && (
+        <motion.div
+          className="flex items-center justify-items-start p-0 m-0 mb-[20px] list-none cursor-pointer w-full"
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Install App
-        </button>
-      </motion.div>
+          <button
+            onPointerDown={handleInstall}
+            onClick={() => {
+              if (!window.PointerEvent) handleInstall();
+            }}
+            className="bg-pinklet-400 hover:bg-pinklet-200 text-white shadow-md rounded-full w-[110px] h-[33px]"
+          >
+            Install App
+          </button>
+        </motion.div>
+      )}
 
       {showPrompt && (
         <div className="p-4 bg-yellow-100 text-center text-sm">
-          Tap <strong>Share</strong> then <strong>“Add to Home Screen”</strong>{" "}
-          to install this app.
+          Tap <strong>Share</strong> then{" "}
+          <strong>“Add to Home Screen”</strong> to install this app.
         </div>
       )}
     </>
