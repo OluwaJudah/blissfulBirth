@@ -1,6 +1,5 @@
 "use server";
 import {
-  APPOINTMENT,
   COMPLETED_APPOINTMENT,
   CONFIRMED_APPOINTMENT,
   PENDING_APPOINTMENT,
@@ -32,8 +31,12 @@ export const getNextAppointmentData = async (fields = "") => {
   if (!session) return null;
 
   const userId = session?.userId as string;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // midnight today
+
   const appointments = await Appointment.find(
     {
+      date: { $gte: today },
       userId: new Types.ObjectId(userId),
       status: { $in: [CONFIRMED_APPOINTMENT, PENDING_APPOINTMENT] },
     },
