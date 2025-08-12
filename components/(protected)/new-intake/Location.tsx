@@ -14,7 +14,7 @@ const Location = () => {
             Blissful Birth Clinic
           </span>
           <p className="font-sans font-medium text-turquoise-950 text-sm">
-            200 Sanders Creek Rd, Johanesburg, South Africa
+            Florida Junction, 380 Ontdekkers Rd, Florida Park
           </p>
         </div>
       </div>

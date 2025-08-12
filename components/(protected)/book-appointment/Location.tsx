@@ -12,7 +12,7 @@ const Location = () => {
         <div className="flex flex-col gap-1">
           <span className="font-mono font-bold">Blissful Birth Clinic</span>
           <p className="font-sans font-medium text-black text-sm">
-            200 Sanders Creek Rd, Johanesburg, South Africa
+            Florida Junction, 380 Ontdekkers Rd, Florida Park
           </p>
         </div>
       </div>
