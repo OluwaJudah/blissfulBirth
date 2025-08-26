@@ -19,6 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { MotherInfoFormContext } from "@/context/mother-info";
 import { createMotherInfo } from "@/actions/mother-info";
+
 type ConditionType = { name: string; isAdded: boolean };
 
 const MedicalHistory = () => {
@@ -42,11 +43,7 @@ const MedicalHistory = () => {
     );
   }
 
-  const initialState = {
-    message: "",
-    errors: {},
-  };
-
+  const initialState = { message: "", errors: {} };
   const { motherInfo, birthCompanion, babyInfo, medicalHistory, isExisting } =
     context;
 
@@ -97,8 +94,9 @@ const MedicalHistory = () => {
     <form
       ref={formRef}
       onSubmit={onSubmit}
-      className="flex md:h-screen flex-col items-center bg-white rounded-t-[50px] pt-2 pb-8 px-4 md:overflow-scroll"
+      className="relative flex md:h-screen flex-col bg-white rounded-t-[50px] pt-2 pb-20 px-4 md:overflow-scroll"
     >
+      <p className="text-pinklet-500 font-bold text-center">Click Submit if the below does not apply</p>
       <div className="w-full my-3">
         <div className="font-mono text-md font-semibold text-turquoise-900">
           Conditions
@@ -137,9 +135,13 @@ const MedicalHistory = () => {
         />
         <input type="hidden" name="tbSymptomsScreen" value="" />
       </div>
-      <div className="flex gap-3">
-        <BackButton />
-        <SubmitButton isPending={isPending} name="Submit" />
+
+      {/* Fixed Footer Buttons */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 flex justify-center">
+        <div className="flex gap-3">
+          <BackButton />
+          <SubmitButton isPending={isPending} name="Submit" />
+        </div>
       </div>
     </form>
   );
