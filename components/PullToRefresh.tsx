@@ -68,7 +68,7 @@ export default function PullToRefresh({
   }, [pullDistance, threshold, onRefresh, isRefreshing]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <div
         className="flex justify-center items-center text-sm text-gray-600 transition-all duration-200"
         style={{
