@@ -5,15 +5,8 @@ import { userNavList } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import PullToRefresh from "../PullToRefresh";
 
-const HeaderInnerContent = ({
-  title,
-  imgUrl,
-}: {
-  title: string;
-  imgUrl?: string;
-}) => {
+const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [zIndex, setZIndex] = useState(0);
   const [navHeight, setNavHeight] = useState(120);
@@ -107,25 +100,6 @@ const HeaderInnerContent = ({
           </div>
         </div>{" "}
       </div>
-    </div>
-  );
-};
-
-const Header = ({ title, imgUrl }: { title: string; imgUrl?: string }) => {
-  const isIOS =
-    typeof navigator !== "undefined" &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  return (
-    <div style={{ zIndex: 999 }} className="pb-[10px] sticky top-0">
-      {isIOS ? (
-        <PullToRefresh onRefresh={() => console.log("Refreshed!")}>
-          {/* Header inner content */}
-          <HeaderInnerContent title={title} imgUrl={imgUrl} />
-        </PullToRefresh>
-      ) : (
-        <HeaderInnerContent title={title} imgUrl={imgUrl} />
-      )}
     </div>
   );
 };
