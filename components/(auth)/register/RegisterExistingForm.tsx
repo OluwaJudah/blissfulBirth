@@ -70,7 +70,7 @@ const RegisterExistingForm = ({ id }: { id: string }) => {
           className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
           href="/login"
         >
-          Sign In here
+          Login here
         </Link>
       </p>
     </form>

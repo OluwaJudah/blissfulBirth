@@ -23,7 +23,7 @@ const Register = ({ id }: { id: string }) => {
           </div>
           <div className="rounded-t-[50px] h-[480px] bg-white py-16 px-7 flex flex-col justify-center">
             <h3 className="font-mono leading-none mb-4 text-xl text-turquoise-900 font-medium">
-              Sign Up
+              Register
             </h3>
             {id ? <RegisterExistingForm id={id} /> : <RegisterForm />}
           </div>

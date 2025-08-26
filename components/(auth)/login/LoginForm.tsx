@@ -69,7 +69,7 @@ const LoginForm = () => {
           className="text-pinklet-500 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500"
           href="/register"
         >
-          Sign Up here
+          Register here
         </Link>
       </p>
     </form>
