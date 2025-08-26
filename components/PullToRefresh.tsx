@@ -1,6 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface PullToRefreshProps {
   onRefresh?: () => void | Promise<void>;
@@ -17,6 +18,7 @@ export default function PullToRefresh({
   const [isRefreshing, setIsRefreshing] = useState(false);
   const startY = useRef<number | null>(null);
   const isPulling = useRef(false);
+  const route = useRouter();
 
   useEffect(() => {
     const onTouchStart = (e: TouchEvent) => {
@@ -42,7 +44,7 @@ export default function PullToRefresh({
         setPullDistance(threshold);
         try {
           if (onRefresh) await onRefresh();
-          else location.reload(); // default action
+          else route.refresh(); // default action
         } finally {
           setTimeout(() => {
             setIsRefreshing(false);
@@ -56,14 +58,14 @@ export default function PullToRefresh({
       isPulling.current = false;
     };
 
-    document.addEventListener('touchstart', onTouchStart, { passive: false });
-    document.addEventListener('touchmove', onTouchMove, { passive: false });
-    document.addEventListener('touchend', onTouchEnd);
+    document.addEventListener("touchstart", onTouchStart, { passive: false });
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
+    document.addEventListener("touchend", onTouchEnd);
 
     return () => {
-      document.removeEventListener('touchstart', onTouchStart);
-      document.removeEventListener('touchmove', onTouchMove);
-      document.removeEventListener('touchend', onTouchEnd);
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("touchend", onTouchEnd);
     };
   }, [pullDistance, threshold, onRefresh, isRefreshing]);
 
