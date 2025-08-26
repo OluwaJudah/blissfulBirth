@@ -3,9 +3,10 @@ import {
   IBabyInfo,
   IBirthCompanion,
   ICreateMotherInfo,
-  IMotherInfo,
 } from "@/definitions/mother-info";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+
+const STORAGE_KEY = "motherInfoForm";
 
 const motherInfoData = {
   fullName: "",
@@ -71,7 +72,36 @@ export function MotherInfoFormContextProvider({
     useState<ICreateMotherInfo>(medicalHistoryData);
   const [isExisting, setIsExisting] = useState(false);
 
-  // adding this code 👇🏽
+  // ✅ Load from localStorage (no expiry)
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.motherInfo) setMotherInfo(parsed.motherInfo);
+        if (parsed.birthCompanion) setBirthCompanion(parsed.birthCompanion);
+        if (parsed.babyInfo) setBabyInfo(parsed.babyInfo);
+        if (parsed.medicalHistory) setMedicalHistory(parsed.medicalHistory);
+        if (typeof parsed.isExisting === "boolean")
+          setIsExisting(parsed.isExisting);
+      }
+    } catch (err) {
+      console.error("Error loading motherInfo data", err);
+    }
+  }, []);
+
+  // ✅ Save to localStorage (no expiry)
+  useEffect(() => {
+    const payload = {
+      motherInfo,
+      birthCompanion,
+      babyInfo,
+      medicalHistory,
+      isExisting,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }, [motherInfo, birthCompanion, babyInfo, medicalHistory, isExisting]);
+
   return (
     <MotherInfoFormContext.Provider
       value={{

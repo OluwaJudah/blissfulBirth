@@ -9,7 +9,7 @@ import {
 } from "@/definitions/mother-info";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const BirthCompanionInfoForm = () => {
@@ -25,6 +25,7 @@ const BirthCompanionInfoForm = () => {
   const router = useRouter();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<BirthCompanionForm>({
@@ -36,6 +37,12 @@ const BirthCompanionInfoForm = () => {
     setBirthCompanion(values);
     router.push("/register/details/baby-info");
   };
+
+  useEffect(() => {
+    if (birthCompanion) {
+      reset(birthCompanion);
+    }
+  }, [birthCompanion, reset]);
 
   return (
     <>

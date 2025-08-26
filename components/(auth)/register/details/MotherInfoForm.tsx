@@ -10,7 +10,7 @@ import {
 } from "@/definitions/mother-info";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const MotherInfo = ({
@@ -29,10 +29,12 @@ const MotherInfo = ({
   }
 
   const { motherInfo, setMotherInfo, setIsExisting } = context;
+  console.log({ context });
   const today = new Date();
   const router = useRouter();
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<MotherInfoForm>({
@@ -56,6 +58,21 @@ const MotherInfo = ({
 
     router.push("/register/details/birth-companion");
   };
+
+  // Reset form whenever context updates
+  useEffect(() => {
+    if (motherInfo) {
+      reset({
+        ...motherInfo,
+        dateOfBirth: motherInfo.dateOfBirth
+          ? new Date(motherInfo.dateOfBirth).toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0],
+        lastMenstrualDate: motherInfo.lastMenstrualDate
+          ? new Date(motherInfo.lastMenstrualDate).toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0],
+      });
+    }
+  }, [motherInfo, reset]);
 
   return (
     <form
