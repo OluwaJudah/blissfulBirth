@@ -42,7 +42,19 @@ const fortyWeeksLater = new Date();
 fortyWeeksLater.setDate(today.getDate() - 40 * 7); // 40 weeks = 280 days
 const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
-export const motherInputFormData = [
+import { MotherInfoForm } from "@/definitions/mother-info";
+
+export const motherInputFormData: Array<{
+  name: keyof MotherInfoForm;
+  label: string;
+  placeholder?: string;
+  bgColour: string;
+  isRequired?: boolean;
+  type?: string;
+  min?: string;
+  max?: string;
+  isPhoneNumber?: boolean;
+}> = [
   {
     name: "fullName",
     label: "Full Name",

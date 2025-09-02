@@ -29,11 +29,12 @@ const MotherInfo = ({
   }
 
   const { motherInfo, setMotherInfo, setIsExisting } = context;
-  console.log({ context });
+
   const today = new Date();
   const router = useRouter();
   const {
     register,
+    control,
     reset,
     handleSubmit,
     formState: { errors },
@@ -85,6 +86,7 @@ const MotherInfo = ({
             key={data.name}
             {...data}
             register={register}
+            control={control}
             errors={errors}
           />
         ))}

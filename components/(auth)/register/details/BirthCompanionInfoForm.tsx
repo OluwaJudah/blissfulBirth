@@ -25,6 +25,7 @@ const BirthCompanionInfoForm = () => {
   const router = useRouter();
   const {
     register,
+    control,
     reset,
     handleSubmit,
     formState: { errors },
@@ -56,6 +57,7 @@ const BirthCompanionInfoForm = () => {
               key={data.name}
               {...data}
               register={register}
+              control={control}
               errors={errors}
             />
           ))}

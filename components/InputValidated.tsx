@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
 import { UseFormRegister } from "react-hook-form";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
+import DatePickerInput from "./date-picker-input"; // ✅ Import correctly
 
 const Input = ({
   type,
@@ -11,6 +14,7 @@ const Input = ({
   isPhoneNumber,
   isPassword,
   register,
+  control,
   iconUrl,
   errors,
   stateError,
@@ -27,6 +31,7 @@ const Input = ({
   isPhoneNumber?: boolean;
   isPassword?: boolean;
   register: UseFormRegister<any>;
+  control?: any; // <-- required for react-hook-form Controller
   iconUrl?: string;
   errors?: any;
   stateError?: any;
@@ -43,7 +48,7 @@ const Input = ({
   return (
     <div className="flex flex-col my-3">
       <div className="flex gap-1">
-        <label className="font-mono text-turquoise-900" htmlFor="">
+        <label className="font-mono text-turquoise-900" htmlFor={name}>
           {label}
         </label>
         {isRequired && <p className="font-mono text-pinklet-500">*</p>}
@@ -54,34 +59,39 @@ const Input = ({
           isPending ? disabledBgColour : bgColour
         } overflow-hidden shadow-md`}
       >
-        {iconUrl && (
-          <Image
-            className=""
-            src={iconUrl}
-            height={23}
-            width={23}
-            alt={label}
+        {iconUrl && <Image src={iconUrl} height={23} width={23} alt={label} />}
+
+        {isPhoneNumber && <div className="text-black">+27</div>}
+
+        {/* ✅ Use DatePickerInput directly */}
+        {type === "date" ? (
+          <DatePickerInput
+            control={control}
+            name={name}
+            placeholder={placeholder}
+            min={min ? new Date(min) : undefined}
+            max={max ? new Date(max) : undefined}
+            error={errors?.[name]?.message || stateError?.[name]}
+            isRequired={isRequired}
+          />
+        ) : (
+          <input
+            placeholder={placeholder}
+            className={`w-full border-none focus:ring-0 text-black ${
+              isPending ? disabledBgColour : bgColour
+            }`}
+            type={typeName ? typeName : "text"}
+            disabled={isPending}
+            {...register(name)}
+            min={min}
+            max={max}
           />
         )}
-
-        {isPhoneNumber && <div className="text-turquoise-900">+27</div>}
-
-        <input
-          placeholder={placeholder}
-          className={`w-full border-none focus:ring-transparent text-black ${
-            isPending ? disabledBgColour : bgColour
-          } focus:inset-ring-transparent`}
-          type={typeName ? typeName : "text"}
-          disabled={isPending}
-          {...register(name)}
-          min={min ? min : ""}
-          max={max ? max : ""}
-        />
 
         {isPassword &&
           (isShow ? (
             <EyeOff
-              className="text-turquoise-900"
+              className="text-black cursor-pointer"
               onClick={() => {
                 setIsShow(false);
                 setTypeName("password");
@@ -89,7 +99,7 @@ const Input = ({
             />
           ) : (
             <Eye
-              className="text-turquoise-900"
+              className="text-black cursor-pointer"
               onClick={() => {
                 setIsShow(true);
                 setTypeName("text");
@@ -97,12 +107,11 @@ const Input = ({
             />
           ))}
       </div>
+
       {errors && errors[name] && (
-        <span className="text-pinklet-500">{errors[name]?.message}</span>
+        <span className="text-red-500">{errors[name]?.message}</span>
       )}
-      {stateError && (
-        <span className="text-pinklet-500">{stateError[name]}</span>
-      )}
+      {stateError && <span className="text-red-500">{stateError[name]}</span>}
     </div>
   );
 };
