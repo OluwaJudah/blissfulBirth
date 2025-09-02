@@ -35,7 +35,9 @@ export default function DatePickerInput({
               "w-full border-none focus:ring-0 text-black bg-transparent"
             )}
             selected={field.value ? new Date(field.value) : null}
-            onChange={(date) => field.onChange(date)}
+            onChange={(date) =>
+              field.onChange(date ? date.toISOString().split("T")[0] : "")
+            }
             placeholderText={placeholder}
             showYearDropdown
             showMonthDropdown
@@ -48,7 +50,6 @@ export default function DatePickerInput({
           />
         )}
       />
-      {error && <span className="text-sm text-red-500 mt-1">{error}</span>}
     </>
   );
 }
