@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Location = () => {
   return (
-    <div className="">
+    <>
       <div className="flex gap-2 px-7">
         <div className="w-[40px]">
           <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
@@ -18,8 +18,8 @@ const Location = () => {
           </p>
         </div>
       </div>
-      <div className="border border-t-turquoise-100 my-3"></div>
-    </div>
+      <div className="border border-t-turquoise-100"></div>
+    </>
   );
 };
 

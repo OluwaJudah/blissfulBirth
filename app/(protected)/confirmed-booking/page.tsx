@@ -16,8 +16,17 @@ export default async function HomePage({
   const appointment = (await getAppointment(bookingId)) as IAppointment;
 
   return (
-    <div className="flex h-screen items-center">
-      <main className="md:rounded-3xl md:shadow-2xl bg-white h-full md:h-[750px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-y-hidden">
+    <div className="flex min-h-screen bg-gray-50">
+      <main
+        className="
+          flex flex-col
+          w-full max-w-md mx-auto
+          bg-white
+          md:rounded-3xl md:shadow-2xl md:border md:border-gray-200
+          overflow-y-auto
+          md:h-[750px]
+        "
+      >
         <Header from={from} />
         <Suspense fallback={<BodySkeleton />}>
           <Body

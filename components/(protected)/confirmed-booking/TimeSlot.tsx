@@ -12,7 +12,7 @@ const TimeSlot = ({ time }: { time: string }) => {
           <p className="font-mono font-bold text-turquoise-900">{time}</p>
         </div>
       </div>
-      <div className="border border-t-turquoise-100 my-3"></div>
+      <div className="border border-t-turquoise-100"></div>
     </>
   );
 };

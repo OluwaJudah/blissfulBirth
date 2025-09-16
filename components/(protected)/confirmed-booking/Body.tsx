@@ -36,39 +36,44 @@ const Body = ({
       : "First Appointment";
 
   return (
-    <>
-      <div className="flex flex-col h-full gap-[10px] rounded-t-[50px] bg-turquoise-50 py-8 flex flex-col">
-        <div className="flex flex-col px-7 ">
-          <div className="flex items-center gap-2">
-            <div className="flex justify-center items-center bg-pinklet-200 w-[40px] h-[40px] rounded-full">
-              <CalendarCheck className="text-white" size={20} strokeWidth={3} />
-            </div>
-            <p className="font-mono font-bold text-turquoise-900 tracking-tight">
-              {weeksLabel}
-            </p>
-          </div>
+    <div className="flex flex-col flex-1 gap-4 rounded-t-[30px] bg-turquoise-50 py-6">
+      {/* Pregnancy Weeks */}
+      <div className="flex items-center gap-2 px-7">
+        <div className="flex justify-center items-center bg-pinklet-200 w-10 h-10 rounded-full">
+          <CalendarCheck className="text-white" size={20} strokeWidth={3} />
         </div>
-        <div className="border border-t-turquoise-100 my-3"></div>
-        <div className="flex flex-col px-7 ">
-          <div className="flex items-center gap-2">
-            <div className="flex justify-center items-center bg-turquoise-200 w-[40px] h-[40px] rounded-full">
-              <Calendar1 className="text-white" size={20} strokeWidth={3} />
-            </div>
-            <p className="font-mono font-bold text-turquoise-900">
-              {dateFormatted}
-            </p>
-          </div>
-        </div>
-        <div className="border border-t-turquoise-100 my-3"></div>
-        <TimeSlot time={time} />
-        <Location />
-        {book ? (
-          <NotesAndBooking bookingId={bookingId} from={from} />
-        ) : (
-          <NoteBackHome note={note} from={from} />
-        )}
+        <p className="font-mono font-bold text-turquoise-900 tracking-tight">
+          {weeksLabel}
+        </p>
       </div>
-    </>
+
+      <div className="border-t border-t-turquoise-100" />
+
+      {/* Appointment Date */}
+      <div className="flex items-center gap-2 px-7">
+        <div className="flex justify-center items-center bg-turquoise-200 w-10 h-10 rounded-full">
+          <Calendar1 className="text-white" size={20} strokeWidth={3} />
+        </div>
+        <p className="font-mono font-bold text-turquoise-900">
+          {dateFormatted}
+        </p>
+      </div>
+
+      <div className="border-t border-t-turquoise-100" />
+
+      <TimeSlot time={time} />
+      <Location />
+
+      {/* Notes / Booking */}
+      {book ? (
+        <NotesAndBooking bookingId={bookingId} from={from} />
+      ) : (
+        <NoteBackHome note={note} from={from} />
+      )}
+
+      {/* Extra space for iOS safe area */}
+      <div className="pb-[env(safe-area-inset-bottom)]" />
+    </div>
   );
 };
 
