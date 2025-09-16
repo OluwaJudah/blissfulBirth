@@ -2,6 +2,7 @@ import Image from "next/image";
 import { calculateTrimester } from "@/utils";
 import { FIRST_APPOINTMENT, trimesters } from "@/constants/appointment";
 import { NextAppointmentButton } from "@/components/Buttons";
+import NoAppointment from "./NoAppointment";
 
 const NextAppointment = async ({
   appointmentId,
@@ -26,6 +27,8 @@ const NextAppointment = async ({
     const trimesterStr = trimesters[trimester];
     nextAppointmentStr = `Week ${nextPregnancyWeeks} - ${trimesterStr} Trimester`;
   }
+
+  if (appointmentId === "") return <NoAppointment />;
 
   return (
     <div className="flex flex-col gap-y-4">

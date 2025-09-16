@@ -11,8 +11,19 @@ export default async function HomePage({
   const { from, appointmentWeek } = query;
 
   return (
-    <div className="flex h-screen items-center">
-      <main className="md:rounded-3xl md:shadow-2xl bg-white h-full md:h-[700px] border md:border-gray-400/2 w-[400px] md:w-[350px] mx-auto overflow-scroll">
+    <div className="flex min-h-screen bg-gray-50">
+      <main
+        className="
+          flex flex-col
+          bg-white
+          w-full
+          max-w-md
+          mx-auto
+          md:rounded-3xl md:shadow-2xl
+          md:border md:border-gray-200
+          overflow-y-auto
+        "
+      >
         <Header />
         <Body pregnancyWeeks={+appointmentWeek} from={from} />
       </main>
